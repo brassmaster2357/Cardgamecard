@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //Move and scale health bar to make it look like it's draining to the left
-        hBTransform.x = 1.25f * (vars.playerHP / vars.playerHPMax) + gameObject.transform.position.x - 1.25f;
+        hBTransform.x = -1.25f * (vars.playerHP / vars.playerHPMax) + gameObject.transform.position.x + 1.25f;
         hBScale.x = -2.5f * (vars.playerHP / vars.playerHPMax);
         healthBar.transform.position = hBTransform;
         healthBar.transform.localScale = hBScale;

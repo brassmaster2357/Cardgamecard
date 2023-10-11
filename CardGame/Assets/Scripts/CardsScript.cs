@@ -43,7 +43,7 @@ public class CardsScript : MonoBehaviour
         {
             //Card played on enemy 1 (furthest to the right)
             Debug.Log("You have played the test card on enemy1");
-            vars.playerHP -= 5;
+            vars.enemy1HP -= 5;
         }
         else if (Mathf.Abs(gameObject.transform.position.x - player.transform.position.x) <= detectionRange && Mathf.Abs(gameObject.transform.position.y - player.transform.position.y) <= detectionRange)
         {

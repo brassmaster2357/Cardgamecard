@@ -29,6 +29,9 @@ public class GameVariableHandler : MonoBehaviour
 
     public float playerHP;
     public float playerHPMax;
+
+    public float enemy1HP;
+    public float enemy1HPMax;
     
     void Start()
     {
