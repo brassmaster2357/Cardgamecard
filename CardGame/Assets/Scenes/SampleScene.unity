@@ -271,9 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b09f4ae71017544898da59c5ed7682b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 40
-  playerHPMax: 40
-  healthBar: {fileID: 61223823}
 --- !u!1 &61223823
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,8 +281,8 @@ GameObject:
   m_Component:
   - component: {fileID: 61223824}
   - component: {fileID: 61223825}
-  m_Layer: 0
-  m_Name: Health Bar
+  m_Layer: 5
+  m_Name: Health Bar BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +345,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: c05e1b762e73f794bac7985a70c4644e, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -389,10 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baedcc9316be1d14495992e010aa3ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restPosition: {x: 0, y: -4, z: 0}
-  player: {fileID: 37901642}
-  enemy1: {fileID: 1465075954}
-  detectionRange: 2
 --- !u!61 &225567608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -808,8 +801,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2002256342}
   - component: {fileID: 2002256343}
-  m_Layer: 0
-  m_Name: Health Bar BG
+  m_Layer: 5
+  m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,7 +865,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: c05e1b762e73f794bac7985a70c4644e, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
