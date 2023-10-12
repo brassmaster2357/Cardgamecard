@@ -61,9 +61,10 @@ public class EventLoader : MonoBehaviour
     private void ChooseEvent()
     {
         randomness = Random.Range(1, 100);
-        Debug.Log(randomness);
+        Debug.Log("first event rando: " + randomness);
 
         int forkDecider = Random.Range(1, 100);
+        Debug.Log("forkDecider Rando: " + forkDecider);
 
         if (forkDecider >= 1 && forkDecider <= 35)
             fork = true;
