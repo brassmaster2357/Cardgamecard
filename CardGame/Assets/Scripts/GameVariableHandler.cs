@@ -32,10 +32,19 @@ public class GameVariableHandler : MonoBehaviour
 
     public float enemy1HP;
     public float enemy1HPMax;
+    public float enemy2HP;
+    public float enemy2HPMax;
+    public float enemy3HP;
+    public float enemy3HPMax;
+
+    public List<string> playerHand;
+    public List<string> playerDraw;
+    public List<string> playerDiscard;
+    public int cardDrawOnTurn;
     
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

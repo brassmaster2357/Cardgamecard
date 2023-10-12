@@ -46,3 +46,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHP: 40
   playerHPMax: 40
+  enemy1HP: 20
+  enemy1HPMax: 20
+  enemy2HP: 20
+  enemy2HPMax: 20
+  enemy3HP: 20
+  enemy3HPMax: 20
+  playerHand: []
+  playerDraw:
+  - Attack
+  - Heal
+  - Attack
+  - Attack
+  - Attack
+  - Heal
+  - Attack
+  - Attack
+  - Heal
+  - Heal
+  - Attack
+  - Attack
+  playerDiscard: []
+  cardDrawOnTurn: 3

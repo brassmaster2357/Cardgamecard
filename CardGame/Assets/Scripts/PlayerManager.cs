@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject gameVarHandler;
     private GameVariableHandler vars;
+    public GameObject combatManager;
+    private CombatManager combat;
 
     public GameObject healthBar;
     private Vector3 hBTransform;
@@ -15,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         vars = gameVarHandler.GetComponent<GameVariableHandler>();
+        combat = combatManager.GetComponent<CombatManager>();
         // Get default position of health bar
         hBTransform = healthBar.transform.position;
         hBScale = healthBar.transform.localScale;
