@@ -48,7 +48,7 @@ public class EventLoader : MonoBehaviour
             ChooseEvent();
             if (!fork)
                 Debug.Log("The next event is " + nextEvent);
-            else
+            else if (fork && nextEvent != "Fight")
             {
                 Debug.Log("There is a fork in the road!");
                 Debug.Log("The first option is " + nextEvent);
@@ -71,6 +71,7 @@ public class EventLoader : MonoBehaviour
         if (timesSinceAmbush >= 3)
         {
             nextEvent = "Fight";
+            timesSinceAmbush = 0;
         }
         else
         {
