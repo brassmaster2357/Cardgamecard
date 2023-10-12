@@ -43,7 +43,7 @@ public class EventLoader : MonoBehaviour
 
     void Update()
     {
-        Random.Range(1, 100)
+        
 
 
 
