@@ -62,7 +62,7 @@ public class CombatManager : MonoBehaviour
         }
 
         // Test script: Force turn end with "Y"
-        if (Input.GetKey(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             EndTurn();
         }
@@ -102,12 +102,12 @@ public class CombatManager : MonoBehaviour
         }
     }
     
-    public IEnumerator EndTurn()
+    public void EndTurn()
     {
         vars.playerDiscard.AddRange(vars.playerHand);
         vars.playerHand.Clear();
         // If there is an enemy, start their turn and wait until they're done, then draw new cards and start player's turn again
-        if (enemy1 != null)
+        /*if (enemy1 != null)
         {
             yield return StartCoroutine(nameof(Enemy1turn));
         }
@@ -118,8 +118,19 @@ public class CombatManager : MonoBehaviour
         if (enemy3 != null)
         {
             yield return StartCoroutine(nameof(Enemy3turn));
+        }*/
+        if (enemy1 != null)
+        {
+            Enemy1turn();
         }
-        
+        if (enemy2 != null)
+        {
+            Enemy2turn();
+        }
+        if (enemy3 != null)
+        {
+            Enemy3turn();
+        }
         DrawCards();
     }
     private string Enemy1turn()

@@ -62,7 +62,7 @@ public class EnemyManager : MonoBehaviour
             }
         } else
         {
-            vars.playerHP += actionIntensity;
+            vars.playerHP -= actionIntensity;
             Debug.Log("Enemy attacked player for " + actionIntensity.ToString());
             if (vars.playerHP <= 0)
             {
