@@ -106,14 +106,14 @@ public class EventLoader : MonoBehaviour
                 else
                     secondEvent = "Wizard";
             }
-            else if (randomness >= 31 && randomness <= 60)
+            else if (nextEvent == "Wizard")
             {
                 if (randomness >= 1 && randomness <= 65)
                     secondEvent = "Cards";
                 else
                     secondEvent = "Items";
             }
-            else if (randomness >= 61 && randomness <= 100)
+            else if (nextEvent == "Cards")
             {
                 if (randomness >= 1 && randomness <= 50)
                     secondEvent = "Wizard";
