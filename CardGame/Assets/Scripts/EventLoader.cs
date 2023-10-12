@@ -60,6 +60,8 @@ public class EventLoader : MonoBehaviour
     }
     private void ChooseEvent()
     {
+        fork = false;
+
         randomness = Random.Range(1, 100);
         Debug.Log("first event rando: " + randomness);
 
@@ -91,7 +93,7 @@ public class EventLoader : MonoBehaviour
                 nextEvent = "Cards";
             }
         }
-        if (fork && !(timesSinceAmbush >= 3))
+        if (fork && nextEvent != "Fight")
         {
             randomness = Random.Range(1, 100);
             if (nextEvent == "Items")
@@ -119,7 +121,6 @@ public class EventLoader : MonoBehaviour
             {
                 //I'm going to leave this empty until we have more events
             }
-            fork = false;
         }
         timesSinceAmbush++;
     }
