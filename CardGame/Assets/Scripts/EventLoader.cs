@@ -46,7 +46,7 @@ public class EventLoader : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             ChooseEvent();
-            if (!fork)
+            if (!fork || nextEvent == "Fight")
                 Debug.Log("The next event is " + nextEvent);
             else if (fork && nextEvent != "Fight")
             {
