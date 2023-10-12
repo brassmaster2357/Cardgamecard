@@ -5,6 +5,7 @@ using UnityEngine;
 this is a list of event names, for refrence
 Fight = ambush
 Cards = 3 random cards
+Items = failed adventurer
 Boss = boss fight
 Wizard = wizard buffs one of the stats of your card
 */
@@ -21,19 +22,18 @@ public class EventLoader : MonoBehaviour
     public string secondEvent;
     //this is the third event in a fork
     public string thirdEvent;
+    //this helps with choosing the random event
+    public string randomEvent;
 
     //this tracks how many events are left before the boss
     public int eventsLeft;
 
-    //these track how long it's been since the last event of its kind for all the events
-    //Ambush
+    //this tracks how long it's been since the last ambush event
     public int timesSinceAmbush;
-    //random 3 cards
-    public int timesSinceCards;
-    //Wizard event
-    public int timesSinceStatbuff;
 
+    public bool eventDecided = false;
 
+    private int randomness;
 
     void Start()
     {
@@ -43,16 +43,82 @@ public class EventLoader : MonoBehaviour
 
     void Update()
     {
-        
-
-
-
-
-
-        if (eventsLeft <= 0)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            fork = false;
-            nextEvent = "Boss";
+            ChooseEvent();
+            if (!fork)
+                Debug.Log("The next event is " + nextEvent);
+            else
+            {
+                Debug.Log("There is a fork in the road!");
+                Debug.Log("The first option is " + nextEvent);
+                Debug.Log("The second option is " + secondEvent);
+            }
         }
+
+            
+    }
+    private void ChooseEvent()
+    {
+        randomness = Random.Range(1, 100);
+        Debug.Log(randomness);
+
+        int forkDecider = Random.Range(1, 100);
+
+        if (forkDecider >= 1 && forkDecider <= 35)
+            fork = true;
+
+        if (timesSinceAmbush >= 3)
+        {
+            nextEvent = "Fight";
+        }
+        else
+        {
+            if (randomness >= 1 && randomness <= 30)
+            {
+                nextEvent = "Items";
+            }
+
+            else if (randomness >= 31 && randomness <= 60)
+            {
+                nextEvent = "Wizard";
+            }
+
+            else if (randomness >= 61 && randomness <= 100)
+            {
+                nextEvent = "Cards";
+            }
+        }
+        if (fork && !(timesSinceAmbush >= 3))
+        {
+            randomness = Random.Range(1, 100);
+            if (nextEvent == "Items")
+            {
+                if (randomness >= 1 && randomness <= 65)
+                    secondEvent = "Cards";
+                else
+                    secondEvent = "Wizard";
+            }
+            else if (randomness >= 31 && randomness <= 60)
+            {
+                if (randomness >= 1 && randomness <= 65)
+                    secondEvent = "Cards";
+                else
+                    secondEvent = "Items";
+            }
+            else if (randomness >= 61 && randomness <= 100)
+            {
+                if (randomness >= 1 && randomness <= 50)
+                    secondEvent = "Wizard";
+                else
+                    secondEvent = "Items";
+            }
+            if (forkType)
+            {
+                //I'm going to leave this empty until we have more events
+            }
+            fork = false;
+        }
+        timesSinceAmbush++;
     }
 }
