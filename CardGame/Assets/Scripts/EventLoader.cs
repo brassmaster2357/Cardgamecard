@@ -124,6 +124,7 @@ public class EventLoader : MonoBehaviour
             {
                 //I'm going to leave this empty until we have more events
             }
+            chanceIncrease = 0;
         }
         else if (!fork)
             chanceIncrease += 5;
