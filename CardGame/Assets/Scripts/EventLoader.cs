@@ -37,6 +37,8 @@ public class EventLoader : MonoBehaviour
 
     private int chanceIncrease;
 
+    private bool wasFork = false;
+
     void Start()
     {
         timesSinceAmbush = 1;
@@ -96,7 +98,7 @@ public class EventLoader : MonoBehaviour
                 nextEvent = "Cards";
             }
         }
-        if (fork && nextEvent != "Fight")
+        if ((fork || wasFork) && nextEvent != "Fight" )
         {
             randomness = Random.Range(1, 100);
             if (nextEvent == "Items")
@@ -125,6 +127,11 @@ public class EventLoader : MonoBehaviour
                 //I'm going to leave this empty until we have more events
             }
             chanceIncrease = 0;
+            wasFork = false;
+        }
+        else if (fork && nextEvent == "Fight")
+        {
+            wasFork = true;
         }
         else if (!fork)
             chanceIncrease += 5;
