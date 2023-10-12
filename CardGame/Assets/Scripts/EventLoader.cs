@@ -35,9 +35,12 @@ public class EventLoader : MonoBehaviour
 
     private int randomness;
 
+    private int chanceIncrease;
+
     void Start()
     {
-        
+        timesSinceAmbush = 1;
+        chanceIncrease = 0;
     }
 
 
@@ -65,10 +68,10 @@ public class EventLoader : MonoBehaviour
         randomness = Random.Range(1, 100);
         Debug.Log("first event rando: " + randomness);
 
-        int forkDecider = Random.Range(1, 100);
+        int forkDecider = (Random.Range(1, 100) - chanceIncrease);
         Debug.Log("forkDecider Rando: " + forkDecider);
 
-        if (forkDecider >= 1 && forkDecider <= 35)
+        if (forkDecider <= 30)
             fork = true;
 
         if (timesSinceAmbush >= 3)
@@ -122,6 +125,8 @@ public class EventLoader : MonoBehaviour
                 //I'm going to leave this empty until we have more events
             }
         }
+        else if (!fork)
+            chanceIncrease += 5;
         timesSinceAmbush++;
     }
 }
