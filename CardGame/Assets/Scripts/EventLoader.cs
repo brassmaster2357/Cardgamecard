@@ -11,7 +11,7 @@ Wizard = wizard buffs one of the stats of your card
 */
 public class EventLoader : MonoBehaviour
 {
-    //this checks if ther is a fork
+    //this checks if there is a fork
     public bool fork;
     //this tracks the type of fork. True is 3-way and false is 2-way
     public bool forkType;
@@ -22,8 +22,6 @@ public class EventLoader : MonoBehaviour
     public string secondEvent;
     //this is the third event in a fork
     public string thirdEvent;
-    //this helps with choosing the random event
-    public string randomEvent;
 
     //this tracks how many events are left before the boss
     public int eventsLeft;
@@ -159,5 +157,8 @@ public class EventLoader : MonoBehaviour
 
         //add one time since the last ambush
         timesSinceAmbush++;
+
+        //we decided the event, so make this true
+        eventDecided = true;
     }
 }
