@@ -23,7 +23,7 @@ public class CombatManager : MonoBehaviour
     public GameObject card;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         vars = gameVarHandler.GetComponent<GameVariableHandler>();
         cardVar = cardsHandling.GetComponent<CardsScript>();
@@ -159,7 +159,7 @@ public class CombatManager : MonoBehaviour
         {
             if (target == "enemy1")
             {
-                vars.enemy1HP -= 5;
+                vars.enemy1HP -= 5f;
                 Destroy(cardPlayed);
             } else if (target == "enemy2")
             {

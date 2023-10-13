@@ -36,7 +36,7 @@ public class GameVariableHandler : MonoBehaviour
     public float enemy2HPMax;
     public float enemy3HP;
     public float enemy3HPMax;
-
+    public GameObject enemy1;
     public List<int> playerHand;
     public List<int> playerDraw;
     public List<int> playerDiscard;

@@ -507,7 +507,91 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: enemy1
+      value: 
+      objectReference: {fileID: 1465075954}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
       propertyPath: playerDraw.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[9]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[8]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[10]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerDraw.Array.data[11]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808381927511064081, guid: e649fce6584f931469da5977bb013347, type: 3}
+      propertyPath: playerHand.Array.data[10]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3808381927511064082, guid: e649fce6584f931469da5977bb013347, type: 3}
@@ -550,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 7131759670577102613, guid: 3e6f73da0934323478d288c159e7cb01, type: 3}
       propertyPath: gameVarHandler
       value: 
-      objectReference: {fileID: 2145525769}
+      objectReference: {fileID: 3808381927511064082, guid: e649fce6584f931469da5977bb013347, type: 3}
     - target: {fileID: 7131759670577102618, guid: 3e6f73da0934323478d288c159e7cb01, type: 3}
       propertyPath: m_RootOrder
       value: 5
