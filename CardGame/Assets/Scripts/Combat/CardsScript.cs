@@ -6,6 +6,8 @@ public class CardsScript : MonoBehaviour
 {
     public GameObject gameVarHandler;
     private GameVariableHandler vars;
+    public GameObject combatManager;
+    private CombatManager combat;
 
     private Vector3 moveTo;
     public Vector3 restPosition = new Vector3(0,-4,0);
@@ -13,15 +15,17 @@ public class CardsScript : MonoBehaviour
     public GameObject enemy1;
     public float detectionRange = 2;
     private bool isFollowing;
+    public string cardType;
 
     // Since we aren't creating cards in-game, an array can be used to store the sprite and name of a card by using its order in the array as an "ID"
     public Sprite[] cardSprites;
     public string[] cardName;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         vars = gameVarHandler.GetComponent<GameVariableHandler>();
+        combat = combatManager.GetComponent<CombatManager>();
     }
 
     // Update is called once per frame
@@ -47,13 +51,13 @@ public class CardsScript : MonoBehaviour
         {
             //Card played on enemy 1 (furthest to the right)
             Debug.Log("You have played the test card on enemy1");
-            vars.enemy1HP -= 5;
+            combat.PlayCard(gameObject, cardType, "enemy1");
         }
         else if (Mathf.Abs(gameObject.transform.position.x - player.transform.position.x) <= detectionRange && Mathf.Abs(gameObject.transform.position.y - player.transform.position.y) <= detectionRange)
         {
             //Card played on player
             Debug.Log("You have played the test card on yourself");
-            vars.playerHP -= 5;
+            combat.PlayCard(gameObject, cardType, "player");
         }
         else if (gameObject.transform.position.y >= -1.5)
         {
