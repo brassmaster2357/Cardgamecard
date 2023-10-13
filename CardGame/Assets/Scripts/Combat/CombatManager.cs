@@ -6,7 +6,8 @@ public class CombatManager : MonoBehaviour
 {
     public GameObject gameVarHandler;
     private GameVariableHandler vars;
-    
+    public GameObject cardsHandling;
+    private CardsScript cardVar;
 
     //currentTurn counts how many enemies need to take their turn before the player
     public int currentTurn = 0;
@@ -18,6 +19,8 @@ public class CombatManager : MonoBehaviour
     private EnemyManager enemy2manager;
     public GameObject enemy3;
     private EnemyManager enemy3manager;
+
+    public GameObject card;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +100,8 @@ public class CombatManager : MonoBehaviour
             else
             {
                 vars.playerHand.Add(vars.playerDraw[0]);
+                GameObject cardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
+                cardDrawn.GetComponent<SpriteRenderer>().sprite = (Sprite)cardVar.cardSprites.GetValue(vars.playerDraw[0]);
                 vars.playerDraw.RemoveAt(0);
             }
         }

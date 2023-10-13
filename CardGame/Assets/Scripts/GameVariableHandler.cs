@@ -37,9 +37,9 @@ public class GameVariableHandler : MonoBehaviour
     public float enemy3HP;
     public float enemy3HPMax;
 
-    public List<string> playerHand;
-    public List<string> playerDraw;
-    public List<string> playerDiscard;
+    public List<int> playerHand;
+    public List<int> playerDraw;
+    public List<int> playerDiscard;
     public int cardDrawOnTurn;
     
     void Start()
