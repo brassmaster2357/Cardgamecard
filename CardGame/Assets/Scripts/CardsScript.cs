@@ -14,6 +14,10 @@ public class CardsScript : MonoBehaviour
     public float detectionRange = 2;
     private bool isFollowing;
 
+    // Since we aren't creating cards in-game, an array can be used to store the sprite and name of a card by using its order in the array as an "ID"
+    public Sprite[] cardSprites;
+    public string[] cardName;
+
     // Start is called before the first frame update
     void Start()
     {
