@@ -26,6 +26,7 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         vars = gameVarHandler.GetComponent<GameVariableHandler>();
+        cardVar = cardsHandling.GetComponent<CardsScript>();
         
         // Add enemy managers unless there's no enemy
         if (enemy1 != null)
@@ -102,6 +103,7 @@ public class CombatManager : MonoBehaviour
                 vars.playerHand.Add(vars.playerDraw[0]);
                 GameObject cardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
                 cardDrawn.GetComponent<SpriteRenderer>().sprite = (Sprite)cardVar.cardSprites.GetValue(vars.playerDraw[0]);
+                cardDrawn.GetComponent<CardsScript>().cardType = (string)cardVar.cardName.GetValue(vars.playerDraw[0]);
                 vars.playerDraw.RemoveAt(0);
             }
         }
@@ -149,5 +151,30 @@ public class CombatManager : MonoBehaviour
     private string Enemy3turn()
     {
         return enemy3.GetComponent<EnemyManager>().Action();
+    }
+
+    public void PlayCard(GameObject cardPlayed, string cardType, string target)
+    {
+        if (cardType == "Attack")
+        {
+            if (target == "enemy1")
+            {
+                vars.enemy1HP -= 5;
+                Destroy(cardPlayed);
+            } else if (target == "enemy2")
+            {
+                vars.enemy2HP -= 5;
+                Destroy(cardPlayed);
+            } else if (target == "enemy3")
+            {
+                vars.enemy3HP -= 5;
+                Destroy(cardPlayed);
+            }
+        } else if (cardType == "Heal")
+        {
+            vars.playerHP += 5;
+            Destroy(cardPlayed);
+        }
+        
     }
 }

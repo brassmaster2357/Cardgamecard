@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5c3e8acfc9cad4586aab18800858e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameVarHandler: {fileID: 0}
+  gameVarHandler: {fileID: 3808381927511064082, guid: e649fce6584f931469da5977bb013347, type: 3}
+  cardsHandling: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
   currentTurn: 0
-  player: {fileID: 0}
-  enemy1: {fileID: 0}
+  player: {fileID: 7680506735922945790, guid: bfeedf7091959e041974f5e34ddbf056, type: 3}
+  enemy1: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
   enemy2: {fileID: 0}
   enemy3: {fileID: 0}
+  card: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
