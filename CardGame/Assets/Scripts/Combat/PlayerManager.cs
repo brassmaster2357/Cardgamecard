@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject gameVarHandler;
-    private GameVariableHandler vars;
-    public GameObject combatManager;
-    private CombatManager combat;
-
     public GameObject healthBar;
     private Vector3 hBTransform;
     private Vector3 hBScale;
 
+    public float playerHP = 40;
+    public float playerHPMax = 40;
+
     // Start is called before the first frame update
     void Start()
     {
-        vars = gameVarHandler.GetComponent<GameVariableHandler>();
-        combat = combatManager.GetComponent<CombatManager>();
         // Get default position of health bar
         hBTransform = healthBar.transform.position;
         hBScale = healthBar.transform.localScale;
@@ -27,8 +23,8 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //Move and scale health bar to make it look like it's draining to the left
-        hBTransform.x = -1.25f * (vars.playerHP / vars.playerHPMax) + gameObject.transform.position.x + 1.25f;
-        hBScale.x = -2.5f * (vars.playerHP / vars.playerHPMax);
+        hBTransform.x = -1.25f * (playerHP / playerHPMax) + gameObject.transform.position.x + 1.25f;
+        hBScale.x = -2.5f * (playerHP / playerHPMax);
         healthBar.transform.position = hBTransform;
         healthBar.transform.localScale = hBScale;
     }
