@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject gameVarHandler;
-    private GameVariableHandler vars;
-    public GameObject combatManager;
-    private CombatManager combat;
+    public GameObject player;
+    private PlayerManager pManager;
 
     public string action;
     public int actionIntensity;
@@ -16,11 +14,13 @@ public class EnemyManager : MonoBehaviour
     private Vector3 hBTransform;
     private Vector3 hBScale;
 
+    public float enemyHP = 20;
+    public float enemyHPMax = 20;
+
     // Start is called before the first frame update
     void Start()
     {
-        vars = gameVarHandler.GetComponent<GameVariableHandler>();
-        combat = combatManager.GetComponent<CombatManager>();
+        pManager = player.GetComponent<PlayerManager>();
         // Get default position of health bar
         hBTransform = healthBar.transform.position;
         hBScale = healthBar.transform.localScale;
@@ -30,8 +30,8 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         //Move and scale health bar to make it look like it's draining to the left
-        hBTransform.x = -1.25f * (vars.enemy1HP / vars.enemy1HPMax) + gameObject.transform.position.x + 1.25f;
-        hBScale.x = 2.5f * (vars.enemy1HP / vars.enemy1HPMax);
+        hBTransform.x = -1.25f * (enemyHP / enemyHPMax) + gameObject.transform.position.x + 1.25f;
+        hBScale.x = 2.5f * (enemyHP / enemyHPMax);
         healthBar.transform.position = hBTransform;
         healthBar.transform.localScale = hBScale;
     }
@@ -54,17 +54,17 @@ public class EnemyManager : MonoBehaviour
     {
         if (action == "Heal")
         {
-            vars.enemy1HP += actionIntensity;
+            enemyHP += actionIntensity;
             Debug.Log("Enemy healed for " + actionIntensity.ToString());
-            if (vars.enemy1HP > vars.enemy1HPMax)
+            if (enemyHP > enemyHPMax)
             {
-                vars.enemy1HP = vars.enemy1HPMax;
+                enemyHP = enemyHPMax;
             }
         } else
         {
-            vars.playerHP -= actionIntensity;
+            pManager.playerHP -= actionIntensity;
             Debug.Log("Enemy attacked player for " + actionIntensity.ToString());
-            if (vars.playerHP <= 0)
+            if (pManager.playerHP <= 0)
             {
                 // Place "you died" script here
             }

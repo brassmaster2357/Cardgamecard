@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7620815926848960871}
   - component: {fileID: 7620815926848960870}
   - component: {fileID: 7620815926848960873}
+  - component: {fileID: 4500978333161806023}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -143,18 +144,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baedcc9316be1d14495992e010aa3ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameVarHandler: {fileID: 3808381927511064082, guid: e649fce6584f931469da5977bb013347, type: 3}
-  combatManager: {fileID: 7131759670577102612, guid: 3e6f73da0934323478d288c159e7cb01, type: 3}
   restPosition: {x: 0, y: -4, z: 0}
-  player: {fileID: 7680506735922945790, guid: bfeedf7091959e041974f5e34ddbf056, type: 3}
-  enemy1: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
-  detectionRange: 2
-  cardType: 
-  cardSprites:
-  - {fileID: 21300000, guid: 63bdd80bb0209a94f9bf06d08188a650, type: 3}
-  - {fileID: 21300000, guid: b31cfc9914601c64abe27c59e9a6f96b, type: 3}
-  - {fileID: 21300000, guid: 25916e5701c81bb4b90827922e11a584, type: 3}
-  cardName:
-  - DEFAULT
-  - Attack
-  - Heal
+--- !u!50 &4500978333161806023
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620815926848960872}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

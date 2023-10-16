@@ -4,28 +4,15 @@ using UnityEngine;
 
 public class CardsScript : MonoBehaviour
 {
-    public GameObject gameVarHandler;
-    private GameVariableHandler vars;
-    public GameObject combatManager;
-    private CombatManager combat;
-
     private Vector3 moveTo;
     public Vector3 restPosition = new Vector3(0,-4,0);
-    public GameObject player;
-    public GameObject enemy1;
-    public float detectionRange = 2;
     private bool isFollowing;
-    public string cardType;
-
-    // Since we aren't creating cards in-game, an array can be used to store the sprite and name of a card by using its order in the array as an "ID"
-    public Sprite[] cardSprites;
-    public string[] cardName;
+    public CardTemplate card;
 
     // Start is called before the first frame update
     void Awake()
     {
-        vars = gameVarHandler.GetComponent<GameVariableHandler>();
-        combat = combatManager.GetComponent<CombatManager>();
+        gameObject.GetComponent<SpriteRenderer>().sprite = card.art;
     }
 
     // Update is called once per frame
@@ -47,27 +34,27 @@ public class CardsScript : MonoBehaviour
     void OnMouseUp()
     {
         isFollowing = false;
-        if (Mathf.Abs(gameObject.transform.position.x - enemy1.transform.position.x) <= detectionRange && Mathf.Abs(gameObject.transform.position.y - enemy1.transform.position.y) <= detectionRange)
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isFollowing)
         {
-            //Card played on enemy 1 (furthest to the right)
-            Debug.Log("You have played the test card on enemy1");
-            combat.PlayCard(gameObject, cardType, "enemy1");
-        }
-        else if (Mathf.Abs(gameObject.transform.position.x - player.transform.position.x) <= detectionRange && Mathf.Abs(gameObject.transform.position.y - player.transform.position.y) <= detectionRange)
-        {
-            //Card played on player
-            Debug.Log("You have played the test card on yourself");
-            combat.PlayCard(gameObject, cardType, "player");
-        }
-        else if (gameObject.transform.position.y >= -1.5)
-        {
-            //Card played "in the field"
-            Debug.Log("You have played the card without targeting anyone, or put it back (if it needed a target)");
-        }
-        else
-        {
-            //Card dropped near the hand, do nothing
-            Debug.Log("You have put the card back");
+            card.target = collision.gameObject;
+            switch (card.target.name)
+            {
+                case "Player":
+                    card.target.GetComponent<PlayerManager>().playerHP += card.power;
+                    Destroy(gameObject);
+                    break;
+                case "Enemy":
+                    card.target.GetComponent<EnemyManager>().enemyHP += card.power;
+                    Destroy(gameObject);
+                    break;
+                default:
+                    break;
+            }
+            Debug.Log(collision.gameObject);
         }
     }
 }

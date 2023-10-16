@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8263397324208269908}
   - component: {fileID: 8263397324208269906}
   - component: {fileID: 8263397324208269905}
+  - component: {fileID: 5982669525620697913}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -232,11 +233,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d69cb12c18028e408e810ccb2b93101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameVarHandler: {fileID: 3808381927511064082, guid: e649fce6584f931469da5977bb013347, type: 3}
-  combatManager: {fileID: 7131759670577102612, guid: 3e6f73da0934323478d288c159e7cb01, type: 3}
+  player: {fileID: 7680506735922945790, guid: bfeedf7091959e041974f5e34ddbf056, type: 3}
   action: 
   actionIntensity: 0
   healthBar: {fileID: 8263397323888218453}
+  enemyHP: 20
+  enemyHPMax: 20
+--- !u!50 &5982669525620697913
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263397324208269909}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8263397324616000292
 GameObject:
   m_ObjectHideFlags: 0
