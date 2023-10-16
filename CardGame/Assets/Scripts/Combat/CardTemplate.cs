@@ -9,4 +9,13 @@ public class CardTemplate : ScriptableObject
     public int cost;
     public GameObject target; //Default target if something goes wrong
     public int power;
+    public enum EPurpose
+    {
+        Attack,
+        Heal,
+        Summon,
+        Buff,
+        Debuff
+    }
+    public EPurpose purpose;
 }

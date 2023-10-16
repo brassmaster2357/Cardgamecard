@@ -16,6 +16,8 @@ public class EnemyManager : MonoBehaviour
 
     public float enemyHP = 20;
     public float enemyHPMax = 20;
+    public float powerModDefault = 0;
+    public float powerMod = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -54,21 +56,28 @@ public class EnemyManager : MonoBehaviour
     {
         if (action == "Heal")
         {
-            enemyHP += actionIntensity;
-            Debug.Log("Enemy healed for " + actionIntensity.ToString());
+            if (actionIntensity + powerMod > 0)
+            {
+                enemyHP += actionIntensity + powerMod;
+                Debug.Log("Enemy healed for " + (actionIntensity + powerMod).ToString());
+            } else
+            {
+                Debug.Log("Enemy tried to heal, but was debuffed too much");
+            }
             if (enemyHP > enemyHPMax)
             {
                 enemyHP = enemyHPMax;
             }
         } else
         {
-            pManager.playerHP -= actionIntensity;
-            Debug.Log("Enemy attacked player for " + actionIntensity.ToString());
-            if (pManager.playerHP <= 0)
+            if (actionIntensity + powerMod > 0)
             {
-                // Place "you died" script here
+                pManager.playerHP -= actionIntensity + powerMod;
+                Debug.Log("Enemy attacked player for " + (actionIntensity + powerMod).ToString());
+            } else
+            {
+                Debug.Log("Enemy tried to attack, but was debuffed too much");
             }
-            
         }
         return "Enemy turn complete";
     }
