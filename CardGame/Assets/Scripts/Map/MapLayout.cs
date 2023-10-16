@@ -9,6 +9,8 @@ public class MapLayout : MonoBehaviour
     public GameObject cardsIcon;
     public GameObject itemsIcon;
     public GameObject wizardIcon;
+    public GameObject straightRoad;
+    public GameObject forkedRoad;
 
     public GameObject playerIcon;
 
@@ -62,6 +64,7 @@ public class MapLayout : MonoBehaviour
         {
             Instantiate(ambushIcon, eventOffset, Quaternion.identity);
         }
+        straightRoad.SetActive(true);
     }
 
     private void DecideForkEvents()
@@ -91,5 +94,6 @@ public class MapLayout : MonoBehaviour
         {
             Instantiate(itemsIcon, secondEventOffset, Quaternion.identity);
         }
+        forkedRoad.SetActive(true);
     }
 }
