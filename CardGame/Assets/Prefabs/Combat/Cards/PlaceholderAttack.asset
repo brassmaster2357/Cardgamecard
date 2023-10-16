@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 21300000, guid: b31cfc9914601c64abe27c59e9a6f96b, type: 3}
   cost: 1
-  target: {fileID: 0}
+  target: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
   power: -6
+  purpose: 0

@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
 
     public float playerHP = 40;
     public float playerHPMax = 40;
+    public float powerModDefault = 0;
+    public float powerMod = 0;
 
     // Start is called before the first frame update
     void Start()

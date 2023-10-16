@@ -8,6 +8,8 @@ public class CardsScript : MonoBehaviour
     public Vector3 restPosition = new Vector3(0,-4,0);
     private bool isFollowing;
     public CardTemplate card;
+    public PlayerManager pManager;
+    public EnemyManager eManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,15 +43,21 @@ public class CardsScript : MonoBehaviour
         if (!isFollowing)
         {
             card.target = collision.gameObject;
-            switch (card.target.name)
+            switch (card.purpose)
             {
-                case "Player":
+                case CardTemplate.EPurpose.Heal:
                     card.target.GetComponent<PlayerManager>().playerHP += card.power;
                     Destroy(gameObject);
                     break;
-                case "Enemy":
-                    card.target.GetComponent<EnemyManager>().enemyHP += card.power;
+                case CardTemplate.EPurpose.Attack:
+                    card.target.GetComponent<EnemyManager>().enemyHP -= card.power;
                     Destroy(gameObject);
+                    break;
+                case CardTemplate.EPurpose.Buff:
+                    pManager.powerMod += 2;
+                    break;
+                case CardTemplate.EPurpose.Debuff:
+                    card.target.GetComponent<EnemyManager>().actionIntensity -= card.power;
                     break;
                 default:
                     break;
