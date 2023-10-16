@@ -61,9 +61,11 @@ public class PlayerCards : MonoBehaviour
         Debug.Log(discardPile);
     }
 
-    public void Discard(CardTemplate card)
+    public void Discard(CardTemplate card, GameObject cardUIObject)
     {
         discardPile.Add(card);
         cardsInHand.Remove(card);
+        Destroy(cardUIObject);
+        Debug.Log(discardPile);
     }
 }
