@@ -9,7 +9,6 @@ public class PlayerCards : MonoBehaviour
     public List<CardTemplate> drawPile;
     public List<CardTemplate> cardsInHand;
     public List<CardTemplate> discardPile;
-    public int cardsToDraw;
     public GameObject card;
 
     void Awake()
@@ -24,36 +23,47 @@ public class PlayerCards : MonoBehaviour
         }
     }
 
-    void BeginCombat()
+    public void BeginCombat()
     {
         drawPile.Clear();
         cardsInHand.Clear();
         discardPile = cardsTotal;
-        DrawCards();
+        Draw(3);
     }
 
-    void DrawCards()
+    public void Draw(int cardsToDraw)
     {
         for (int i = 0; i < cardsToDraw; i++)
         {
             if (drawPile.Count == 0)
             {
+                //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
                 drawPile = discardPile;
                 discardPile.Clear();
+                cardsToDraw++; // Make it loop one more time instead of duplicating card draw code
             }
             else
             {
+                //Draw a card
                 cardsInHand.Add(drawPile[0]);
                 GameObject newCardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
                 newCardDrawn.GetComponent<CardsScript>().card = drawPile[0];
                 drawPile.RemoveAt(0);
             }
         }
+        Debug.Log(cardsInHand);
     }
 
-    void DiscardHand()
+    public void DiscardHand()
     {
         discardPile.AddRange(cardsInHand);
         cardsInHand.Clear();
+        Debug.Log(discardPile);
+    }
+
+    public void Discard(CardTemplate card)
+    {
+        discardPile.Add(card);
+        cardsInHand.Remove(card);
     }
 }
