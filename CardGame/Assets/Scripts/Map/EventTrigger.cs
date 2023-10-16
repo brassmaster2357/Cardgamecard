@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class EventTrigger : MonoBehaviour
 {
     public int eventNum;
-
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +20,7 @@ public class EventTrigger : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        SceneManager.LoadScene(eventNum);
+        //SceneManager.LoadScene(eventNum);
+        Debug.Log("You Clicked on event #" + eventNum);
     }
 }
