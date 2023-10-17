@@ -10,11 +10,14 @@ public class CardsScript : MonoBehaviour
     public CardTemplate card;
     public PlayerManager pManager;
     public EnemyManager eManager;
+    public GameObject cardManager;
+    private PlayerCards cards;
 
     // Start is called before the first frame update
     void Awake()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = card.art;
+        cards = cardManager.GetComponent<PlayerCards>();
     }
 
     // Update is called once per frame
@@ -42,16 +45,15 @@ public class CardsScript : MonoBehaviour
     {
         if (!isFollowing)
         {
+            bool discard = true;
             card.target = collision.gameObject;
             switch (card.purpose)
             {
                 case CardTemplate.EPurpose.Heal:
                     card.target.GetComponent<PlayerManager>().playerHP += card.power;
-                    Destroy(gameObject);
                     break;
                 case CardTemplate.EPurpose.Attack:
                     card.target.GetComponent<EnemyManager>().enemyHP -= card.power;
-                    Destroy(gameObject);
                     break;
                 case CardTemplate.EPurpose.Buff:
                     pManager.powerMod += 2;
@@ -60,7 +62,12 @@ public class CardsScript : MonoBehaviour
                     card.target.GetComponent<EnemyManager>().actionIntensity -= card.power;
                     break;
                 default:
+                    discard = false;
                     break;
+            }
+            if (discard)
+            {
+                cards.Discard(card, gameObject);
             }
             Debug.Log(collision.gameObject);
         }

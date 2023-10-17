@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour
+    
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject cardManager;
+    private PlayerCards cards;
+    private void Awake()
     {
-        
+        cards = cardManager.GetComponent<PlayerCards>();
+    }
+    public void PlayerTurn()
+    {
+        cards.Draw(3);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnemyTurn()
     {
-        
+        cards.DiscardHand();
     }
 }
