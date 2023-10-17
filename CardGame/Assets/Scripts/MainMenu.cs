@@ -28,7 +28,6 @@ public class MainMenu : MonoBehaviour
     public void startGame()
     {
         SceneManager.LoadScene(1);
-        el.isCabin = true;
     }
 
     
