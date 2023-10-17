@@ -8,6 +8,7 @@ public class CardTemplate : ScriptableObject
     public Sprite art;
     public int cost;
     public GameObject target; //Default target if something goes wrong
+    public SummonTemplate summon;
     public int power;
     public enum EPurpose
     {

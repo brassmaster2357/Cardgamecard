@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CardsScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CardsScript : MonoBehaviour
     public EnemyManager eManager;
     public GameObject cardManager;
     private PlayerCards cards;
+    public TextMeshProUGUI testText;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +31,9 @@ public class CardsScript : MonoBehaviour
             moveTo = (gameObject.transform.position + restPosition) / 2;
         moveTo.z = 0;
         gameObject.transform.position = moveTo;
+
+        //TEST
+        testText.transform.position = Camera.main.WorldToScreenPoint(moveTo);
     }
 
     void OnMouseDown()
