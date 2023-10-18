@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bfa48953869434e86cf280b9e47ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCabin: 1
   fork: 0
   forkType: 0
   nextEvent: 
@@ -594,6 +595,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &313387538
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8985622291394046088, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_Name
+      value: PlayerCardHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0011935942
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.064291075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.727061
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
 --- !u!1 &542575660
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +725,7 @@ Transform:
   - {fileID: 2129566}
   - {fileID: 20156528}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311569036
 GameObject:
@@ -698,9 +760,9 @@ MonoBehaviour:
   cardsIcon: {fileID: 7881990184171109784, guid: c747a37a5807515488991fbb39536356, type: 3}
   itemsIcon: {fileID: 7317093984162408790, guid: 302b322e807ce054593317d2650e8ba0, type: 3}
   wizardIcon: {fileID: 2719521428816290545, guid: 547d1e6e18468d445bea8afe13296129, type: 3}
+  playerIcon: {fileID: 1706529261}
   straightRoad: {fileID: 1279450433}
   forkedRoad: {fileID: 1326810818}
-  playerIcon: {fileID: 1706529261}
   el: {fileID: 233952918}
 --- !u!4 &1311569038
 Transform:
@@ -748,7 +810,7 @@ Transform:
   - {fileID: 233459611}
   - {fileID: 542575661}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1333213713
 PrefabInstance:
@@ -1128,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458068041330420853, guid: 5b31c56c778335244b4859885da36930, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6458068041330420853, guid: 5b31c56c778335244b4859885da36930, type: 3}
       propertyPath: m_LocalPosition.x
