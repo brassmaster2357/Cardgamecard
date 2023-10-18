@@ -174,7 +174,33 @@ public class EventLoader : MonoBehaviour
             switch (eventNum)
             {
                 case 1:
-                    nextEvent = "";
+                    nextEvent = "Cards";
+                    eventNum++;
+                    break;
+
+                case 2:
+                    nextEvent = "Wizard";
+                    eventNum++;
+                    break;
+
+                case 3:
+                    nextEvent = "Ambush";
+                    eventNum++;
+                    break;
+
+                case 4:
+                    nextEvent = "Items";
+                    eventNum++;
+                    break;
+
+                case 5:
+                    nextEvent = "Cards";
+                    eventNum++;
+                    break;
+
+                case 6:
+                    nextEvent = "Ambush";
+                    isCabin = false;
                     break;
 
                 default:

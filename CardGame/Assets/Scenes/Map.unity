@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bfa48953869434e86cf280b9e47ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCabin: 1
   fork: 0
   forkType: 0
   nextEvent: 
@@ -698,9 +699,9 @@ MonoBehaviour:
   cardsIcon: {fileID: 7881990184171109784, guid: c747a37a5807515488991fbb39536356, type: 3}
   itemsIcon: {fileID: 7317093984162408790, guid: 302b322e807ce054593317d2650e8ba0, type: 3}
   wizardIcon: {fileID: 2719521428816290545, guid: 547d1e6e18468d445bea8afe13296129, type: 3}
+  playerIcon: {fileID: 1706529261}
   straightRoad: {fileID: 1279450433}
   forkedRoad: {fileID: 1326810818}
-  playerIcon: {fileID: 1706529261}
   el: {fileID: 233952918}
 --- !u!4 &1311569038
 Transform:
