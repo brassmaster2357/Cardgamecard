@@ -11,7 +11,7 @@ public class CombatManager : MonoBehaviour
     private void Awake()
     {
         cards = cardManager.GetComponent<PlayerCards>();
-        cards.Draw(5);
+        cards.BeginCombat();
     }
     public void PlayerTurn()
     {

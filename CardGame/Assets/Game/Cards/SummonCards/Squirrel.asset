@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
-  m_Name: SummonSquirrel
+  m_Name: Squirrel
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   cost: 0
-  target: {fileID: 0}
-  summon: {fileID: 0}
-  power: 0
+  description: Tiny, soft animal with a large tail. It eats nuts.
+  target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
+  summon: {fileID: 11400000, guid: b56d0c1762436494a9df92c21c8c09d2, type: 2}
+  attack: 0
+  health: 1
   purpose: 2

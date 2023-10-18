@@ -7,7 +7,7 @@ using TMPro;
 public class CardsScript : MonoBehaviour
 {
     private Vector3 moveTo;
-    public Vector3 restPosition = new Vector3(0,-4,0);
+    public Vector3 restPosition = new Vector3(7,-4,0);
     private bool isFollowing;
     public CardTemplate card;
     public PlayerManager pManager;
@@ -25,18 +25,19 @@ public class CardsScript : MonoBehaviour
     public TextMeshProUGUI cardSummonUIHealth;
 
     // Start is called before the first frame update
-    void Awake()
+    public void LoadCard()
     {
         pCards = cardManager.GetComponent<PlayerCards>();
+        Debug.Log(card);
         cardUIName.text = card.name;
         cardUIDescription.text = card.description;
         cardUICost.text = card.cost.ToString();
         cardUIArt.sprite = card.art;
-        if (card.summon != null)
+        cardSummonUIAttack.text = card.attack.ToString();
+        cardSummonUIHealth.text = card.health.ToString();
+        if (card.purpose != CardTemplate.EPurpose.Summon)
         {
-            cardSummonUI.enabled = true;
-            cardSummonUIAttack.text = card.attack.ToString();
-            cardSummonUIHealth.text = card.health.ToString();
+            cardSummonUI.enabled = false;
         }
     }
 
@@ -88,7 +89,9 @@ public class CardsScript : MonoBehaviour
             }
             if (discard)
             {
-                pCards.Discard(card, gameObject);
+                Debug.Log(card);
+                pCards.Discard(card);
+                Destroy(gameObject);
             }
             Debug.Log(collision.gameObject);
         }

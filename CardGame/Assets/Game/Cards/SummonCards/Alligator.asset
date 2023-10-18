@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
+  m_Name: Alligator
+  m_EditorClassIdentifier: 
+  art: {fileID: 0}
+  cost: 2
+  description: Large reptile with an immensely powerful bite. Do not ask what shape
+    its mouth is.
+  target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
+  summon: {fileID: 11400000, guid: e89ff264dffc06f4ca83468d72d95b2d, type: 2}
+  attack: 5
+  health: 3
+  purpose: 2

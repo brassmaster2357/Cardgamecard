@@ -10,6 +10,7 @@ public class PlayerCards : MonoBehaviour
     public List<CardTemplate> cardsInHand;
     public List<CardTemplate> discardPile;
     public GameObject card;
+    public int cardHandPosition;
 
     void Awake()
     {
@@ -27,8 +28,9 @@ public class PlayerCards : MonoBehaviour
     {
         drawPile.Clear();
         cardsInHand.Clear();
-        discardPile = cardsTotal;
-        Draw(3);
+        drawPile = cardsTotal;
+        cardHandPosition = 0;
+        Draw(5);
     }
 
     public void Draw(int cardsToDraw)
@@ -40,18 +42,27 @@ public class PlayerCards : MonoBehaviour
                 //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
                 drawPile = discardPile;
                 discardPile.Clear();
+                //Draw a card
                 cardsInHand.Add(drawPile[0]);
                 GameObject newCardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
-                newCardDrawn.GetComponent<CardsScript>().card = drawPile[0];
+                CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
+                tempScript.card = drawPile[0];
+                tempScript.enabled = true;
+                tempScript.LoadCard();
                 drawPile.RemoveAt(0);
+                cardHandPosition++;
             }
             else
             {
                 //Draw a card
                 cardsInHand.Add(drawPile[0]);
                 GameObject newCardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
-                newCardDrawn.GetComponent<CardsScript>().card = drawPile[0];
+                CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
+                tempScript.card = drawPile[0];
+                tempScript.enabled = true;
+                tempScript.LoadCard();
                 drawPile.RemoveAt(0);
+                cardHandPosition++;
             }
         }
         Debug.Log(cardsInHand);
@@ -62,13 +73,14 @@ public class PlayerCards : MonoBehaviour
         discardPile.AddRange(cardsInHand);
         cardsInHand.Clear();
         Debug.Log(discardPile);
+        cardHandPosition = 0;
     }
 
-    public void Discard(CardTemplate card, GameObject cardUIObject)
+    public void Discard(CardTemplate card)
     {
         discardPile.Add(card);
         cardsInHand.Remove(card);
-        Destroy(cardUIObject);
         Debug.Log(discardPile);
+        cardHandPosition--;
     }
 }

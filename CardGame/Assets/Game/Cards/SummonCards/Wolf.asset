@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
+  m_Name: Wolf
+  m_EditorClassIdentifier: 
+  art: {fileID: 0}
+  cost: 2
+  description: Quick, ruthless hunter with a blood-curdling howl.
+  target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
+  summon: {fileID: 11400000, guid: 634940f07fe8cec49b33d5c029922299, type: 2}
+  attack: 3
+  health: 2
+  purpose: 2

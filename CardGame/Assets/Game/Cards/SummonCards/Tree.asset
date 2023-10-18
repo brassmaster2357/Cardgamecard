@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
-  m_Name: Heal
+  m_Name: Tree
   m_EditorClassIdentifier: 
-  art: {fileID: 21300000, guid: 25916e5701c81bb4b90827922e11a584, type: 3}
+  art: {fileID: 0}
   cost: 1
-  target: {fileID: 7680506735922945790, guid: bfeedf7091959e041974f5e34ddbf056, type: 3}
-  power: 8
-  purpose: 1
+  description: Nature's tower. Requires significant effort to knock down.
+  target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
+  summon: {fileID: 11400000, guid: b71e9265451702d43a0c7a7e7da40aa8, type: 2}
+  attack: 0
+  health: 7
+  purpose: 2

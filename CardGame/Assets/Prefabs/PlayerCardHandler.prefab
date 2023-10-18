@@ -46,13 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsTotal:
   - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
+  - {fileID: 11400000, guid: c9682ab840f2d59449218be277008564, type: 2}
+  - {fileID: 11400000, guid: c0c404f21a7b3df438ce635a1d363b71, type: 2}
+  - {fileID: 11400000, guid: ffcdaad5a89099349907d59f9fe3e383, type: 2}
+  - {fileID: 11400000, guid: 6acd453df1d10c2458c58fcb6b1f80b1, type: 2}
   - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
   - {fileID: 11400000, guid: c0c404f21a7b3df438ce635a1d363b71, type: 2}
-  - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
-  - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
-  - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
-  - {fileID: 11400000, guid: c0c404f21a7b3df438ce635a1d363b71, type: 2}
-  - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
+  - {fileID: 11400000, guid: 30ff9f6cb991b464cadf1359a436b419, type: 2}
   - {fileID: 11400000, guid: c0c404f21a7b3df438ce635a1d363b71, type: 2}
   - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
   - {fileID: 11400000, guid: 2ba326c519ca14c4aba9489472ed26a4, type: 2}
@@ -60,5 +60,5 @@ MonoBehaviour:
   drawPile: []
   cardsInHand: []
   discardPile: []
-  cardsToDraw: 3
   card: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
+  cardHandPosition: 0
