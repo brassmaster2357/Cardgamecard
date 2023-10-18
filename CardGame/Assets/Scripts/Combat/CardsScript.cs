@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CardsScript : MonoBehaviour
@@ -12,14 +13,31 @@ public class CardsScript : MonoBehaviour
     public PlayerManager pManager;
     public EnemyManager eManager;
     public GameObject cardManager;
-    private PlayerCards cards;
-    public TextMeshProUGUI testText;
+    private PlayerCards pCards;
+
+    public Image cardUI;
+    public TextMeshProUGUI cardUIName;
+    public TextMeshProUGUI cardUIDescription;
+    public TextMeshProUGUI cardUICost;
+    public Image cardUIArt;
+    public Canvas cardSummonUI; // Attack/health stats for a card are stored separately from the rest of the card to make it easier to hide it on non-summon cards
+    public TextMeshProUGUI cardSummonUIAttack;
+    public TextMeshProUGUI cardSummonUIHealth;
 
     // Start is called before the first frame update
     void Awake()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = card.art;
-        cards = cardManager.GetComponent<PlayerCards>();
+        pCards = cardManager.GetComponent<PlayerCards>();
+        cardUIName.text = card.name;
+        cardUIDescription.text = card.description;
+        cardUICost.text = card.cost.ToString();
+        cardUIArt.sprite = card.art;
+        if (card.summon != null)
+        {
+            cardSummonUI.enabled = true;
+            cardSummonUIAttack.text = card.attack.ToString();
+            cardSummonUIHealth.text = card.health.ToString();
+        }
     }
 
     // Update is called once per frame
@@ -32,14 +50,12 @@ public class CardsScript : MonoBehaviour
         moveTo.z = 0;
         gameObject.transform.position = moveTo;
 
-        //TEST
-        testText.transform.position = Camera.main.WorldToScreenPoint(moveTo);
+        cardUI.transform.position = Camera.main.WorldToScreenPoint(moveTo);
     }
 
     void OnMouseDown()
     {
         isFollowing = true;
-        Debug.Log("You have picked up the card");
     }
     void OnMouseUp()
     {
@@ -55,16 +71,16 @@ public class CardsScript : MonoBehaviour
             switch (card.purpose)
             {
                 case CardTemplate.EPurpose.Heal:
-                    card.target.GetComponent<PlayerManager>().playerHP += card.power;
+                    card.target.GetComponent<PlayerManager>().playerHP += card.attack;
                     break;
                 case CardTemplate.EPurpose.Attack:
-                    card.target.GetComponent<EnemyManager>().enemyHP -= card.power;
+                    card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
                     break;
                 case CardTemplate.EPurpose.Buff:
-                    pManager.powerMod += 2;
+                    pManager.powerMod += card.attack;
                     break;
                 case CardTemplate.EPurpose.Debuff:
-                    card.target.GetComponent<EnemyManager>().actionIntensity -= card.power;
+                    card.target.GetComponent<EnemyManager>().actionIntensity -= card.attack;
                     break;
                 default:
                     discard = false;
@@ -72,7 +88,7 @@ public class CardsScript : MonoBehaviour
             }
             if (discard)
             {
-                cards.Discard(card, gameObject);
+                pCards.Discard(card, gameObject);
             }
             Debug.Log(collision.gameObject);
         }

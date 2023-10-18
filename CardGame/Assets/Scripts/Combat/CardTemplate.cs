@@ -7,9 +7,11 @@ public class CardTemplate : ScriptableObject
 {
     public Sprite art;
     public int cost;
+    public string description;
     public GameObject target; //Default target if something goes wrong
     public SummonTemplate summon;
-    public int power;
+    public int attack;
+    public int health;
     public enum EPurpose
     {
         Attack,
