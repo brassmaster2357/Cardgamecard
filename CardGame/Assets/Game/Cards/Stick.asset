@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
-  m_Name: PlaceholderAttack
+  m_Name: Stick
   m_EditorClassIdentifier: 
   art: {fileID: 21300000, guid: b31cfc9914601c64abe27c59e9a6f96b, type: 3}
   cost: 1
+  description: Deal 5 damage to an enemy.
   target: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
-  power: -6
+  summon: {fileID: 0}
+  attack: 5
+  health: 0
   purpose: 0

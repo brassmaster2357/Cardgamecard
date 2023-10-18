@@ -40,7 +40,10 @@ public class PlayerCards : MonoBehaviour
                 //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
                 drawPile = discardPile;
                 discardPile.Clear();
-                cardsToDraw++; // Make it loop one more time instead of duplicating card draw code
+                cardsInHand.Add(drawPile[0]);
+                GameObject newCardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
+                newCardDrawn.GetComponent<CardsScript>().card = drawPile[0];
+                drawPile.RemoveAt(0);
             }
             else
             {
