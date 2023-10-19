@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - EmptySummonAlly
+  - SummonAlly
+  - EmptySummonEnemy
+  - SummonEnemy
   layers:
   - Default
   - TransparentFX

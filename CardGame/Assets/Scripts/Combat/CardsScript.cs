@@ -56,10 +56,12 @@ public class CardsScript : MonoBehaviour
     void OnMouseDown()
     {
         isFollowing = true;
+        gameObject.GetComponent<BoxCollider2D>().size /= 4;
     }
     void OnMouseUp()
     {
         isFollowing = false;
+        gameObject.GetComponent<BoxCollider2D>().size *= 4;
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -124,6 +126,19 @@ public class CardsScript : MonoBehaviour
                         default:
                             discard = false;
                             break; //Don't use card if the target isn't hostile
+                    }
+                    break;
+                case CardTemplate.EPurpose.Summon: //Summoning
+                    if (card.target.tag == "EmptySummonAlly")
+                    {
+                        //Set the summon object's stats to the card played
+                        SummonScript newSummon = card.target.GetComponent<SummonScript>(); 
+                        newSummon.alive = true;
+                        newSummon.attack = card.summon.attack;
+                        newSummon.healthMax = card.summon.health;
+                        newSummon.health = card.summon.health;
+                        newSummon.canAttack = card.summon.canAttack;
+                        newSummon.special = card.summon.special;
                     }
                     break;
                 default:

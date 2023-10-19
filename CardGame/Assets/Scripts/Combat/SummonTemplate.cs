@@ -8,11 +8,6 @@ public class SummonTemplate : ScriptableObject
     public Sprite art;
     public int health;
     public int attack;
-    public enum SpecialAbility
-    {
-        None,
-        NoAttack
-    }
-    public SpecialAbility special;
     public bool canAttack;
+    public SummonScript.SummonSpecial special;
 }

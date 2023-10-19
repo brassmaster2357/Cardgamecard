@@ -26,6 +26,7 @@ public class PlayerCards : MonoBehaviour
 
     public void BeginCombat()
     {
+        discardPile.Clear();
         drawPile.Clear();
         cardsInHand.Clear();
         drawPile = cardsTotal;
