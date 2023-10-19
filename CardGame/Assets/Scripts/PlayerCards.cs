@@ -44,7 +44,7 @@ public class PlayerCards : MonoBehaviour
                 discardPile.Clear();
                 //Draw a card
                 cardsInHand.Add(drawPile[0]);
-                GameObject newCardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
+                GameObject newCardDrawn = Instantiate(card, Vector3.right * 16 + Vector3.down * 6, Quaternion.identity);
                 CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
                 tempScript.card = drawPile[0];
                 tempScript.enabled = true;
@@ -56,7 +56,7 @@ public class PlayerCards : MonoBehaviour
             {
                 //Draw a card
                 cardsInHand.Add(drawPile[0]);
-                GameObject newCardDrawn = Instantiate(card, Vector3.down * 10, Quaternion.identity);
+                GameObject newCardDrawn = Instantiate(card, Vector3.right * 16 + Vector3.down * 6, Quaternion.identity);
                 CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
                 tempScript.card = drawPile[0];
                 tempScript.enabled = true;

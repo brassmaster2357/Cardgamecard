@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSummons : MonoBehaviour
+public class SummonScript: MonoBehaviour
 {
+    public bool alive;
     public float health;
     public float healthMax;
     public float attack;
     public bool canAttack;
+    public bool isAlly;
     void Start()
     {
         

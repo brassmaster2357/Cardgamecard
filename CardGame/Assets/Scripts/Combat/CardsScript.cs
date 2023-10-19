@@ -7,13 +7,12 @@ using TMPro;
 public class CardsScript : MonoBehaviour
 {
     private Vector3 moveTo;
-    public Vector3 restPosition = new Vector3(7,-4,0);
+    public Vector3 restPosition = new Vector3(-7,-4,0);
     private bool isFollowing;
     public CardTemplate card;
-    public PlayerManager pManager;
-    public EnemyManager eManager;
     public GameObject cardManager;
     private PlayerCards pCards;
+
 
     public Image cardUI;
     public TextMeshProUGUI cardUIName;
@@ -71,17 +70,61 @@ public class CardsScript : MonoBehaviour
             card.target = collision.gameObject;
             switch (card.purpose)
             {
-                case CardTemplate.EPurpose.Heal:
-                    card.target.GetComponent<PlayerManager>().playerHP += card.attack;
+                case CardTemplate.EPurpose.Heal: //Playing a heal card
+                    switch (card.target.tag)
+                    {
+                        case "Player":
+                            card.target.GetComponent<PlayerManager>().playerHP += card.health;
+                            break;
+                        case "SummonAlly":
+                            card.target.GetComponent<SummonScript>().health += card.health;
+                            break;
+                        default:
+                            discard = false;
+                            break; //Don't use card if the target isn't friendly
+                    }
                     break;
-                case CardTemplate.EPurpose.Attack:
-                    card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
+                case CardTemplate.EPurpose.Attack: //Playing an attack card
+                    switch (card.target.tag)
+                    {
+                        case "Enemy":
+                                card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
+                                break;
+                        case "SummonEnemy":
+                                card.target.GetComponent<SummonScript>().health -= card.attack;
+                            break;
+                        default:
+                            discard = false;
+                            break; //Don't use card if the target isn't hostile
+                    }
                     break;
-                case CardTemplate.EPurpose.Buff:
-                    pManager.powerMod += card.attack;
+                case CardTemplate.EPurpose.Buff: //Playing a buff card
+                    switch (card.target.tag)
+                    {
+                        case "Player":
+                            card.target.GetComponent<PlayerManager>().powerMod += card.attack;
+                            break;
+                        case "SummonAlly":
+                            card.target.GetComponent<SummonScript>().attack += card.attack;
+                            break;
+                        default:
+                            discard = false;
+                            break; //Don't use card if the target isn't friendly
+                    }
                     break;
-                case CardTemplate.EPurpose.Debuff:
-                    card.target.GetComponent<EnemyManager>().actionIntensity -= card.attack;
+                case CardTemplate.EPurpose.Debuff: //Playing a debuff card
+                    switch (card.target.tag)
+                    {
+                        case "Enemy":
+                            card.target.GetComponent<EnemyManager>().powerMod -= card.attack;
+                            break;
+                        case "SummonEnemy":
+                            card.target.GetComponent<SummonScript>().attack -= card.attack;
+                            break;
+                        default:
+                            discard = false;
+                            break; //Don't use card if the target isn't hostile
+                    }
                     break;
                 default:
                     discard = false;
