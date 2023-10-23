@@ -39,24 +39,18 @@ public class CombatManager : MonoBehaviour
         cards.DiscardHand();
         for (int i = 0; i < summons.Length; i++)
         {
-            yield return StartCoroutine("SummonAttacks");
-        }
-    }
-
-    public IEnumerable SummonAttacks()
-    {
-        SummonScript summon = (SummonScript)summons.GetValue(i);
-        if (summon.alive)
-        {
-            if (summon.canAttack)
+            SummonScript summon = (SummonScript)summons.GetValue(i);
+            if (summon.alive)
             {
-                yield return summon.StartCoroutine("Attack");
-            }
-            else
-            {
-                summon.canAttack = true;
+                if (summon.canAttack)
+                {
+                    yield return summon.StartCoroutine("Attack");
+                }
+                else
+                {
+                    summon.canAttack = true;
+                }
             }
         }
-        yield break;
     }
 }
