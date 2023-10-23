@@ -1327,6 +1327,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1410551697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
+  m_PrefabInstance: {fileID: 8588395890148802226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5c3e8acfc9cad4586aab18800858e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417381282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,7 +1568,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
+      - m_Target: {fileID: 1410551697}
         m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
         m_MethodName: EnemyTurn
         m_Mode: 1
@@ -1970,6 +1981,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 37901642}
     - target: {fileID: 8263397324208269905, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: enemyHP
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263397324208269905, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: combatManager
       value: 
       objectReference: {fileID: 0}
@@ -2085,6 +2100,10 @@ PrefabInstance:
     - target: {fileID: 6474734298060177745, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
+      propertyPath: mana
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: cardManager

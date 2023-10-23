@@ -15,7 +15,7 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI manaDisplay;
 
     public int mana;
-    public int manaMax = 1;
+    public int manaMax = 0;
 
     private void Update()
     {
@@ -28,23 +28,35 @@ public class CombatManager : MonoBehaviour
     {
         cards = cardManager.GetComponent<PlayerCards>();
         cards.BeginCombat();
+        PlayerTurn();
     }
     public void PlayerTurn()
     {
+        manaMax++;
+        mana = manaMax;
         cards.Draw(5);
+        Debug.Log(summons.GetValue(1));
     }
 
-    public IEnumerator EnemyTurn()
+    public void EnemyTurn()
     {
-        cards.DiscardHand();
-        for (int i = 0; i < summons.Length; i++)
+        
+        if (cards == null)
         {
-            SummonScript summon = (SummonScript)summons.GetValue(i);
+            cards = cardManager.GetComponent<PlayerCards>();
+        }
+        Debug.Log(summons.Length);
+        cards.DiscardHand();
+        for (int i = 0; i < 8; i++)
+        {
+            Debug.Log(summons.Length);
+            Debug.Log(summons.GetValue(i));
+            SummonScript summon = summons[i].GetComponent<SummonScript>();
             if (summon.alive)
             {
                 if (summon.canAttack)
                 {
-                    yield return summon.StartCoroutine("Attack");
+                    summon.Attack();
                 }
                 else
                 {
@@ -52,5 +64,6 @@ public class CombatManager : MonoBehaviour
                 }
             }
         }
+        Debug.Log("the turn ended");
     }
 }

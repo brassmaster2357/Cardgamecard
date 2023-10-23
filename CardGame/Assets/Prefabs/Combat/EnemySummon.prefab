@@ -105,6 +105,9 @@ MonoBehaviour:
   restPosition: {x: 0, y: 0, z: 0}
   healthDisplay: {fileID: 7745386196933563121}
   attackDisplay: {fileID: 3004825260748014462}
+  target: {fileID: 0}
+  enemy: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+  player: {fileID: 7680506735922945790, guid: bfeedf7091959e041974f5e34ddbf056, type: 3}
   alive: 0
   health: 0
   healthMax: 0

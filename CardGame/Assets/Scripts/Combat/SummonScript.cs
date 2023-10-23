@@ -39,7 +39,7 @@ public class SummonScript: MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (canAttack && (special == SummonSpecial.NoAttack))
         {
@@ -86,6 +86,7 @@ public class SummonScript: MonoBehaviour
                     enemyScript.enemyHP -= attack;
                 } else
                 {
+                    Debug.Log("isugnkjidfn");
                     playerScript.playerHP -= attack;
                 }
             }
