@@ -20,6 +20,8 @@ public class WizardEvent : MonoBehaviour
 
     public int width;
 
+    public float distance;
+
     public List<float> list1;
     public List<float> list2;
 
@@ -46,15 +48,27 @@ public class WizardEvent : MonoBehaviour
     }
     private void FindPositions()
     {
-        
+        int size = 2 * width;
 
         if (middle)
         {
+            distance = size / (listLength + 1);
 
+            float runningTotal = -width;
+
+            for (int i = 0; i < listLength; i++)
+            {
+                runningTotal += distance;
+
+                list1.Add(runningTotal);
+            }
         }
         else
         {
+            if (listLength % 2 == 1)
+            {
 
+            }
         }
     }
 }
