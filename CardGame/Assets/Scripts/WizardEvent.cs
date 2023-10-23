@@ -10,17 +10,51 @@ then it will transferr back to the map
 */
 public class WizardEvent : MonoBehaviour
 {
-    
-    
-    // Start is called before the first frame update
+    public int listLength;
+
+    private bool CardSelected;
+
+    public PlayerCards pc;
+
+    public bool middle = false;
+
+    public int width;
+
+    public List<float> list1;
+    public List<float> list2;
+
     void Start()
     {
-        
+        listLength = pc.cardsTotal.Count;
+        CardSelected = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        if (!CardSelected)
+        {
+            if (listLength <= 5)
+            {
+                middle = true;
+            }
+            else
+            {
+                middle = false;
+            }
+
+        }
+    }
+    private void FindPositions()
+    {
         
+
+        if (middle)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }
