@@ -10,7 +10,6 @@ public class PlayerCards : MonoBehaviour
     public List<CardTemplate> cardsInHand;
     public List<CardTemplate> discardPile;
     public GameObject card;
-    public int cardHandPosition;
 
     void Awake()
     {
@@ -30,8 +29,6 @@ public class PlayerCards : MonoBehaviour
         drawPile.Clear();
         cardsInHand.Clear();
         drawPile = cardsTotal;
-        cardHandPosition = 0;
-        Draw(5);
     }
 
     public void Draw(int cardsToDraw)
@@ -51,7 +48,6 @@ public class PlayerCards : MonoBehaviour
                 tempScript.enabled = true;
                 tempScript.LoadCard();
                 drawPile.RemoveAt(0);
-                cardHandPosition++;
             }
             else
             {
@@ -63,7 +59,6 @@ public class PlayerCards : MonoBehaviour
                 tempScript.enabled = true;
                 tempScript.LoadCard();
                 drawPile.RemoveAt(0);
-                cardHandPosition++;
             }
         }
         Debug.Log(cardsInHand);
@@ -74,7 +69,6 @@ public class PlayerCards : MonoBehaviour
         discardPile.AddRange(cardsInHand);
         cardsInHand.Clear();
         Debug.Log(discardPile);
-        cardHandPosition = 0;
     }
 
     public void Discard(CardTemplate card)
@@ -82,6 +76,5 @@ public class PlayerCards : MonoBehaviour
         discardPile.Add(card);
         cardsInHand.Remove(card);
         Debug.Log(discardPile);
-        cardHandPosition--;
     }
 }
