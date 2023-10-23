@@ -47,11 +47,11 @@ public class CombatManager : MonoBehaviour
         }
         Debug.Log(summons.Length);
         cards.DiscardHand();
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             Debug.Log(summons.Length);
             Debug.Log(summons.GetValue(i));
-            SummonScript summon = (SummonScript)summons.GetValue(i);
+            SummonScript summon = summons[i].GetComponent<SummonScript>();
             if (summon.alive)
             {
                 if (summon.canAttack)
