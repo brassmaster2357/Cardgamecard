@@ -70,5 +70,6 @@ public class CombatManager : MonoBehaviour
         }
         enemy.EnemyTurn();
         Debug.Log("the turn ended");
+        PlayerTurn();
     }
 }
