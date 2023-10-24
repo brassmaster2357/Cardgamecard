@@ -50,12 +50,12 @@ public class WizardEvent : MonoBehaviour
     {
         int size = 2 * width;
 
+        float runningTotal = -width;
+
         if (middle)
         {
             distance = size / (listLength + 1);
-
-            float runningTotal = -width;
-
+            
             for (int i = 0; i < listLength; i++)
             {
                 runningTotal += distance;
@@ -67,7 +67,32 @@ public class WizardEvent : MonoBehaviour
         {
             if (listLength % 2 == 1)
             {
+                //wip
+                float offset = 0.5f * (listLength % 2);
 
+                int length1 = (int)((0.5f * listLength) + offset);
+
+                int length2 = length1 - 1 * ;
+
+                distance = size / length1 + 1;
+
+                for (int i = 0; i < length1; i++)
+                {
+                    runningTotal += distance;
+
+                    list1.Add(runningTotal);
+                }
+
+                distance = size / length2 + 1;
+
+                for (int i = 0; i < length2; i++)
+                {
+                    runningTotal += distance;
+
+                    list2.Add(runningTotal);
+                }
+            }
+            
             }
         }
     }
