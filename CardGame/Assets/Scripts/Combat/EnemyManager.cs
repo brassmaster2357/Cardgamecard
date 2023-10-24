@@ -14,6 +14,9 @@ public class EnemyManager : MonoBehaviour
     private Vector3 hBTransform;
     private Vector3 hBScale;
 
+    public SummonTemplate[] summons;
+    public GameObject[] summonPositions;
+
     public float enemyHP = 20;
     public float enemyHPMax = 20;
     public float powerModDefault = 0;
@@ -38,47 +41,13 @@ public class EnemyManager : MonoBehaviour
         healthBar.transform.localScale = hBScale;
     }
 
-    public void DecideAction()
+    public void EnemyTurn()
     {
-        // 25% chance to heal, otherwise attack
-        if (Random.Range(0f,1f) >= 0.75f)
+        SummonTemplate summoned = (SummonTemplate)summons.GetValue(Random.Range(0, summons.Length));
+        SummonScript target = ((GameObject)summonPositions.GetValue(Random.Range(0, 3))).GetComponent<SummonScript>();
+        if (!target.alive)
         {
-            action = "Heal";
-            actionIntensity = 4;
-        } else
-        {
-            action = "Attack";
-            actionIntensity = Random.Range(1,5);
+            target.Summon(summoned.health, summoned.attack, summoned.canAttack, summoned.art);
         }
-    }
-
-    public string Action()
-    {
-        if (action == "Heal")
-        {
-            if (actionIntensity + powerMod > 0)
-            {
-                enemyHP += actionIntensity + powerMod;
-                Debug.Log("Enemy healed for " + (actionIntensity + powerMod).ToString());
-            } else
-            {
-                Debug.Log("Enemy tried to heal, but was debuffed too much");
-            }
-            if (enemyHP > enemyHPMax)
-            {
-                enemyHP = enemyHPMax;
-            }
-        } else
-        {
-            if (actionIntensity + powerMod > 0)
-            {
-                pManager.playerHP -= actionIntensity + powerMod;
-                Debug.Log("Enemy attacked player for " + (actionIntensity + powerMod).ToString());
-            } else
-            {
-                Debug.Log("Enemy tried to attack, but was debuffed too much");
-            }
-        }
-        return "Enemy turn complete";
     }
 }

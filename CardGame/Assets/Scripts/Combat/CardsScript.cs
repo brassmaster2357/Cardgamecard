@@ -13,6 +13,7 @@ public class CardsScript : MonoBehaviour
     public GameObject cardManager;
     private PlayerCards pCards;
 
+    public BoxCollider2D cardCollider;
 
     public Image cardUI;
     public TextMeshProUGUI cardUIName;
@@ -27,6 +28,7 @@ public class CardsScript : MonoBehaviour
     public void LoadCard()
     {
         pCards = cardManager.GetComponent<PlayerCards>();
+        cardCollider = gameObject.GetComponent<BoxCollider2D>();
         Debug.Log(card);
         cardUIName.text = card.name;
         cardUIDescription.text = card.description;
@@ -56,12 +58,12 @@ public class CardsScript : MonoBehaviour
     void OnMouseDown()
     {
         isFollowing = true;
-        gameObject.GetComponent<BoxCollider2D>().size /= 4;
+        cardCollider.size /= 4;
     }
     void OnMouseUp()
     {
         isFollowing = false;
-        gameObject.GetComponent<BoxCollider2D>().size *= 4;
+        cardCollider.size *= 4;
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -70,6 +72,7 @@ public class CardsScript : MonoBehaviour
         {
             bool discard = true;
             card.target = collision.gameObject;
+            cardCollider.enabled = false;
             switch (card.purpose)
             {
                 case CardTemplate.EPurpose.Heal: //Playing a heal card
@@ -151,6 +154,7 @@ public class CardsScript : MonoBehaviour
                 pCards.Discard(card);
                 Destroy(gameObject);
             }
+            else { cardCollider.enabled = true; }
             Debug.Log(collision.gameObject);
         }
     }
