@@ -62,6 +62,7 @@ public class SummonScript: MonoBehaviour
         attack = atk;
         canAttack = can;
         gameObject.GetComponent<SpriteRenderer>().sprite = art;
+        alive = true;
     }
 
     public void Attack()
@@ -79,6 +80,9 @@ public class SummonScript: MonoBehaviour
             if (targetScript.alive)
             {
                 targetScript.health -= attack;
+                if (targetScript.health <= 0) {
+                    targetScript.alive = false;
+                }
             } else
             {
                 if (isAlly)
@@ -86,7 +90,6 @@ public class SummonScript: MonoBehaviour
                     enemyScript.enemyHP -= attack;
                 } else
                 {
-                    Debug.Log("isugnkjidfn");
                     playerScript.playerHP -= attack;
                 }
             }

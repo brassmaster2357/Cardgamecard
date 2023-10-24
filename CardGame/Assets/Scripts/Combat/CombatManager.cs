@@ -6,6 +6,9 @@ using TMPro;
 public class CombatManager : MonoBehaviour
     
 {
+    private EnemyManager enemy;
+    public GameObject enemyManager;
+
     public GameObject cardManager;
     private PlayerCards cards;
     public GameObject[] summons;
@@ -27,6 +30,7 @@ public class CombatManager : MonoBehaviour
     private void Awake()
     {
         cards = cardManager.GetComponent<PlayerCards>();
+        enemy = enemyManager.GetComponent<EnemyManager>();
         cards.BeginCombat();
         PlayerTurn();
     }
@@ -64,6 +68,8 @@ public class CombatManager : MonoBehaviour
                 }
             }
         }
+        enemy.EnemyTurn();
         Debug.Log("the turn ended");
+        PlayerTurn();
     }
 }
