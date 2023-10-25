@@ -40,26 +40,15 @@ public class PlayerCards : MonoBehaviour
                 //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
                 drawPile = discardPile;
                 discardPile.Clear();
-                //Draw a card
-                cardsInHand.Add(drawPile[0]);
-                GameObject newCardDrawn = Instantiate(card, Vector3.right * 16 + Vector3.down * 6, Quaternion.identity);
-                CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
-                tempScript.card = drawPile[0];
-                tempScript.enabled = true;
-                tempScript.LoadCard();
-                drawPile.RemoveAt(0);
             }
-            else
-            {
-                //Draw a card
-                cardsInHand.Add(drawPile[0]);
-                GameObject newCardDrawn = Instantiate(card, Vector3.right * 16 + Vector3.down * 6, Quaternion.identity);
-                CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
-                tempScript.card = drawPile[0];
-                tempScript.enabled = true;
-                tempScript.LoadCard();
-                drawPile.RemoveAt(0);
-            }
+            //Draw a card
+            cardsInHand.Add(drawPile[0]);
+            GameObject newCardDrawn = Instantiate(card, Vector3.right * 16 + Vector3.down * 6, Quaternion.identity);
+            CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
+            tempScript.card = drawPile[0];
+            tempScript.enabled = true;
+            tempScript.LoadCard();
+            drawPile.RemoveAt(0);
         }
         Debug.Log(cardsInHand);
     }
