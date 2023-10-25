@@ -35,11 +35,12 @@ public class PlayerCards : MonoBehaviour
     {
         for (int i = 0; i < cardsToDraw; i++)
         {
-            if (drawPile.Count == 0)
+            Debug.Log(drawPile.Count);
+            if (drawPile.Count <= 0)
             {
                 //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
                 drawPile = discardPile;
-                discardPile.Clear();
+                //discardPile.Clear();
             }
             //Draw a card
             cardsInHand.Add(drawPile[0]);
