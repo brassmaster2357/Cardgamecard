@@ -10,11 +10,16 @@ then it will transferr back to the map
 */
 public class WizardEvent : MonoBehaviour
 {
+
     public int listLength;
 
     private bool CardSelected;
 
     public PlayerCards pc;
+
+    public GameObject cardBase;
+
+    public GameObject pch;
 
     public bool middle = false;
 
@@ -24,6 +29,8 @@ public class WizardEvent : MonoBehaviour
 
     public List<float> list1;
     public List<float> list2;
+
+    
 
     void Start()
     {
@@ -44,6 +51,10 @@ public class WizardEvent : MonoBehaviour
                 middle = false;
             }
 
+            FindPositions();
+            LoadPositions();
+
+            CardSelected = true;
         }
     }
     private void FindPositions()
@@ -55,44 +66,93 @@ public class WizardEvent : MonoBehaviour
         if (middle)
         {
             distance = size / (listLength + 1);
-            
+            Debug.Log("ListLength: " + listLength);
             for (int i = 0; i < listLength; i++)
             {
                 runningTotal += distance;
-
+                Debug.Log("List1: " + list1.Count);
                 list1.Add(runningTotal);
             }
         }
         else
         {
-            if (listLength % 2 == 1)
+
+            float offset = 0.5f * (listLength % 2);
+
+            int length1 = (int)((0.5f * listLength) + offset);
+
+            int length2 = length1 - 1 * (listLength % 2);
+
+            distance = size / length1 + 1;
+
+            Debug.Log("ListLength: " + listLength);
+
+            for (int i = 0; i < length1; i++)
             {
-                //wip
-                float offset = 0.5f * (listLength % 2);
+                runningTotal += distance;
 
-                int length1 = (int)((0.5f * listLength) + offset);
+                Debug.Log("List1: " + list1.Count);
 
-                int length2 = length1 - 1 * (listLength % 2);
-
-                distance = size / length1 + 1;
-
-                for (int i = 0; i < length1; i++)
-                {
-                    runningTotal += distance;
-
-                    list1.Add(runningTotal);
-                }
-
-                distance = size / length2 + 1;
-
-                for (int i = 0; i < length2; i++)
-                {
-                    runningTotal += distance;
-
-                    list2.Add(runningTotal);
-                }
+                list1.Add(runningTotal);
             }
-            
+
+            distance = size / length2 + 1;
+
+            runningTotal = 0;
+
+            for (int i = 0; i < length2; i++)
+            {
+                runningTotal += distance;
+
+                list2.Add(runningTotal);
+            }
+        } 
+    }
+
+    private void LoadPositions()
+    {
+        Debug.Log("List1 the second : " + list1.Count);
+        Debug.Log("bruh g");
+        if (middle == true)
+        {
+            Debug.Log("bruh");
+            for (int i = 0; i < list1.Count; i++)
+            {
+                
+                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
+
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i], 0), Quaternion.identity);
+
+                CardsScript tempScript = cardObject.GetComponent<CardsScript>();
+
+                tempScript.card = pc.cardsTotal[i];
+            }
+        }
+        else {
+            Debug.Log("bruh");
+            for (int i = 0; i < list1.Count; i++)
+            {
+                Debug.Log("bruh");
+                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
+
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i], 2.5f), Quaternion.identity);
+
+                CardsScript tempScript = cardObject.GetComponent<CardsScript>();
+
+                tempScript.card = pc.cardsTotal[i];
+            }
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                Debug.Log("bruh");
+                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
+
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i], -2.5f), Quaternion.identity);
+
+                CardsScript tempScript = cardObject.GetComponent<CardsScript>();
+
+                tempScript.card = pc.cardsTotal[i];
+            }
         }
     }
 }
