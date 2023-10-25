@@ -45,7 +45,9 @@ public class SummonScript: MonoBehaviour
         {
             canAttack = false;
         }
-        if (!isFollowing)
+        if (isFollowing)
+            moveTo = (gameObject.transform.position + target.transform.position) / 2;
+        else
             moveTo = (gameObject.transform.position + restPosition) / 2;
         moveTo.z = 0;
         gameObject.transform.position = moveTo;
@@ -67,7 +69,7 @@ public class SummonScript: MonoBehaviour
 
     public void Attack()
     {
-        moveTo = target.transform.position + (Vector3.left * 0.9f); //Move the summon to the target, to at least slightly animate battle
+        //Move the summon to the target, to at least slightly animate battle
         isFollowing = true;
     }
 

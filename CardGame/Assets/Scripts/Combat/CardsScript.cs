@@ -29,10 +29,11 @@ public class CardsScript : MonoBehaviour
     // Start is called before the first frame update
     public void LoadCard()
     {
+        combatManager = GameObject.Find("CombatManager");
         pCards = cardManager.GetComponent<PlayerCards>();
         cardCollider = gameObject.GetComponent<BoxCollider2D>();
         combat = combatManager.GetComponent<CombatManager>();
-        restPosition.x = Random.Range(-7f, 7f);
+        //restPosition.x = Random.Range(-7f, 7f);
         Debug.Log(card);
         cardUIName.text = card.name;
         cardUIDescription.text = card.description;
@@ -61,6 +62,9 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log(combat.mana);
+        Debug.Log(card.cost);
+        Debug.Log(combat.mana >= card.cost);
         if (combat.mana >= card.cost)
         {
             isFollowing = true;
@@ -161,6 +165,7 @@ public class CardsScript : MonoBehaviour
             if (discard)
             {
                 Debug.Log(card);
+                combat.mana -= card.cost;
                 pCards.Discard(card);
                 Destroy(gameObject);
             }
