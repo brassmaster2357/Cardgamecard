@@ -44,7 +44,7 @@ public class CombatManager : MonoBehaviour
 
     public void EnemyTurn()
     {
-        
+        mana = 0;
         if (cards == null)
         {
             cards = cardManager.GetComponent<PlayerCards>();

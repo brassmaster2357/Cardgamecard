@@ -9,7 +9,6 @@ public class CardsScript : MonoBehaviour
     private Vector3 moveTo;
     public Vector3 restPosition = new Vector3(0,-4,0);
     private bool isFollowing;
-    public bool isBattle = true;
     public CardTemplate card;
     public GameObject cardManager;
     private PlayerCards pCards;
@@ -53,7 +52,7 @@ public class CardsScript : MonoBehaviour
     {
         if (isFollowing)
             moveTo = (gameObject.transform.position + Camera.main.ScreenToWorldPoint(Input.mousePosition)) / 2;
-        else if (isBattle)
+        else
             moveTo = (gameObject.transform.position + restPosition) / 2;
         moveTo.z = 0;
         gameObject.transform.position = moveTo;
