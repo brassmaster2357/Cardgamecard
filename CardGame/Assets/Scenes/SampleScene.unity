@@ -2239,12 +2239,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: mana
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1259649887}
+    - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
+      propertyPath: manaMax
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: cardManager
       value: 
