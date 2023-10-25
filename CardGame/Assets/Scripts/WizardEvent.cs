@@ -25,17 +25,18 @@ public class WizardEvent : MonoBehaviour
 
     public int width;
 
-    public float distance;
-
     public List<float> list1;
     public List<float> list2;
 
-    
+    private float distance1;
+    private float distance2;
 
     void Start()
     {
         listLength = pc.cardsTotal.Count;
         CardSelected = false;
+
+        
     }
     
     void Update()
@@ -65,12 +66,11 @@ public class WizardEvent : MonoBehaviour
 
         if (middle)
         {
-            distance = size / (listLength + 1);
-            Debug.Log("ListLength: " + listLength);
+            distance1 = size / (listLength + 1);
+
             for (int i = 0; i < listLength; i++)
             {
-                runningTotal += distance;
-                Debug.Log("List1: " + list1.Count);
+                runningTotal += distance1;
                 list1.Add(runningTotal);
             }
         }
@@ -83,26 +83,22 @@ public class WizardEvent : MonoBehaviour
 
             int length2 = length1 - 1 * (listLength % 2);
 
-            distance = size / length1 + 1;
-
-            Debug.Log("ListLength: " + listLength);
+            distance1 = size / length1 + 1;
 
             for (int i = 0; i < length1; i++)
             {
-                runningTotal += distance;
-
-                Debug.Log("List1: " + list1.Count);
+                runningTotal += distance1;
 
                 list1.Add(runningTotal);
             }
 
-            distance = size / length2 + 1;
-
+            distance2 = size / length2 + 1;
+           
             runningTotal = 0;
 
             for (int i = 0; i < length2; i++)
             {
-                runningTotal += distance;
+                runningTotal += distance2;
 
                 list2.Add(runningTotal);
             }
@@ -111,47 +107,47 @@ public class WizardEvent : MonoBehaviour
 
     private void LoadPositions()
     {
-        Debug.Log("List1 the second : " + list1.Count);
-        Debug.Log("bruh g");
         if (middle == true)
         {
-            Debug.Log("bruh");
             for (int i = 0; i < list1.Count; i++)
             {
                 
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
-                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i], 0), Quaternion.identity);
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 0), Quaternion.identity);
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
                 tempScript.card = pc.cardsTotal[i];
+
+                tempScript.restPosition = cardObject.transform.position;
             }
         }
         else {
-            Debug.Log("bruh");
             for (int i = 0; i < list1.Count; i++)
             {
-                Debug.Log("bruh");
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
-                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i], 2.5f), Quaternion.identity);
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 2.5f), Quaternion.identity);
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
                 tempScript.card = pc.cardsTotal[i];
+
+                tempScript.restPosition = cardObject.transform.position;
             }
 
-            for (int i = 0; i < list1.Count; i++)
+            for (int i = 0; i < list2.Count; i++)
             {
-                Debug.Log("bruh");
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
-                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i], -2.5f), Quaternion.identity);
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list2[i] - distance2, -2.5f), Quaternion.identity);
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
                 tempScript.card = pc.cardsTotal[i];
+
+                tempScript.restPosition = cardObject.transform.position;
             }
         }
     }
