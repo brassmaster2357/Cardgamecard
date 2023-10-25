@@ -72,7 +72,7 @@ public class WizardEvent : MonoBehaviour
 
                 int length1 = (int)((0.5f * listLength) + offset);
 
-                int length2 = length1 - 1 * ;
+                int length2 = length1 - 1 * (listLength % 2);
 
                 distance = size / length1 + 1;
 
@@ -93,7 +93,6 @@ public class WizardEvent : MonoBehaviour
                 }
             }
             
-            }
         }
     }
 }
