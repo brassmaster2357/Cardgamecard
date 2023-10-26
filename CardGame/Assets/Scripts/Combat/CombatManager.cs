@@ -39,7 +39,7 @@ public class CombatManager : MonoBehaviour
         manaMax++;
         mana = manaMax;
         cards.Draw(5);
-        Debug.Log(summons.GetValue(1));
+        
     }
 
     public void EnemyTurn()
@@ -49,12 +49,9 @@ public class CombatManager : MonoBehaviour
         {
             cards = cardManager.GetComponent<PlayerCards>();
         }
-        Debug.Log(summons.Length);
         cards.DiscardHand();
         for (int i = 0; i < 8; i++)
         {
-            Debug.Log(summons.Length);
-            Debug.Log(summons.GetValue(i));
             SummonScript summon = summons[i].GetComponent<SummonScript>();
             if (summon.alive)
             {
@@ -69,7 +66,6 @@ public class CombatManager : MonoBehaviour
             }
         }
         enemy.EnemyTurn();
-        Debug.Log("the turn ended");
         PlayerTurn();
     }
 }
