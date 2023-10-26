@@ -141,7 +141,7 @@ public class WizardEvent : MonoBehaviour
             {
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
-                GameObject cardObject = Instantiate(cardBase, new Vector2(list2[i] - distance2, -2.5f), Quaternion.identity);
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list2[i] - (3.5f * distance2), -2.5f), Quaternion.identity);
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
