@@ -39,7 +39,7 @@ public class CombatManager : MonoBehaviour
         manaMax++;
         mana = manaMax;
         cards.Draw(5);
-        
+        cards.OrganizeHand();
     }
 
     public void EnemyTurn()

@@ -16,7 +16,6 @@ public class CardsScript : MonoBehaviour
     private CombatManager combat;
 
     public GameObject eventLoader;
-    private EventLoader events;
 
     public BoxCollider2D cardCollider;
 
@@ -33,11 +32,13 @@ public class CardsScript : MonoBehaviour
     public void LoadCard()
     {
         combatManager = GameObject.Find("CombatManager");
+        eventLoader = GameObject.Find("EventLoader");
+
         pCards = cardManager.GetComponent<PlayerCards>();
         cardCollider = gameObject.GetComponent<BoxCollider2D>();
         combat = combatManager.GetComponent<CombatManager>();
         //restPosition.x = Random.Range(-7f, 7f);
-        Debug.Log(card);
+
         cardUIName.text = card.name;
         cardUIDescription.text = card.description;
         cardUICost.text = card.cost.ToString();
@@ -67,24 +68,30 @@ public class CardsScript : MonoBehaviour
     {
         if (eventLoader != null)
         {
-            events = eventLoader.GetComponent<EventLoader>();
+            EventLoader events = eventLoader.GetComponent<EventLoader>();
             if (events.nextEvent == "Wizard")
             {
                 events.SelectedCard(card);
             }
         }
-        if (combat.mana >= card.cost)
+        else
         {
-            isFollowing = true;
-            cardCollider.size /= 4;
+            if (combat.mana >= card.cost)
+            {
+                isFollowing = true;
+                cardCollider.size /= 4;
+            }
         }
     }
     void OnMouseUp()
     {
-        isFollowing = false;
-        if (combat.mana >= card.cost)
+        if (eventLoader == null)
         {
-            cardCollider.size *= 4;
+            isFollowing = false;
+            if (combat.mana >= card.cost)
+            {
+                cardCollider.size *= 4;
+            }
         }
     }
 
@@ -176,6 +183,7 @@ public class CardsScript : MonoBehaviour
                 combat.mana -= card.cost;
                 pCards.Discard(card);
                 Destroy(gameObject);
+                pCards.OrganizeHand();
             }
             else { cardCollider.enabled = true; }
             Debug.Log(collision.gameObject);
