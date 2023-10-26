@@ -10,6 +10,7 @@ public class PlayerCards : MonoBehaviour
     public List<CardTemplate> cardsInHand;
     public List<CardTemplate> discardPile;
     public GameObject card;
+    public List<GameObject> objectHand;
 
     void Awake()
     {
@@ -20,6 +21,16 @@ public class PlayerCards : MonoBehaviour
         {
             DontDestroyOnLoad(transform.root);
             instance = this;
+        }
+    }
+
+    public void OrganizeHand()
+    {
+        objectHand.Clear();
+        objectHand.AddRange(GameObject.FindGameObjectsWithTag("Card"));
+        for (int i = 0; i < objectHand.Count; i++)
+        {
+            Debug.Log(objectHand[i]);
         }
     }
 
@@ -39,6 +50,7 @@ public class PlayerCards : MonoBehaviour
             if (drawPile.Count <= 0)
             {
                 //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
+                Debug.Log("you're supposed to work");
                 drawPile = discardPile;
                 //discardPile.Clear();
             }

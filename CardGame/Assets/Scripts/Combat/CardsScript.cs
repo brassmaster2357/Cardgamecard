@@ -62,9 +62,6 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log(combat.mana);
-        Debug.Log(card.cost);
-        Debug.Log(combat.mana >= card.cost);
         if (combat.mana >= card.cost)
         {
             isFollowing = true;
