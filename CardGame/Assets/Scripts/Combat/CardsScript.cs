@@ -15,6 +15,9 @@ public class CardsScript : MonoBehaviour
     public GameObject combatManager;
     private CombatManager combat;
 
+    public GameObject eventLoader;
+    private EventLoader events;
+
     public BoxCollider2D cardCollider;
 
     public Image cardUI;
@@ -62,6 +65,14 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (eventLoader != null)
+        {
+            events = eventLoader.GetComponent<EventLoader>();
+            if (events.nextEvent == "Wizard")
+            {
+                events.SelectedCard(card);
+            }
+        }
         if (combat.mana >= card.cost)
         {
             isFollowing = true;
