@@ -9,6 +9,7 @@ TagManager:
   - SummonAlly
   - EmptySummonEnemy
   - SummonEnemy
+  - Card
   layers:
   - Default
   - TransparentFX
