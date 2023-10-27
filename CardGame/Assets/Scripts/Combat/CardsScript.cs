@@ -72,7 +72,6 @@ public class CardsScript : MonoBehaviour
         {
             events = eventLoader.GetComponent<EventLoader>();
             we = eventLoader.GetComponent<WizardEvent>();
-            EventLoader events = eventLoader.GetComponent<EventLoader>();
             if (events.nextEvent == "Wizard")
             {
                 we.SelectedCard(card);
