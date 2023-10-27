@@ -17,6 +17,7 @@ public class CardsScript : MonoBehaviour
 
     public GameObject eventLoader;
     private EventLoader events;
+    private WizardEvent we;
 
     public BoxCollider2D cardCollider;
 
@@ -68,9 +69,10 @@ public class CardsScript : MonoBehaviour
         if (eventLoader != null)
         {
             events = eventLoader.GetComponent<EventLoader>();
+            we = eventLoader.GetComponent<WizardEvent>();
             if (events.nextEvent == "Wizard")
             {
-                events.SelectedCard(card);
+                we.SelectedCard(card);
             }
         }
         if (combat.mana >= card.cost)

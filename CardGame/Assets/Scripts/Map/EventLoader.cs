@@ -214,8 +214,5 @@ public class EventLoader : MonoBehaviour
         //we decided the event, so make this true in the code
         eventDecided = true;
     }
-    public void SelectedCard(CardTemplate card)
-    {
-
-    }
+    
 }

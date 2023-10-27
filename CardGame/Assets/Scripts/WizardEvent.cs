@@ -115,8 +115,10 @@ public class WizardEvent : MonoBehaviour
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 0), Quaternion.identity);
-
+                
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
+
+                tempScript.eventLoader = GameObject.Find("EventController");
 
                 tempScript.card = pc.cardsTotal[i];
 
@@ -132,6 +134,8 @@ public class WizardEvent : MonoBehaviour
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
+                tempScript.eventLoader = GameObject.Find("EventController");
+
                 tempScript.card = pc.cardsTotal[i];
 
                 tempScript.restPosition = cardObject.transform.position;
@@ -145,10 +149,16 @@ public class WizardEvent : MonoBehaviour
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
+                tempScript.eventLoader = GameObject.Find("EventController");
+
                 tempScript.card = pc.cardsTotal[i];
 
                 tempScript.restPosition = cardObject.transform.position;
             }
         }
+    }
+    public void SelectedCard(CardTemplate card)
+    {
+
     }
 }
