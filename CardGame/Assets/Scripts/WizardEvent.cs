@@ -21,6 +21,10 @@ public class WizardEvent : MonoBehaviour
 
     public GameObject pch;
 
+    public CardTemplate selectedCard;
+
+    public List<int> arrayPos;
+
     public bool middle = false;
 
     public int width;
@@ -102,7 +106,12 @@ public class WizardEvent : MonoBehaviour
 
                 list2.Add(runningTotal);
             }
-        } 
+        }
+
+        for (int i = 0; i < listLength; i++)
+        {
+            pc.cardsTotal[i] = null; // replace null
+        }
     }
 
     private void LoadPositions()
@@ -159,6 +168,16 @@ public class WizardEvent : MonoBehaviour
     }
     public void SelectedCard(CardTemplate card)
     {
+        if (card.purpose == CardTemplate.EPurpose.Summon)
+        {
+            selectedCard = card;
 
+            GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
+
+            for (int i = 0; i < toBeDestroyed.Length; i++)
+            {
+                Destroy(toBeDestroyed[i]);
+            }
+        }
     }
 }
