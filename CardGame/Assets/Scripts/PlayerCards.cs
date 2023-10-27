@@ -9,8 +9,9 @@ public class PlayerCards : MonoBehaviour
     public List<CardTemplate> drawPile;
     public List<CardTemplate> cardsInHand;
     public List<CardTemplate> discardPile;
-    public GameObject card;
+    public GameObject cardPrefab;
     public List<GameObject> objectHand;
+    public Vector3 defaultRest = new Vector3(0, -4, 0);
 
     void Awake()
     {
@@ -30,7 +31,16 @@ public class PlayerCards : MonoBehaviour
         objectHand.AddRange(GameObject.FindGameObjectsWithTag("Card"));
         for (int i = 0; i < objectHand.Count; i++)
         {
-            Debug.Log(objectHand[i]);
+            GameObject theobject = objectHand[i];
+            CardsScript script = theobject.GetComponent<CardsScript>();
+            script.restPosition = defaultRest;
+            if (objectHand.Count > 8)
+            {
+                script.restPosition.x = (float)(i * 2f - objectHand.Count) / (float)((float)objectHand.Count / 8);
+            } else
+            {
+                script.restPosition.x = i * 2 - objectHand.Count;
+            }
         }
     }
 
@@ -51,32 +61,41 @@ public class PlayerCards : MonoBehaviour
             {
                 //""""Shuffle"""" the discard pile back into the draw pile because we ran out of cards to draw
                 Debug.Log("you're supposed to work");
-                drawPile = discardPile;
-                //discardPile.Clear();
+                Debug.Log(drawPile.Count);
+                Debug.Log(discardPile.Count);
+                drawPile.AddRange(discardPile);
+                Debug.Log(drawPile.Count);
+                Debug.Log(discardPile.Count);
+                discardPile.Clear();
+                Debug.Log(drawPile.Count);
+                Debug.Log(discardPile.Count);
             }
             //Draw a card
             cardsInHand.Add(drawPile[0]);
-            GameObject newCardDrawn = Instantiate(card, Vector3.right * 16 + Vector3.down * 6, Quaternion.identity);
+            GameObject newCardDrawn = Instantiate(cardPrefab, Vector3.right * 16 + Vector3.down * 16, Quaternion.identity);
             CardsScript tempScript = newCardDrawn.GetComponent<CardsScript>();
             tempScript.card = drawPile[0];
             tempScript.enabled = true;
             tempScript.LoadCard();
             drawPile.RemoveAt(0);
         }
-        Debug.Log(cardsInHand);
     }
 
     public void DiscardHand()
     {
         discardPile.AddRange(cardsInHand);
+        GameObject[] allCardObjects = GameObject.FindGameObjectsWithTag("Card");
+        for (int i = 0; i < cardsInHand.Count; i++)
+        {
+            Destroy(allCardObjects[i]);
+        }
         cardsInHand.Clear();
-        Debug.Log(discardPile);
     }
 
     public void Discard(CardTemplate card)
     {
         discardPile.Add(card);
         cardsInHand.Remove(card);
-        Debug.Log(discardPile);
+
     }
 }
