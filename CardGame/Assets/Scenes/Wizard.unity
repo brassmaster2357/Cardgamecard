@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105529930}
   - component: {fileID: 1105529929}
+  - component: {fileID: 1105529931}
   m_Layer: 0
   m_Name: EventController
   m_TagString: Untagged
@@ -248,9 +249,10 @@ MonoBehaviour:
   pc: {fileID: 1438119012}
   cardBase: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
   pch: {fileID: 1119571866}
+  selectedCard: {fileID: 0}
+  arrayPos: 
   middle: 0
   width: 10
-  distance: 0
   list1: []
   list2: []
 --- !u!4 &1105529930
@@ -268,6 +270,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1105529931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105529928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bfa48953869434e86cf280b9e47ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCabin: 0
+  fork: 0
+  forkType: 0
+  nextEvent: 
+  secondEvent: 
+  thirdEvent: 
+  eventsLeft: 0
+  timesSinceAmbush: 0
+  eventDecided: 0
 --- !u!1 &1119571866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8985622291394046088, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
