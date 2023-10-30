@@ -90,7 +90,7 @@ public class CardsScript : MonoBehaviour
     }
     void OnMouseUp()
     {
-        if (eventLoader == null)
+        if (combatManager != null)
         {
             isFollowing = false;
             if (combat.mana >= card.cost)
