@@ -9,6 +9,7 @@ public class PlayerCards : MonoBehaviour
     public List<CardTemplate> drawPile;
     public List<CardTemplate> cardsInHand;
     public List<CardTemplate> discardPile;
+    public int cardsDrawnPerTurn;
     public GameObject cardPrefab;
     public List<GameObject> objectHand;
     public Vector3 defaultRest = new Vector3(0, -4, 0);
@@ -85,7 +86,7 @@ public class PlayerCards : MonoBehaviour
     {
         discardPile.AddRange(cardsInHand);
         GameObject[] allCardObjects = GameObject.FindGameObjectsWithTag("Card");
-        for (int i = 0; i < cardsInHand.Count; i++)
+        for (int i = 0; i < cardsInHand.Count - 1; i++)
         {
             Destroy(allCardObjects[i]);
         }

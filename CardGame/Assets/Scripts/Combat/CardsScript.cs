@@ -31,16 +31,19 @@ public class CardsScript : MonoBehaviour
     public TextMeshProUGUI cardSummonUIHealth;
 
     // Start is called before the first frame update
+
     public void LoadCard()
     {
-        combatManager = GameObject.Find("CombatManager");
-        eventLoader = GameObject.Find("EventLoader");
+        if (!(events.nextEvent == "Wizard"))
+        {
+            combatManager = GameObject.Find("CombatManager");
+            eventLoader = GameObject.Find("EventLoader");
 
-        pCards = cardManager.GetComponent<PlayerCards>();
-        cardCollider = gameObject.GetComponent<BoxCollider2D>();
-        combat = combatManager.GetComponent<CombatManager>();
-        //restPosition.x = Random.Range(-7f, 7f);
-
+            pCards = cardManager.GetComponent<PlayerCards>();
+            cardCollider = gameObject.GetComponent<BoxCollider2D>();
+            combat = combatManager.GetComponent<CombatManager>();
+            //restPosition.x = Random.Range(-7f, 7f);
+        }
         cardUIName.text = card.name;
         cardUIDescription.text = card.description;
         cardUICost.text = card.cost.ToString();
