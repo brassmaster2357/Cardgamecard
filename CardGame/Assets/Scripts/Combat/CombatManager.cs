@@ -38,7 +38,7 @@ public class CombatManager : MonoBehaviour
     {
         manaMax++;
         mana = manaMax;
-        cards.Draw(5);
+        cards.Draw(cards.cardsDrawnPerTurn);
         cards.OrganizeHand();
     }
 
