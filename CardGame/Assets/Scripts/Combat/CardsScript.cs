@@ -70,6 +70,7 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
+        GameObject ec = GameObject.Find("EventController");
         if (combatManager != null)
         {
             if (combat.mana >= card.cost)
@@ -78,9 +79,10 @@ public class CardsScript : MonoBehaviour
                 cardCollider.size /= 4;
             }
         }
-        else if (eventLoader != null) {
-            events = eventLoader.GetComponent<EventLoader>();
-            we = eventLoader.GetComponent<WizardEvent>();
+        else if (ec != null)
+        {
+            events = ec.GetComponent<EventLoader>();
+            we = ec.GetComponent<WizardEvent>();
             if (events.nextEvent == "Wizard")
             {
                 we.SelectedCard(card);

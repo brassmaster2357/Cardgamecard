@@ -285,7 +285,7 @@ MonoBehaviour:
   isCabin: 0
   fork: 0
   forkType: 0
-  nextEvent: 
+  nextEvent: Wizard
   secondEvent: 
   thirdEvent: 
   eventsLeft: 0

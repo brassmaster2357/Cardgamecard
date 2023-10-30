@@ -151,7 +151,7 @@ public class WizardEvent : MonoBehaviour
 
             for (int i = 0; i < list2.Count; i++)
             {
-                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
+                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i + list1.Count]);
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list2[i] - (3.5f * distance2), -2.5f), Quaternion.identity);
 
@@ -159,7 +159,7 @@ public class WizardEvent : MonoBehaviour
 
                 tempScript.eventLoader = GameObject.Find("EventController");
 
-                tempScript.card = pc.cardsTotal[i];
+                tempScript.card = pc.cardsTotal[i + list1.Count];
 
                 tempScript.LoadCard();
 
@@ -178,7 +178,11 @@ public class WizardEvent : MonoBehaviour
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);
+
+                Debug.Log("Iteration " + i);
             }
+
+
         }
     }
 }
