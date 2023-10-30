@@ -2461,7 +2461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8985622291394046095, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
       propertyPath: cardsDrawnPerTurn
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8985622291394046095, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
       propertyPath: objectHand.Array.size

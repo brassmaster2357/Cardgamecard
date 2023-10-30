@@ -86,7 +86,7 @@ public class PlayerCards : MonoBehaviour
     {
         discardPile.AddRange(cardsInHand);
         GameObject[] allCardObjects = GameObject.FindGameObjectsWithTag("Card");
-        for (int i = 0; i < cardsInHand.Count - 1; i++)
+        for (int i = 0; i < cardsInHand.Count; i++)
         {
             Destroy(allCardObjects[i]);
         }

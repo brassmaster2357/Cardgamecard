@@ -34,7 +34,7 @@ public class CardsScript : MonoBehaviour
 
     public void LoadCard()
     {
-        if (!(events.nextEvent == "Wizard"))
+        if (events == null)
         {
             combatManager = GameObject.Find("CombatManager");
             eventLoader = GameObject.Find("EventLoader");
