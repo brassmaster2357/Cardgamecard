@@ -34,16 +34,15 @@ public class CardsScript : MonoBehaviour
 
     public void LoadCard()
     {
-        if (events == null)
+        combatManager = GameObject.Find("CombatManager");
+        eventLoader = GameObject.Find("EventLoader");
+        if (combatManager != null)
         {
-            combatManager = GameObject.Find("CombatManager");
-            eventLoader = GameObject.Find("EventLoader");
-
-            pCards = cardManager.GetComponent<PlayerCards>();
-            cardCollider = gameObject.GetComponent<BoxCollider2D>();
             combat = combatManager.GetComponent<CombatManager>();
-            //restPosition.x = Random.Range(-7f, 7f);
         }
+        pCards = cardManager.GetComponent<PlayerCards>();
+        cardCollider = gameObject.GetComponent<BoxCollider2D>();
+        //restPosition.x = Random.Range(-7f, 7f);
         cardUIName.text = card.name;
         cardUIDescription.text = card.description;
         cardUICost.text = card.cost.ToString();
