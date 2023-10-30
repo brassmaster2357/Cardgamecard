@@ -45,7 +45,9 @@ public class SummonScript: MonoBehaviour
         {
             canAttack = false;
         }
-        if (!isFollowing)
+        if (isFollowing)
+            moveTo = (gameObject.transform.position + target.transform.position) / 2;
+        else
             moveTo = (gameObject.transform.position + restPosition) / 2;
         moveTo.z = 0;
         gameObject.transform.position = moveTo;
@@ -62,11 +64,12 @@ public class SummonScript: MonoBehaviour
         attack = atk;
         canAttack = can;
         gameObject.GetComponent<SpriteRenderer>().sprite = art;
+        alive = true;
     }
 
     public void Attack()
     {
-        moveTo = target.transform.position + (Vector3.left * 0.9f); //Move the summon to the target, to at least slightly animate battle
+        //Move the summon to the target, to at least slightly animate battle
         isFollowing = true;
     }
 
@@ -79,6 +82,9 @@ public class SummonScript: MonoBehaviour
             if (targetScript.alive)
             {
                 targetScript.health -= attack;
+                if (targetScript.health <= 0) {
+                    targetScript.alive = false;
+                }
             } else
             {
                 if (isAlly)
@@ -86,7 +92,6 @@ public class SummonScript: MonoBehaviour
                     enemyScript.enemyHP -= attack;
                 } else
                 {
-                    Debug.Log("isugnkjidfn");
                     playerScript.playerHP -= attack;
                 }
             }

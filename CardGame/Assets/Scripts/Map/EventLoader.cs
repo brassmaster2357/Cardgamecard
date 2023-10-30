@@ -9,6 +9,8 @@ Items = failed adventurer
 Boss = boss fight
 Wizard = wizard buffs one of the stats of your card
 */
+
+
 public class EventLoader : MonoBehaviour
 {
     //this checks to see of this is the first level
@@ -128,28 +130,30 @@ public class EventLoader : MonoBehaviour
                 randomness = Random.Range(1, 100);
 
                 //these lines make sure that there aren't duplicate events in a fork
-                if (nextEvent == "Items")
-                {
-                    if (randomness >= 1 && randomness <= 65)
-                        secondEvent = "Wizard";
-                    else
-                        secondEvent = "Cards";
-                }
-                else if (nextEvent == "Cards")
-                {
-                    if (randomness >= 1 && randomness <= 65)
-                        secondEvent = "Wizard";
-                    else
-                        secondEvent = "Items";
-                }
-                else if (nextEvent == "Wizard")
-                {
-                    if (randomness >= 1 && randomness <= 50)
-                        secondEvent = "Cards";
-                    else
-                        secondEvent = "Items";
-                }
 
+                switch (nextEvent)
+                {
+                    case "Items":
+                        if (randomness >= 1 && randomness <= 65)
+                            secondEvent = "Wizard";
+                        else
+                            secondEvent = "Cards";
+                        break;
+
+                    case "Wizard":
+                        if (randomness >= 1 && randomness <= 50)
+                            secondEvent = "Cards";
+                        else
+                            secondEvent = "Items";
+                        break;
+                    
+                    default:
+                        if (randomness >= 1 && randomness <= 65)
+                            secondEvent = "Wizard";
+                        else
+                            secondEvent = "Items";
+                        break;
+                }
                 //currently unused code for a 3-way fork
                 if (forkType)
                 {
@@ -207,8 +211,8 @@ public class EventLoader : MonoBehaviour
                     break;
             }
         }
-
         //we decided the event, so make this true in the code
         eventDecided = true;
     }
+    
 }

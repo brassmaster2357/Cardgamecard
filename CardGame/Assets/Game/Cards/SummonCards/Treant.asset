@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
   m_Name: Treant
   m_EditorClassIdentifier: 
-  art: {fileID: 0}
+  art: {fileID: 2747690628134850419, guid: d646136c6e2f81144b56eb2ccc188756, type: 3}
   cost: 3
   description: Half-tree, half-monster. A hulking amalgam of bark and roots.
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}

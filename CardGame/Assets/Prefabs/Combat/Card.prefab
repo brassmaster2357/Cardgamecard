@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 4500978333161806023}
   m_Layer: 0
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1122,9 +1122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restPosition: {x: 0, y: -4, z: 0}
   card: {fileID: 0}
-  pManager: {fileID: 0}
-  eManager: {fileID: 0}
   cardManager: {fileID: 8985622291394046088, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+  combatManager: {fileID: 0}
+  playerHand: []
+  cardCollider: {fileID: 0}
   cardUI: {fileID: 4827659994475735057}
   cardUIName: {fileID: 3957894165533965285}
   cardUIDescription: {fileID: 2089138768964033281}
