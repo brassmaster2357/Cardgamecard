@@ -107,11 +107,6 @@ public class WizardEvent : MonoBehaviour
                 list2.Add(runningTotal);
             }
         }
-
-        for (int i = 0; i < listLength; i++)
-        {
-            pc.cardsTotal[i] = null; // replace null
-        }
     }
 
     private void LoadPositions()
@@ -131,6 +126,8 @@ public class WizardEvent : MonoBehaviour
 
                 tempScript.card = pc.cardsTotal[i];
 
+                tempScript.LoadCard();
+
                 tempScript.restPosition = cardObject.transform.position;
             }
         }
@@ -147,6 +144,8 @@ public class WizardEvent : MonoBehaviour
 
                 tempScript.card = pc.cardsTotal[i];
 
+                tempScript.LoadCard();
+
                 tempScript.restPosition = cardObject.transform.position;
             }
 
@@ -161,6 +160,8 @@ public class WizardEvent : MonoBehaviour
                 tempScript.eventLoader = GameObject.Find("EventController");
 
                 tempScript.card = pc.cardsTotal[i];
+
+                tempScript.LoadCard();
 
                 tempScript.restPosition = cardObject.transform.position;
             }
