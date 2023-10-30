@@ -78,8 +78,7 @@ public class CardsScript : MonoBehaviour
                 cardCollider.size /= 4;
             }
         }
-        else
-        {
+        else if (eventLoader != null) {
             events = eventLoader.GetComponent<EventLoader>();
             we = eventLoader.GetComponent<WizardEvent>();
             if (events.nextEvent == "Wizard")
