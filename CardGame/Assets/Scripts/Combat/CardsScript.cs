@@ -128,10 +128,10 @@ public class CardsScript : MonoBehaviour
                     switch (card.target.tag)
                     {
                         case "Enemy":
-                                card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
-                                break;
+                            card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
+                            break;
                         case "SummonEnemy":
-                                card.target.GetComponent<SummonScript>().health -= card.attack;
+                            card.target.GetComponent<SummonScript>().health -= card.attack;
                             break;
                         default:
                             discard = false;
@@ -190,6 +190,7 @@ public class CardsScript : MonoBehaviour
                 pCards.Discard(card);
                 Destroy(gameObject);
                 pCards.OrganizeHand();
+                Debug.Log(pCards.discardPile);
             }
             else { cardCollider.enabled = true; }
             Debug.Log(collision.gameObject);
