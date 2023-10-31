@@ -7,17 +7,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public EventLoader el;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        GameObject unoTimeslol = GameObject.Find("PlayerCardHandler");
+        if ((unoTimeslol != null) && (SceneManager.GetActiveScene().name == "Main Menu"))
+        {
+            Destroy(unoTimeslol);
+        }
     }
 
     public void quitGame()
@@ -30,5 +27,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
