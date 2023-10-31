@@ -84,19 +84,28 @@ public class PlayerCards : MonoBehaviour
 
     public void DiscardHand()
     {
+        OrganizeHand();
         discardPile.AddRange(cardsInHand);
         GameObject[] allCardObjects = GameObject.FindGameObjectsWithTag("Card");
         for (int i = 0; i < cardsInHand.Count; i++)
         {
-            Destroy(allCardObjects[i]);
+            Debug.Log(allCardObjects);
+            Debug.Log(allCardObjects.Length);
+            Debug.Log(i);
+            if (i < allCardObjects.Length)
+            {
+                Destroy(allCardObjects[i]); // I hate you, bug
+            }
         }
         cardsInHand.Clear();
+        OrganizeHand();
     }
 
     public void Discard(CardTemplate card)
     {
+        OrganizeHand();
         discardPile.Add(card);
         cardsInHand.Remove(card);
-
+        OrganizeHand();
     }
 }

@@ -18,6 +18,7 @@ public class CardsScript : MonoBehaviour
     public GameObject eventLoader;
     private EventLoader events;
     private WizardEvent we;
+    public int cardPos;
 
     public BoxCollider2D cardCollider;
 
@@ -70,6 +71,7 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
+        GameObject ec = GameObject.Find("EventController");
         if (combatManager != null)
         {
             if (combat.mana >= card.cost)
@@ -78,9 +80,11 @@ public class CardsScript : MonoBehaviour
                 cardCollider.size /= 4;
             }
         }
-        else if (eventLoader != null) {
-            events = eventLoader.GetComponent<EventLoader>();
-            we = eventLoader.GetComponent<WizardEvent>();
+        else if (ec != null)
+        {
+            events = ec.GetComponent<EventLoader>();
+            we = ec.GetComponent<WizardEvent>();
+            we.arrayPos = cardPos;
             if (events.nextEvent == "Wizard")
             {
                 we.SelectedCard(card);
@@ -126,10 +130,10 @@ public class CardsScript : MonoBehaviour
                     switch (card.target.tag)
                     {
                         case "Enemy":
-                                card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
-                                break;
+                            card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
+                            break;
                         case "SummonEnemy":
-                                card.target.GetComponent<SummonScript>().health -= card.attack;
+                            card.target.GetComponent<SummonScript>().health -= card.attack;
                             break;
                         default:
                             discard = false;
@@ -188,6 +192,7 @@ public class CardsScript : MonoBehaviour
                 pCards.Discard(card);
                 Destroy(gameObject);
                 pCards.OrganizeHand();
+                Debug.Log(pCards.discardPile);
             }
             else { cardCollider.enabled = true; }
             Debug.Log(collision.gameObject);

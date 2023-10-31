@@ -18,12 +18,12 @@ public class WizardEvent : MonoBehaviour
     public PlayerCards pc;
 
     public GameObject cardBase;
-
     public GameObject pch;
+    public GameObject button1;
+    public GameObject button2;
 
     public CardTemplate selectedCard;
-
-    public List<int> arrayPos;
+    public int arrayPos;
 
     public bool middle = false;
 
@@ -119,7 +119,9 @@ public class WizardEvent : MonoBehaviour
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 0), Quaternion.identity);
-                
+
+                (cardObject.GetComponent<CardsScript>()).cardPos = i;
+
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
                 tempScript.eventLoader = GameObject.Find("EventController");
@@ -138,6 +140,8 @@ public class WizardEvent : MonoBehaviour
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 2.5f), Quaternion.identity);
 
+                (cardObject.GetComponent<CardsScript>()).cardPos = i;
+
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
                 tempScript.eventLoader = GameObject.Find("EventController");
@@ -151,15 +155,17 @@ public class WizardEvent : MonoBehaviour
 
             for (int i = 0; i < list2.Count; i++)
             {
-                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
+                CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i + list1.Count]);
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list2[i] - (3.5f * distance2), -2.5f), Quaternion.identity);
+
+                (cardObject.GetComponent<CardsScript>()).cardPos = i + list1.Count;
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
                 tempScript.eventLoader = GameObject.Find("EventController");
 
-                tempScript.card = pc.cardsTotal[i];
+                tempScript.card = pc.cardsTotal[i + list1.Count];
 
                 tempScript.LoadCard();
 
@@ -173,12 +179,33 @@ public class WizardEvent : MonoBehaviour
         {
             selectedCard = card;
 
+
+
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
 
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);
             }
+
+            button1.SetActive(true);
+            button2.SetActive(true);
         }
+    }
+    public void AddAttack()
+    {
+        CardTemplate creature = selectedCard;
+        creature.attack += 1;
+        creature.name += "+";
+
+        pc.cardsTotal[arrayPos] = creature;
+    }
+    public void AddDefense()
+    {
+        CardTemplate creature = selectedCard;
+        creature.health += 2;
+        creature.name += "+";
+
+        pc.cardsTotal[arrayPos] = creature;
     }
 }
