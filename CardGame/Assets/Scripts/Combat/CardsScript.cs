@@ -18,6 +18,7 @@ public class CardsScript : MonoBehaviour
     public GameObject eventLoader;
     private EventLoader events;
     private WizardEvent we;
+    public int cardPos;
 
     public BoxCollider2D cardCollider;
 
@@ -83,6 +84,7 @@ public class CardsScript : MonoBehaviour
         {
             events = ec.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
+            we.arrayPos = cardPos;
             if (events.nextEvent == "Wizard")
             {
                 we.SelectedCard(card);
