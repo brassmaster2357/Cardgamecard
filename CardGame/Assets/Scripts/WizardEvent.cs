@@ -186,8 +186,6 @@ public class WizardEvent : MonoBehaviour
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);
-
-                Debug.Log("Iteration " + i);
             }
 
             button1.SetActive(true);
