@@ -17,6 +17,6 @@ MonoBehaviour:
   description: This is *poisonous*, not *venomous*. The distinction is important.
   target: {fileID: 0}
   summon: {fileID: 11400000, guid: 8b2e3bc3ba7a68044bbff6edeade11d3, type: 2}
-  attack: 0
+  attack: 1
   health: 1
   purpose: 2
