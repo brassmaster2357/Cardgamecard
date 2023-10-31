@@ -18,8 +18,9 @@ public class WizardEvent : MonoBehaviour
     public PlayerCards pc;
 
     public GameObject cardBase;
-
     public GameObject pch;
+    public GameObject button1;
+    public GameObject button2;
 
     public CardTemplate selectedCard;
 
@@ -182,7 +183,18 @@ public class WizardEvent : MonoBehaviour
                 Debug.Log("Iteration " + i);
             }
 
-
+            button1.SetActive(true);
+            button2.SetActive(true);
         }
+    }
+    public void AddAttack()
+    {
+        selectedCard.attack += 1;
+        selectedCard.name += "+";
+    }
+    public void AddDefense()
+    {
+        selectedCard.health += 2;
+        selectedCard.name += "+";
     }
 }
