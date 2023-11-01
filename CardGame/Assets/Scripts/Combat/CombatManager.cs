@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
     
 {
     private EnemyManager enemy;
     public GameObject enemyManager;
+    private PlayerManager player;
+    public GameObject playerManager;
 
     public GameObject cardManager;
     private PlayerCards cards;
@@ -25,17 +28,26 @@ public class CombatManager : MonoBehaviour
         drawDisplay.text = cards.drawPile.Count.ToString();
         discardDisplay.text = cards.discardPile.Count.ToString();
         manaDisplay.text = mana.ToString() + "/" + manaMax;
+        if (enemy.enemyHP <= 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     private void Awake()
     {
         cards = cardManager.GetComponent<PlayerCards>();
         enemy = enemyManager.GetComponent<EnemyManager>();
+        player = playerManager.GetComponent<PlayerManager>();
         cards.BeginCombat();
         PlayerTurn();
     }
     public void PlayerTurn()
     {
+        if (player.playerHP <= 0)
+        {
+            SceneManager.LoadScene(4);
+        }
         manaMax++;
         mana = manaMax;
         cards.Draw(cards.cardsDrawnPerTurn);
