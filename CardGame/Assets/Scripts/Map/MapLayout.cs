@@ -30,6 +30,15 @@ public class MapLayout : MonoBehaviour
         //initialize the position values
         playerPos = playerIcon.transform.position;
         eventOffset = playerPos + new Vector2(0, 10);
+
+        if (el.isCabin)
+        {
+            cabinArt.SetActive(true);
+        }
+        else
+        {
+            forestArt.SetActive(true);
+        }
     }
 
     
