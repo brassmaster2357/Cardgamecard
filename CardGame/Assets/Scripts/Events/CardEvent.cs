@@ -5,16 +5,13 @@ using UnityEngine;
 public class CardEvent : MonoBehaviour
 {
 
-    private string[] eventArray =
-    {
-        "Wizard",
-        "Cards",
-        ""
-    };
+    private CardTemplate[] cardArray;
+
+    private int random;
 
     void Start()
     {
-        
+        random = Random.Range(1, 13);
     }
 
     void Update()
