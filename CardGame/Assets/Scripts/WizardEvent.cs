@@ -195,7 +195,8 @@ public class WizardEvent : MonoBehaviour
     }
     public void AddAttack()
     {
-        CardTemplate creature = selectedCard;
+        CardTemplate creature = new CardTemplate();
+        creature = selectedCard;
         creature.attack += 1;
         creature.name += "+";
 
@@ -204,7 +205,7 @@ public class WizardEvent : MonoBehaviour
 
         pc.cardsTotal[arrayPos] = creature;
 
-
+        SceneManager.LoadScene(1);
     }
     public void AddDefense()
     {

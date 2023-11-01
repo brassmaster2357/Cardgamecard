@@ -18,5 +18,5 @@ MonoBehaviour:
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
   summon: {fileID: 11400000, guid: 80cfc0713081b6a42bc4bf4835ca6c76, type: 2}
   attack: 1
-  health: 4
+  health: 2
   purpose: 2
