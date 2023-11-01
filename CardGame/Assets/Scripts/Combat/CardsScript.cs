@@ -105,10 +105,10 @@ public class CardsScript : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!isFollowing)
+        card.target = collision.gameObject;
+        if (!isFollowing && card.target == collision.gameObject && combat.mana >= card.cost)
         {
             bool discard = true;
-            card.target = collision.gameObject;
             cardCollider.enabled = false;
             switch (card.purpose)
             {
@@ -185,7 +185,7 @@ public class CardsScript : MonoBehaviour
                     discard = false;
                     break;
             }
-            if (discard)
+            if (discard && combat.mana >= card.cost)
             {
                 Debug.Log(card);
                 combat.mana -= card.cost;
@@ -194,7 +194,7 @@ public class CardsScript : MonoBehaviour
                 pCards.OrganizeHand();
                 Debug.Log(pCards.discardPile);
             }
-            else { cardCollider.enabled = true; }
+            else { cardCollider.enabled = true; card.target = null; }
             Debug.Log(collision.gameObject);
         }
     }

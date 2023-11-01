@@ -11,6 +11,7 @@ public class SummonScript: MonoBehaviour
 
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI attackDisplay;
+    public Sprite defaultSprite;
 
     public GameObject target;
     public GameObject enemy;
@@ -63,7 +64,12 @@ public class SummonScript: MonoBehaviour
         healthMax = hp;
         attack = atk;
         canAttack = can;
-        gameObject.GetComponent<SpriteRenderer>().sprite = art;
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        renderer.sprite = art;
+        if (renderer.sprite == null)
+        {
+            renderer.sprite = defaultSprite;
+        }
         alive = true;
     }
 
