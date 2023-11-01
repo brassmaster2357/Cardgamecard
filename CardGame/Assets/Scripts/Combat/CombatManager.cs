@@ -19,6 +19,8 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI drawDisplay;
     public TextMeshProUGUI discardDisplay;
     public TextMeshProUGUI manaDisplay;
+    public Canvas victoryScreen;
+    public Canvas hud;
 
     public int mana;
     public int manaMax = 0;
@@ -31,7 +33,6 @@ public class CombatManager : MonoBehaviour
         if (enemy.enemyHP <= 0)
         {
             StartCoroutine(BaskInYourGlory());
-            SceneManager.LoadScene(1);
         }
         if (player.playerHP <= 0)
         {
@@ -84,6 +85,9 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator BaskInYourGlory()
     {
+        victoryScreen.enabled = true;
+        hud.enabled = false;
         yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(1);
     }
 }

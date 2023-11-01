@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: 
   art: {fileID: 2747690628134850419, guid: d646136c6e2f81144b56eb2ccc188756, type: 3}
-  cost: 2
+  cost: 3
   description: Quick, ruthless hunter with a blood-curdling howl.
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
   summon: {fileID: 11400000, guid: 634940f07fe8cec49b33d5c029922299, type: 2}

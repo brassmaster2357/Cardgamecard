@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bear
   m_EditorClassIdentifier: 
   art: {fileID: 2747690628134850419, guid: d646136c6e2f81144b56eb2ccc188756, type: 3}
-  cost: 2
+  cost: 3
   description: Formidable beast, symbolic of barbaric wilderness.
   target: {fileID: 0}
   summon: {fileID: 11400000, guid: ab6183c465889fd45b2f201102d277a6, type: 2}

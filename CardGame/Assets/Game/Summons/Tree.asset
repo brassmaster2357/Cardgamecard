@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71076f6f0ae45934ea8c363e9b2c2c13, type: 3}
   m_Name: Tree
   m_EditorClassIdentifier: 
-  art: {fileID: 0}
+  art: {fileID: 2747690628134850419, guid: d646136c6e2f81144b56eb2ccc188756, type: 3}
   health: 7
   attack: 0
-  special: 1
   canAttack: 0
+  special: 1
