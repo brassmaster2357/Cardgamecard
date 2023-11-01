@@ -20,7 +20,6 @@ public class EventTrigger : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //SceneManager.LoadScene(eventNum);
-        Debug.Log("You Clicked on event #" + eventNum);
+        SceneManager.LoadScene(eventNum);
     }
 }
