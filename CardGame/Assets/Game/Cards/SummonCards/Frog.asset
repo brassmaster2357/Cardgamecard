@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
   m_Name: Frog
   m_EditorClassIdentifier: 
-  art: {fileID: 2747690628134850419, guid: d646136c6e2f81144b56eb2ccc188756, type: 3}
+  art: {fileID: 21300000, guid: 1df9534111d1d9b4bbc7d3d0a32c0b22, type: 3}
   cost: 1
   description: This is *poisonous*, not *venomous*. The distinction is important.
   target: {fileID: 0}
