@@ -32,6 +32,10 @@ public class CombatManager : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+        if (player.playerHP <= 0)
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
     private void Awake()
@@ -44,10 +48,6 @@ public class CombatManager : MonoBehaviour
     }
     public void PlayerTurn()
     {
-        if (player.playerHP <= 0)
-        {
-            SceneManager.LoadScene(4);
-        }
         manaMax++;
         mana = manaMax;
         cards.Draw(cards.cardsDrawnPerTurn);
