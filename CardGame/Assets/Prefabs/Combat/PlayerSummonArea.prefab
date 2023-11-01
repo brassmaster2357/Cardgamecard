@@ -238,6 +238,7 @@ MonoBehaviour:
   isFollowing: 0
   moveTo: {x: 0, y: 0, z: 0}
   restPosition: {x: 0, y: 0, z: 0}
+  sprenderer: {fileID: 0}
   healthDisplay: {fileID: 7570504941916146549}
   attackDisplay: {fileID: 8823630662031892848}
   defaultSprite: {fileID: 2747690628134850419, guid: d646136c6e2f81144b56eb2ccc188756, type: 3}
