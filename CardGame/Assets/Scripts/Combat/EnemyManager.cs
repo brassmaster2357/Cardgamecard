@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour
         SummonScript target = ((GameObject)summonPositions.GetValue(Random.Range(0, 3))).GetComponent<SummonScript>();
         if (!target.alive)
         {
-            target.Summon(summoned.health, summoned.attack, summoned.canAttack, summoned.art);
+            target.Summon(summoned.health, summoned.attack, true, summoned.art);
         }
     }
 }

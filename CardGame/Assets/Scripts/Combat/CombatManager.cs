@@ -30,6 +30,7 @@ public class CombatManager : MonoBehaviour
         manaDisplay.text = mana.ToString() + "/" + manaMax;
         if (enemy.enemyHP <= 0)
         {
+            StartCoroutine(BaskInYourGlory());
             SceneManager.LoadScene(1);
         }
         if (player.playerHP <= 0)
@@ -79,5 +80,10 @@ public class CombatManager : MonoBehaviour
         }
         enemy.EnemyTurn();
         PlayerTurn();
+    }
+
+    private IEnumerator BaskInYourGlory()
+    {
+        yield return new WaitForSeconds(2);
     }
 }
