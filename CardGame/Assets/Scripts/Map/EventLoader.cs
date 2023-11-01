@@ -5,7 +5,7 @@ using UnityEngine;
 this is a list of event names, for refrence
 Fight = ambush
 Cards = 3 random cards
-Items = failed adventurer
+Haven = safe haven event
 Boss = boss fight
 Wizard = wizard buffs one of the stats of your card
 */
@@ -18,18 +18,9 @@ public class EventLoader : MonoBehaviour
 
     //tracks the event number for the first level
     private int eventNum = 1;
-
-    //this checks if there is a fork
-    public bool fork;
-    //this tracks the type of fork. True is 3-way and false is 2-way
-    public bool forkType;
-
+    
     //this is the next event type
     public string nextEvent;
-    //this is the second event in a fork
-    public string secondEvent;
-    //this is the third event in a fork
-    public string thirdEvent;
 
     //this tracks how many events are left before the boss
     public int eventsLeft;
@@ -42,16 +33,13 @@ public class EventLoader : MonoBehaviour
 
     //this stores the random value
     private int randomness;
-
-    //this increases the chance of a fork every time there's not a fork
-    private int chanceIncrease;
+    
 
     void Start()
     {
         //intitializing vars
         //this makes it so there isn't 3 non-fight events in a row at the beginning of a map
         timesSinceAmbush = 1;
-        chanceIncrease = 0;
     }
 
 
@@ -61,16 +49,7 @@ public class EventLoader : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             ChooseEvent();
-            if (!fork || nextEvent == "Fight")
-                //if there isn't a fork, say this \/
-                Debug.Log("The next event is " + nextEvent);
-            else if (fork && nextEvent != "Fight")
-            {
-                //if there is a fork, say this \/
-                Debug.Log("There is a fork in the road!");
-                Debug.Log("The first option is " + nextEvent);
-                Debug.Log("The second option is " + secondEvent);
-            }
+            Debug.Log("The next event is " + nextEvent);
         }
 
             
@@ -81,20 +60,9 @@ public class EventLoader : MonoBehaviour
         //if the level isn't the first level, do all of this
         if (!isCabin)
         {
-            //sets fork to false at the beginning so that debug works
-            fork = false;
-
-            //the random value for the first event
+            //the random value for the event
             randomness = Random.Range(1, 100);
-            Debug.Log("first event rando: " + randomness);
-
-            //the random value for forking - the chance increase
-            int forkDecider = (Random.Range(1, 100) - chanceIncrease);
-            Debug.Log("forkDecider Rando: " + forkDecider);
-
-            //makes fork true at a specific number
-            if (forkDecider <= 30)
-                fork = true;
+            Debug.Log("event rando: " + randomness);
 
             //fights happen every 3 events
             if (timesSinceAmbush >= 3)
@@ -106,13 +74,13 @@ public class EventLoader : MonoBehaviour
             //if it's not a fight, generate random event
             else
             {
-                //30% chance of the Item event
-                if (randomness >= 1 && randomness <= 30)
+                //20% chance of the Item event
+                if (randomness >= 1 && randomness <= 20)
                 {
-                    nextEvent = "Items";
+                    nextEvent = "Haven";
                 }
-                //30% chance of the Card event
-                else if (randomness >= 31 && randomness <= 60)
+                //40% chance of the Card event
+                else if (randomness >= 21 && randomness <= 60)
                 {
                     nextEvent = "Cards";
                 }
@@ -122,52 +90,7 @@ public class EventLoader : MonoBehaviour
                     nextEvent = "Wizard";
                 }
             }
-
-            //if there is a fork and there isn't a fight, generate a second event
-            if (fork && nextEvent != "Fight")
-            {
-                //new random value
-                randomness = Random.Range(1, 100);
-
-                //these lines make sure that there aren't duplicate events in a fork
-
-                switch (nextEvent)
-                {
-                    case "Items":
-                        if (randomness >= 1 && randomness <= 65)
-                            secondEvent = "Wizard";
-                        else
-                            secondEvent = "Cards";
-                        break;
-
-                    case "Wizard":
-                        if (randomness >= 1 && randomness <= 50)
-                            secondEvent = "Cards";
-                        else
-                            secondEvent = "Items";
-                        break;
-                    
-                    default:
-                        if (randomness >= 1 && randomness <= 65)
-                            secondEvent = "Wizard";
-                        else
-                            secondEvent = "Items";
-                        break;
-                }
-                //currently unused code for a 3-way fork
-                if (forkType)
-                {
-                    //I'm going to leave this empty until we have more events
-                }
-
-                //if there was a fork, reset the chance increase for a fork
-                chanceIncrease = 0;
-            }
-
-            //if there wasn't a fork, increase the chance of a fork
-            else if (!fork)
-                chanceIncrease += 5;
-
+            
             //add one time since the last ambush
             timesSinceAmbush++;
         }
@@ -193,12 +116,12 @@ public class EventLoader : MonoBehaviour
                     break;
 
                 case 4:
-                    nextEvent = "Items";
+                    nextEvent = "Cards";
                     eventNum++;
                     break;
 
                 case 5:
-                    nextEvent = "Cards";
+                    nextEvent = "Haven";
                     eventNum++;
                     break;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /*
 okay me, this is how it's going to work.
 you will load in
@@ -194,11 +195,17 @@ public class WizardEvent : MonoBehaviour
     }
     public void AddAttack()
     {
-        CardTemplate creature = selectedCard;
+        CardTemplate creature = new CardTemplate();
+        creature = selectedCard;
         creature.attack += 1;
         creature.name += "+";
 
+        button1.SetActive(false);
+        button2.SetActive(false);
+
         pc.cardsTotal[arrayPos] = creature;
+
+        SceneManager.LoadScene(1);
     }
     public void AddDefense()
     {
@@ -206,6 +213,11 @@ public class WizardEvent : MonoBehaviour
         creature.health += 2;
         creature.name += "+";
 
+        button1.SetActive(false);
+        button2.SetActive(false);
+
         pc.cardsTotal[arrayPos] = creature;
+
+        SceneManager.LoadScene(1);
     }
 }

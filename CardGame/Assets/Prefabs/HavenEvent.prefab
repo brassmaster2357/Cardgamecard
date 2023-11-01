@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5943836766230036508}
   - component: {fileID: 5349821058552894484}
   m_Layer: 0
-  m_Name: ItemsEvent
+  m_Name: HavenEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
