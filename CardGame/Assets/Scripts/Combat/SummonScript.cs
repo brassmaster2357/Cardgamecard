@@ -104,19 +104,24 @@ public class SummonScript: MonoBehaviour
             if (targetScript.alive)
             {
                 targetScript.health -= attack;
-                if (targetScript.health <= 0) {
+                if (targetScript.health <= 0)
+                {
                     targetScript.alive = false;
                 }
-            } else
+            }
+            else
             {
                 if (isAlly)
                 {
                     enemyScript.enemyHP -= attack;
-                } else
+                }
+                else
                 {
                     playerScript.playerHP -= attack;
                 }
             }
         }
+        else
+            isFollowing = false;
     }
 }
