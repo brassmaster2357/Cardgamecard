@@ -29,7 +29,9 @@ public class SummonScript: MonoBehaviour
     public enum SummonSpecial
     {
         None,
-        NoAttack
+        NoAttack,
+        Spiky,
+        Trap
     }
     public SummonSpecial special;
     void Start()
@@ -43,7 +45,7 @@ public class SummonScript: MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (canAttack && (special == SummonSpecial.NoAttack))
+        if (canAttack && (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap))
         {
             canAttack = false;
         }
@@ -95,7 +97,7 @@ public class SummonScript: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == target)
+        if (collision.gameObject == target && health > 0 && alive && canAttack)
         {
             isFollowing = false;
             SummonScript targetScript = target.GetComponent<SummonScript>();
