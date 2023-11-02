@@ -196,9 +196,12 @@ public class WizardEvent : MonoBehaviour
     public void AddAttack()
     {
         CardTemplate creature = new CardTemplate();
-        creature = selectedCard;
-        creature.attack += 1;
-        creature.name += "+";
+        creature.cost = selectedCard.cost;
+        creature.attack = selectedCard.attack + 1;
+        creature.health = selectedCard.health;
+        creature.name = selectedCard.name + "+";
+        creature.description = selectedCard.description;
+        creature.purpose = selectedCard.purpose;
 
         button1.SetActive(false);
         button2.SetActive(false);
@@ -210,8 +213,12 @@ public class WizardEvent : MonoBehaviour
     public void AddDefense()
     {
         CardTemplate creature = selectedCard;
-        creature.health += 2;
-        creature.name += "+";
+        creature.cost = selectedCard.cost;
+        creature.attack = selectedCard.attack;
+        creature.health = selectedCard.health + 2;
+        creature.name = selectedCard.name + "+";
+        creature.description = selectedCard.description;
+        creature.purpose = selectedCard.purpose;
 
         button1.SetActive(false);
         button2.SetActive(false);

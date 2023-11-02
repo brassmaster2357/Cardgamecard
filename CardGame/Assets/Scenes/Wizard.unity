@@ -692,7 +692,7 @@ MonoBehaviour:
   button1: {fileID: 902116481}
   button2: {fileID: 1574496312}
   selectedCard: {fileID: 0}
-  arrayPos: 
+  arrayPos: 0
   middle: 0
   width: 10
   list1: []
@@ -725,11 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCabin: 0
-  fork: 0
-  forkType: 0
   nextEvent: Wizard
-  secondEvent: 
-  thirdEvent: 
   eventsLeft: 0
   timesSinceAmbush: 0
   eventDecided: 0
@@ -793,6 +789,14 @@ PrefabInstance:
     - target: {fileID: 8985622291394046094, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046095, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: cardsTotal.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985622291394046095, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+      propertyPath: cardsTotal.Array.data[12]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

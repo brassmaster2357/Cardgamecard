@@ -10,6 +10,7 @@ public class CardEvent : MonoBehaviour
     private CardTemplate randomCard;
 
     public GameObject pch;
+    public PlayerCards pc;
 
     public GameObject cardBase;
 

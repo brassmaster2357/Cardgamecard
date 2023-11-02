@@ -18,6 +18,7 @@ public class CardsScript : MonoBehaviour
     public GameObject eventLoader;
     private EventLoader events;
     private WizardEvent we;
+    private CardEvent ce;
     public int cardPos;
 
     public BoxCollider2D cardCollider;
@@ -71,6 +72,7 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("the thing start");
         GameObject ec = GameObject.Find("EventController");
         if (combatManager != null)
         {
@@ -82,12 +84,19 @@ public class CardsScript : MonoBehaviour
         }
         else if (ec != null)
         {
+            Debug.Log("The thing wasn't null!");
             events = ec.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
-            we.arrayPos = cardPos;
+            ce = ec.GetComponent<CardEvent>();
             if (events.nextEvent == "Wizard")
             {
+                we.arrayPos = cardPos;
                 we.SelectedCard(card);
+            }
+            if (events.nextEvent == "Cards")
+            {
+                Debug.Log("YOOOO IT WORKED");
+                pCards.cardsTotal.Add(card);
             }
         }
     }
