@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
-  name: Stick
-  art: {fileID: 21300000, guid: b31cfc9914601c64abe27c59e9a6f96b, type: 3}
+  art: {fileID: 21300000, guid: 65dc7e1332eee6b41a725e03a4e7610d, type: 3}
   cost: 1
   description: Deal 3 damage to an enemy.
-  target: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+  target: {fileID: 0}
   summon: {fileID: 0}
   attack: 3
   health: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71076f6f0ae45934ea8c363e9b2c2c13, type: 3}
   m_Name: Wall
   m_EditorClassIdentifier: 
-  art: {fileID: 0}
+  art: {fileID: 21300000, guid: 3bc4e4ca71b7a464eb0bc873d22c831f, type: 3}
   health: 13
   attack: 0
-  special: 1
   canAttack: 0
+  special: 1

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
-  m_Name: Frog
+  m_Name: Boulder
   m_EditorClassIdentifier: 
-  art: {fileID: 21300000, guid: 1df9534111d1d9b4bbc7d3d0a32c0b22, type: 3}
-  cost: 1
-  description: This is *poisonous*, not *venomous*. The distinction is important.
-  target: {fileID: 0}
-  summon: {fileID: 11400000, guid: 8b2e3bc3ba7a68044bbff6edeade11d3, type: 2}
-  attack: 2
-  health: 1
-  purpose: 2
+  art: {fileID: 21300000, guid: f1bbba93a3592ad41a3f938f1e4ef4ae, type: 3}
+  cost: 3
+  description: Deal 7 damage to an enemy.
+  target: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+  summon: {fileID: 0}
+  attack: 7
+  health: 0
+  purpose: 0

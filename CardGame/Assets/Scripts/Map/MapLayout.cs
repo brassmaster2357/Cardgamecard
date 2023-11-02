@@ -30,6 +30,18 @@ public class MapLayout : MonoBehaviour
         //initialize the position values
         playerPos = playerIcon.transform.position;
         eventOffset = playerPos + new Vector2(0, 10);
+
+        //these statements decide which background art should be active based on the map
+        if (el.isCabin)
+        {
+            //if it is the cabin, use the cabin art
+            cabinArt.SetActive(true);
+        }
+        else
+        {
+            //if it is the forest, use the forest art
+            forestArt.SetActive(true);
+        }
     }
 
     

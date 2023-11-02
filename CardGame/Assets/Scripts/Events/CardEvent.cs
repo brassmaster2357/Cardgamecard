@@ -5,20 +5,48 @@ using UnityEngine;
 public class CardEvent : MonoBehaviour
 {
 
-    private string[] eventArray =
-    {
-        "Wizard",
-        "Cards",
-        ""
-    };
+    public CardTemplate[] cardArray;
+
+    private CardTemplate randomCard;
+
+    public GameObject pch;
+
+    public GameObject cardBase;
+
+    private int cardNum;
 
     void Start()
     {
         
+
+        randomCard = cardArray[Random.Range(1, cardArray.Length)];
+        cardNum = -1;
+        LoadCard();
+
+        randomCard = cardArray[Random.Range(1, cardArray.Length)];
+        cardNum = 0;
+        LoadCard();
+
+        randomCard = cardArray[Random.Range(1, cardArray.Length)];
+        cardNum = 1;
+        LoadCard();
     }
 
     void Update()
     {
         
+    }
+
+    void LoadCard()
+    {
+        GameObject cardObject = Instantiate(cardBase, new Vector2(cardNum * 5, 0), Quaternion.identity);
+
+        CardsScript tempScript = cardObject.GetComponent<CardsScript>();
+
+        tempScript.card = randomCard;
+
+        tempScript.LoadCard();
+
+        tempScript.restPosition = cardObject.transform.position;
     }
 }

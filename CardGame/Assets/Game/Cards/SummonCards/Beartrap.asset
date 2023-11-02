@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a064a3689087b947bfcdffdd7fd4447, type: 3}
-  m_Name: Frog
+  m_Name: Beartrap
   m_EditorClassIdentifier: 
-  art: {fileID: 21300000, guid: 1df9534111d1d9b4bbc7d3d0a32c0b22, type: 3}
-  cost: 1
-  description: This is *poisonous*, not *venomous*. The distinction is important.
+  art: {fileID: 21300000, guid: a91b7dfaec8d38c46aa616ae15d5b826, type: 3}
+  cost: 2
+  description: Device that angrily clamps onto whatever steps on it.
   target: {fileID: 0}
-  summon: {fileID: 11400000, guid: 8b2e3bc3ba7a68044bbff6edeade11d3, type: 2}
-  attack: 2
+  summon: {fileID: 11400000, guid: 1f9567a446cbad6468f430dc4fbcc9ef, type: 2}
+  attack: 5
   health: 1
   purpose: 2

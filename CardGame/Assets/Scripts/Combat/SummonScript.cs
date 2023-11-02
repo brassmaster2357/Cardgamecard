@@ -8,6 +8,7 @@ public class SummonScript: MonoBehaviour
     public bool isFollowing;
     public Vector3 moveTo;
     public Vector3 restPosition;
+    public SpriteRenderer sprenderer;
 
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI attackDisplay;
@@ -36,7 +37,7 @@ public class SummonScript: MonoBehaviour
         restPosition = transform.position;
         enemyScript = enemy.GetComponent<EnemyManager>();
         playerScript = player.GetComponent<PlayerManager>();
-
+        sprenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -47,9 +48,23 @@ public class SummonScript: MonoBehaviour
             canAttack = false;
         }
         if (isFollowing)
+        {
             moveTo = (gameObject.transform.position + target.transform.position) / 2;
+            sprenderer.enabled = true;
+        }
         else
-            moveTo = (gameObject.transform.position + restPosition) / 2;
+        {
+            if (health <= 0 && !isAlly)
+            {
+                moveTo = (gameObject.transform.position + enemy.transform.position) / 2;
+                sprenderer.enabled = false;
+            }
+            else
+            {
+                moveTo = (gameObject.transform.position + restPosition) / 2;
+                sprenderer.enabled = true;
+            }
+        }
         moveTo.z = 0;
         gameObject.transform.position = moveTo;
         healthDisplay.text = health.ToString();
@@ -64,11 +79,10 @@ public class SummonScript: MonoBehaviour
         healthMax = hp;
         attack = atk;
         canAttack = can;
-        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
-        renderer.sprite = art;
-        if (renderer.sprite == null)
+        sprenderer.sprite = art;
+        if (sprenderer.sprite == null)
         {
-            renderer.sprite = defaultSprite;
+            sprenderer.sprite = defaultSprite;
         }
         alive = true;
     }
