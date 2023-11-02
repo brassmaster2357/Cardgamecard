@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CardsScript : MonoBehaviour
 {
@@ -72,7 +73,6 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("the thing start");
         GameObject ec = GameObject.Find("EventController");
         if (combatManager != null)
         {
@@ -84,7 +84,6 @@ public class CardsScript : MonoBehaviour
         }
         else if (ec != null)
         {
-            Debug.Log("The thing wasn't null!");
             events = ec.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
@@ -95,8 +94,8 @@ public class CardsScript : MonoBehaviour
             }
             if (events.nextEvent == "Cards")
             {
-                Debug.Log("YOOOO IT WORKED");
                 pCards.cardsTotal.Add(card);
+                SceneManager.LoadScene(1);
             }
         }
     }
