@@ -19,9 +19,11 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI drawDisplay;
     public TextMeshProUGUI discardDisplay;
     public TextMeshProUGUI manaDisplay;
-    public Canvas victoryScreen;
+    public TextMeshProUGUI victoryScreen;
     public Canvas hud;
 
+    public List<string> victoryTextNormal;
+    public List<string> victoryTextDeranged;
     public int mana;
     public int manaMax = 0;
 
@@ -45,6 +47,12 @@ public class CombatManager : MonoBehaviour
         cards = cardManager.GetComponent<PlayerCards>();
         enemy = enemyManager.GetComponent<EnemyManager>();
         player = playerManager.GetComponent<PlayerManager>();
+        victoryScreen.enabled = false;
+        victoryScreen.text = victoryTextNormal[Random.Range(1, victoryTextNormal.Count)];
+        if (Random.Range(1,10) == 7)
+        {
+            victoryScreen.text = victoryTextDeranged[Random.Range(1, victoryTextDeranged.Count)];
+        }
         cards.BeginCombat();
         PlayerTurn();
     }
