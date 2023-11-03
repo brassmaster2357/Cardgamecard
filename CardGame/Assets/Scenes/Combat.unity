@@ -2673,11 +2673,11 @@ PrefabInstance:
       objectReference: {fileID: 1601571202}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: victoryTextNormal.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: victoryTextDeranged.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: victoryTextNormal.Array.data[0]
@@ -2702,6 +2702,10 @@ PrefabInstance:
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: victoryTextNormal.Array.data[5]
       value: Yay!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
+      propertyPath: victoryTextNormal.Array.data[6]
+      value: Stamp of Approval!
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: victoryTextDeranged.Array.data[0]
@@ -2733,7 +2737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6637347755891264562, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: victoryTextDeranged.Array.data[7]
-      value: Confabulations!
+      value: Stampal of Approve!
       objectReference: {fileID: 0}
     - target: {fileID: 6873384155424560490, guid: 75a102a82b453524db587f1858166052, type: 3}
       propertyPath: m_Name
