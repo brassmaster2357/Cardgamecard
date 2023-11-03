@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restPosition: {x: 0, y: -4, z: 0}
   card: {fileID: 0}
-  cardManager: {fileID: 8985622291394046088, guid: 71bb9a30bef0c594db7e563c82c2a3f8, type: 3}
+  cardManager: {fileID: 0}
   combatManager: {fileID: 0}
   eventLoader: {fileID: 0}
   cardPos: 0

@@ -35,9 +35,10 @@ public class CardsScript : MonoBehaviour
 
     // Start is called before the first frame update
     
-    void start()
+    void Awake()
     {
-        pCards = GameObject.Find("PlayerCardHandler").GetComponent<PlayerCards>();
+        cardManager = GameObject.FindGameObjectWithTag("PCH");
+        pCards = cardManager.GetComponent<PlayerCards>();
     }
     
     
