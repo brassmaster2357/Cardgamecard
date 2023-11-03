@@ -108,6 +108,10 @@ public class SummonScript: MonoBehaviour
                 {
                     targetScript.health -= 69420;
                 }
+                if (targetScript.special == SummonSpecial.Spiky)
+                {
+                    health -= targetScript.attack;
+                }
                 targetScript.health -= attack;
                 if (targetScript.health <= 0)
                 {
