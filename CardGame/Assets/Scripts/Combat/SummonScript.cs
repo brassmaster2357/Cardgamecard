@@ -104,6 +104,10 @@ public class SummonScript: MonoBehaviour
             SummonScript targetScript = target.GetComponent<SummonScript>();
             if (targetScript.alive)
             {
+                if (special == SummonSpecial.Instakill)
+                {
+                    targetScript.health -= 69420;
+                }
                 targetScript.health -= attack;
                 if (targetScript.health <= 0)
                 {
