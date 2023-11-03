@@ -31,7 +31,8 @@ public class SummonScript: MonoBehaviour
         None,
         NoAttack,
         Spiky,
-        Trap
+        Trap,
+        Instakill
     }
     public SummonSpecial special;
     void Start()
