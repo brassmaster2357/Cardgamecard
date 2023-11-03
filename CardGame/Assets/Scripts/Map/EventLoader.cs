@@ -40,19 +40,15 @@ public class EventLoader : MonoBehaviour
         //intitializing vars
         //this makes it so there isn't 3 non-fight events in a row at the beginning of a map
         timesSinceAmbush = 1;
+
+        // auto sets the event when loaded
+        ChooseEvent();
     }
 
 
     void Update()
     {
-        //this debug lets me test the random logic
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            ChooseEvent();
-            Debug.Log("The next event is " + nextEvent);
-        }
 
-            
     }
     //put this in a function to make it easier
     private void ChooseEvent()
