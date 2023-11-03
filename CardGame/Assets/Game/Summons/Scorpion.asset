@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71076f6f0ae45934ea8c363e9b2c2c13, type: 3}
   m_Name: Scorpion
   m_EditorClassIdentifier: 
-  art: {fileID: 21300000, guid: 1df9534111d1d9b4bbc7d3d0a32c0b22, type: 3}
+  art: {fileID: 21300000, guid: 58e546d4af3f1ed48ba6b75722f6ef5a, type: 3}
   health: 1
-  attack: 2
+  attack: 3
   canAttack: 0
-  special: 0
+  special: 4
