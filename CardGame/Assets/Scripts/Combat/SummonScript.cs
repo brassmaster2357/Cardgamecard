@@ -31,7 +31,8 @@ public class SummonScript: MonoBehaviour
         None,
         NoAttack,
         Spiky,
-        Trap
+        Trap,
+        Instakill
     }
     public SummonSpecial special;
     void Start()
@@ -103,6 +104,14 @@ public class SummonScript: MonoBehaviour
             SummonScript targetScript = target.GetComponent<SummonScript>();
             if (targetScript.alive)
             {
+                if (special == SummonSpecial.Instakill)
+                {
+                    targetScript.health -= 69420;
+                }
+                if (targetScript.special == SummonSpecial.Spiky)
+                {
+                    health -= targetScript.attack;
+                }
                 targetScript.health -= attack;
                 if (targetScript.health <= 0)
                 {
