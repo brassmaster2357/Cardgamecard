@@ -34,7 +34,14 @@ public class CardsScript : MonoBehaviour
     public TextMeshProUGUI cardSummonUIHealth;
 
     // Start is called before the first frame update
-
+    
+    void start()
+    {
+        pCards = GameObject.Find("PlayerCardHandler").GetComponent<PlayerCards>();
+    }
+    
+    
+    
     public void LoadCard()
     {
         combatManager = GameObject.Find("CombatManager");
