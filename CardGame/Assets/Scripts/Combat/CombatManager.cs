@@ -12,7 +12,6 @@ public class CombatManager : MonoBehaviour
     private PlayerManager player;
     public GameObject playerManager;
 
-    public GameObject cardManager;
     private PlayerCards cards;
     public GameObject[] summons;
 
@@ -44,7 +43,7 @@ public class CombatManager : MonoBehaviour
 
     private void Awake()
     {
-        cards = cardManager.GetComponent<PlayerCards>();
+        cards = GameObject.Find("PlayerCardHandler").GetComponent<PlayerCards>();
         enemy = enemyManager.GetComponent<EnemyManager>();
         player = playerManager.GetComponent<PlayerManager>();
         victoryScreen.enabled = false;
@@ -58,6 +57,10 @@ public class CombatManager : MonoBehaviour
     }
     public void PlayerTurn()
     {
+        if (cards == null)
+        {
+            cards = GameObject.Find("PlayerCardHandler").GetComponent<PlayerCards>();
+        }
         manaMax++;
         mana = manaMax;
         cards.Draw(cards.cardsDrawnPerTurn);
@@ -69,7 +72,7 @@ public class CombatManager : MonoBehaviour
         mana = 0;
         if (cards == null)
         {
-            cards = cardManager.GetComponent<PlayerCards>();
+            cards = GameObject.Find("PlayerCardHandler").GetComponent<PlayerCards>();
         }
         cards.DiscardHand();
         for (int i = 0; i < 8; i++)
