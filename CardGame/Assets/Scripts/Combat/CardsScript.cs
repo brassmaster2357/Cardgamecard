@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class CardsScript : MonoBehaviour
 {
     private Vector3 moveTo;
-    public Vector3 restPosition = new Vector3(0,-4,0);
+    public Vector3 restPosition = new(0,-4,0);
     private bool isFollowing;
     public CardTemplate card;
     public GameObject cardManager;
@@ -185,7 +185,7 @@ public class CardsScript : MonoBehaviour
                     }
                     break;
                 case CardTemplate.EPurpose.Summon: //Summoning
-                    if (card.target.tag == "EmptySummonAlly")
+                    if (card.target.CompareTag("EmptySummonAlly"))
                     {
                         //Set the summon object's stats to the card played
                         SummonScript newSummon = card.target.GetComponent<SummonScript>(); 
@@ -195,6 +195,7 @@ public class CardsScript : MonoBehaviour
                         newSummon.health = card.summon.health;
                         newSummon.canAttack = card.summon.canAttack;
                         newSummon.special = card.summon.special;
+                        newSummon.sprenderer.sprite = card.summon.art;
                     }
                     break;
                 default:
