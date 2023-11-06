@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 2
   description: Reptile with built-in body armor. Slow and steady wins the race.
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
-  summon: {fileID: 11400000, guid: b56d0c1762436494a9df92c21c8c09d2, type: 2}
+  summon: {fileID: 11400000, guid: 086ca491f711be94293aa088f15632a0, type: 2}
   attack: 1
   health: 5
   purpose: 2
