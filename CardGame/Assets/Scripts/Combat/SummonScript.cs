@@ -55,6 +55,8 @@ public class SummonScript: MonoBehaviour
         {
             moveTo = (gameObject.transform.position + target.transform.position) / 2;
             sprenderer.enabled = true;
+            if (!alive)
+                Die();
         }
         else
         {
