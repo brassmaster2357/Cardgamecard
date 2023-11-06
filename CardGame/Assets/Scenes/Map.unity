@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ambushIcon: {fileID: 4109456521919940340, guid: 4a512a65a2e86c74bad3e469feb12d18, type: 3}
   cardsIcon: {fileID: 7881990184171109784, guid: c747a37a5807515488991fbb39536356, type: 3}
-  itemsIcon: {fileID: 7317093984162408790, guid: 302b322e807ce054593317d2650e8ba0, type: 3}
+  wizardIcon: {fileID: 2719521428816290545, guid: 547d1e6e18468d445bea8afe13296129, type: 3}
   havenIcon: {fileID: 7317093984162408790, guid: 302b322e807ce054593317d2650e8ba0, type: 3}
   playerIcon: {fileID: 1706529261}
   straightRoad: {fileID: 1279450433}

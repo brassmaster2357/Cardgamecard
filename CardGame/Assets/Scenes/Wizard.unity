@@ -694,7 +694,7 @@ MonoBehaviour:
   selectedCard: {fileID: 0}
   arrayPos: 0
   middle: 0
-  width: 10
+  width: 7
   list1: []
   list2: []
 --- !u!4 &1105529930
