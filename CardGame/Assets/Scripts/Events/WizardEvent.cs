@@ -19,7 +19,7 @@ public class WizardEvent : MonoBehaviour
     public PlayerCards pc;
 
     public GameObject cardBase;
-    public GameObject pch;
+    private GameObject pch;
     public GameObject button1;
     public GameObject button2;
 
@@ -40,7 +40,7 @@ public class WizardEvent : MonoBehaviour
     {
         listLength = pc.cardsTotal.Count;
         CardSelected = false;
-
+        pch = GameObject.Find("PlayerCardHandler");
         
     }
     
