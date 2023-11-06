@@ -91,7 +91,7 @@ public class EventLoader : MonoBehaviour
             timesSinceAmbush++;
         }
 
-        //if it is the first level, do the next scripted event
+        //if it is the first level, do the next scripted event for CABIN
         else
         {
             switch (eventNum)

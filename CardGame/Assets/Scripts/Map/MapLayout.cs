@@ -7,7 +7,7 @@ public class MapLayout : MonoBehaviour
     //refrences to all of the event icons
     public GameObject ambushIcon;
     public GameObject cardsIcon;
-    public GameObject itemsIcon;
+    public GameObject wizardIcon;
     public GameObject havenIcon;
     public GameObject playerIcon;
 
@@ -62,32 +62,31 @@ public class MapLayout : MonoBehaviour
     //this function creates the icon objects for when there is only one event
     private void DecideNextEvent()
     {
-
-        //if the event is cards, make the cards Icon with the single event position offset
-        if (el.nextEvent == "Cards")
+        switch (el.nextEvent)
         {
-            Instantiate(cardsIcon, eventOffset, Quaternion.identity);
-        }
+            //if the event is cards, make the cards Icon with the single event position offset
+            case "Cards":
+                Instantiate(cardsIcon, eventOffset, Quaternion.identity);
+                break;
 
-        //if the event is wizard, make the wizard Icon with the single event position offset
-        else if (el.nextEvent == "Haven")
-        {
-            Instantiate(havenIcon, eventOffset, Quaternion.identity);
-        }
+            //if the event is safe haven, make the haven Icon with the single event position offset
+            case "Haven":
+                Instantiate(havenIcon, eventOffset, Quaternion.identity);
+                break;
 
-        //if the event is items, make the items Icon with the single event position offset
-        else if (el.nextEvent == "Items")
-        {
-            Instantiate(itemsIcon, eventOffset, Quaternion.identity);
-        }
+            //if the event is ambush, make the ambush Icon with the single event position offset
+            case "Fight":
+                Instantiate(ambushIcon, eventOffset, Quaternion.identity);
+                break;
 
-        //if the event is ambush, make the ambush Icon with the single event position offset
-        else if (el.nextEvent == "Fight")
-        {
-            Instantiate(ambushIcon, eventOffset, Quaternion.identity);
-        }
+            //if the event is wizard, make the wizard Icon with the single event position offset
+            case "Wizard":
+                Instantiate(wizardIcon, eventOffset, Quaternion.identity);
+                break;
 
-        //after everything, enable the road
+            default:
+                break;
+        }
         straightRoad.SetActive(true);
     }
 }
