@@ -50,7 +50,7 @@ public class PlayerCards : MonoBehaviour
         discardPile.Clear();
         drawPile.Clear();
         cardsInHand.Clear();
-        drawPile = cardsTotal;
+        drawPile.AddRange(cardsTotal);
     }
 
     public void Draw(int cardsToDraw)
