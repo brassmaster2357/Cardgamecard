@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 2
   description: Scaly.
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
-  summon: {fileID: 11400000, guid: e89ff264dffc06f4ca83468d72d95b2d, type: 2}
+  summon: {fileID: 11400000, guid: 0cc6fb3e9c5e9cf438b2ee56d6e33452, type: 2}
   attack: 2
   health: 2
   purpose: 2

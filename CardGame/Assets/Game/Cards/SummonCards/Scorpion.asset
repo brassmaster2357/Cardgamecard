@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 3
   description: Venomous insect, with bonus crabby claws.
   target: {fileID: 0}
-  summon: {fileID: 11400000, guid: e89ff264dffc06f4ca83468d72d95b2d, type: 2}
+  summon: {fileID: 11400000, guid: a904602e831d85140947502a882799b0, type: 2}
   attack: 2
   health: 1
   purpose: 2

@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 3
   description: Vampire slug.
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
-  summon: {fileID: 11400000, guid: e89ff264dffc06f4ca83468d72d95b2d, type: 2}
+  summon: {fileID: 11400000, guid: 70762bc38998a2e42be2cdbe7ec6bcee, type: 2}
   attack: 3
   health: 1
   purpose: 2

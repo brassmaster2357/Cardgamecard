@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 2
   description: An animal with a whole lot of spikes. Probably shouldn't touch it.
   target: {fileID: 0}
-  summon: {fileID: 11400000, guid: e89ff264dffc06f4ca83468d72d95b2d, type: 2}
+  summon: {fileID: 11400000, guid: 15b577de96e420643bfec2487cbeab1c, type: 2}
   attack: 2
   health: 1
   purpose: 2
