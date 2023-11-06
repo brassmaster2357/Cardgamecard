@@ -9,6 +9,7 @@ public class SummonScript: MonoBehaviour
     public Vector3 moveTo;
     public Vector3 restPosition;
     public SpriteRenderer sprenderer;
+    private float stopAttackingTimer;
 
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI attackDisplay;
@@ -82,6 +83,7 @@ public class SummonScript: MonoBehaviour
         healthMax = hp;
         attack = atk;
         canAttack = can;
+        sprenderer.enabled = true;
         sprenderer.sprite = art;
         if (sprenderer.sprite == null)
         {
@@ -111,6 +113,8 @@ public class SummonScript: MonoBehaviour
                 if (targetScript.special == SummonSpecial.Spiky)
                 {
                     health -= targetScript.attack;
+                    if (health <= 0)
+                        Die();
                 }
                 targetScript.health -= attack;
                 if (targetScript.health <= 0)
@@ -130,7 +134,19 @@ public class SummonScript: MonoBehaviour
                 }
             }
         }
+        else if (stopAttackingTimer < 1)
+            stopAttackingTimer += Time.deltaTime;
         else
-            isFollowing = false;
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        sprenderer.sprite = defaultSprite;
+        sprenderer.enabled = false;
+        alive = false;
+        transform.position = restPosition;
     }
 }
