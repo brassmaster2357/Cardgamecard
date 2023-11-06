@@ -13,6 +13,9 @@ Wizard = wizard buffs one of the stats of your card
 
 public class EventLoader : MonoBehaviour
 {
+
+    private static EventLoader instance;
+
     //this checks to see of this is the first level
     public bool isCabin = false;
 
@@ -33,7 +36,19 @@ public class EventLoader : MonoBehaviour
 
     //this stores the random value
     private int randomness;
-    
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(transform.root);
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -43,6 +58,8 @@ public class EventLoader : MonoBehaviour
 
         // auto sets the event when loaded
         ChooseEvent();
+
+
     }
 
 
