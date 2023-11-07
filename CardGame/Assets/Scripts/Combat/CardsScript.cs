@@ -95,12 +95,12 @@ public class CardsScript : MonoBehaviour
             events = ec.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
-            if (events.nextEvent == "Wizard")
+            if (events.nextEvent == "Wizard" && we != null)
             {
                 we.arrayPos = cardPos;
                 we.SelectedCard(card);
             }
-            else if (events.nextEvent == "Cards")
+            else if (events.nextEvent == "Cards" || we == null)
             {
                 pCards.cardsTotal.Add(card);
                 SceneManager.LoadScene(1);
