@@ -100,7 +100,7 @@ public class CardsScript : MonoBehaviour
                 we.arrayPos = cardPos;
                 we.SelectedCard(card);
             }
-            if (events.nextEvent == "Cards")
+            else if (events.nextEvent == "Cards")
             {
                 pCards.cardsTotal.Add(card);
                 SceneManager.LoadScene(1);
