@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class CardsScript : MonoBehaviour
 {
     private Vector3 moveTo;
-    public Vector3 restPosition = new Vector3(0,-4,0);
+    public Vector3 restPosition = new(0,-4,0);
     private bool isFollowing;
     public CardTemplate card;
     public GameObject cardManager;
@@ -34,7 +34,15 @@ public class CardsScript : MonoBehaviour
     public TextMeshProUGUI cardSummonUIHealth;
 
     // Start is called before the first frame update
-
+    
+    void Awake()
+    {
+        cardManager = GameObject.FindGameObjectWithTag("PCH");
+        pCards = cardManager.GetComponent<PlayerCards>();
+    }
+    
+    
+    
     public void LoadCard()
     {
         combatManager = GameObject.Find("CombatManager");
@@ -87,12 +95,12 @@ public class CardsScript : MonoBehaviour
             events = ec.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
-            if (events.nextEvent == "Wizard")
+            if (events.nextEvent == "Wizard" && we != null)
             {
                 we.arrayPos = cardPos;
                 we.SelectedCard(card);
             }
-            if (events.nextEvent == "Cards")
+            else if (events.nextEvent == "Cards" || we == null)
             {
                 pCards.cardsTotal.Add(card);
                 SceneManager.LoadScene(1);
@@ -177,7 +185,7 @@ public class CardsScript : MonoBehaviour
                     }
                     break;
                 case CardTemplate.EPurpose.Summon: //Summoning
-                    if (card.target.tag == "EmptySummonAlly")
+                    if (card.target.CompareTag("EmptySummonAlly"))
                     {
                         //Set the summon object's stats to the card played
                         SummonScript newSummon = card.target.GetComponent<SummonScript>(); 
@@ -187,6 +195,7 @@ public class CardsScript : MonoBehaviour
                         newSummon.health = card.summon.health;
                         newSummon.canAttack = card.summon.canAttack;
                         newSummon.special = card.summon.special;
+                        newSummon.sprenderer.sprite = card.summon.art;
                     }
                     break;
                 default:

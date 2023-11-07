@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //for emergency skip
 /*
 this is a list of event names, for refrence
 Fight = ambush
@@ -13,6 +14,9 @@ Wizard = wizard buffs one of the stats of your card
 
 public class EventLoader : MonoBehaviour
 {
+
+    private static EventLoader instance;
+
     //this checks to see of this is the first level
     public bool isCabin = false;
 
@@ -33,26 +37,36 @@ public class EventLoader : MonoBehaviour
 
     //this stores the random value
     private int randomness;
-    
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(transform.root);
+            instance = this;
+        }
+    }
 
     void Start()
     {
         //intitializing vars
         //this makes it so there isn't 3 non-fight events in a row at the beginning of a map
         timesSinceAmbush = 1;
+
+        // auto sets the event when loaded
+        ChooseEvent();
+
+
     }
 
 
     void Update()
     {
-        //this debug lets me test the random logic
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            ChooseEvent();
-            Debug.Log("The next event is " + nextEvent);
-        }
 
-            
     }
     //put this in a function to make it easier
     private void ChooseEvent()
@@ -95,7 +109,7 @@ public class EventLoader : MonoBehaviour
             timesSinceAmbush++;
         }
 
-        //if it is the first level, do the next scripted event
+        //if it is the first level, do the next scripted event for CABIN
         else
         {
             switch (eventNum)
@@ -138,4 +152,8 @@ public class EventLoader : MonoBehaviour
         eventDecided = true;
     }
     
+    public void EmergencySkip()
+    {
+        SceneManager.LoadScene(1); //called by skip buttons to skip the event in case stupid bugs happen
+    }
 }

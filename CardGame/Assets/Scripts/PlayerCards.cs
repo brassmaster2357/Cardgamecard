@@ -12,7 +12,7 @@ public class PlayerCards : MonoBehaviour
     public int cardsDrawnPerTurn;
     public GameObject cardPrefab;
     public List<GameObject> objectHand;
-    public Vector3 defaultRest = new Vector3(0, -4, 0);
+    public Vector3 defaultRest = new(0, -4, 0);
 
     void Awake()
     {
@@ -50,7 +50,7 @@ public class PlayerCards : MonoBehaviour
         discardPile.Clear();
         drawPile.Clear();
         cardsInHand.Clear();
-        drawPile = cardsTotal;
+        drawPile.AddRange(cardsTotal);
     }
 
     public void Draw(int cardsToDraw)

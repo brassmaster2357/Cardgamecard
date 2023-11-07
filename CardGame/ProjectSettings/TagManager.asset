@@ -10,6 +10,7 @@ TagManager:
   - EmptySummonEnemy
   - SummonEnemy
   - Card
+  - PCH
   layers:
   - Default
   - TransparentFX

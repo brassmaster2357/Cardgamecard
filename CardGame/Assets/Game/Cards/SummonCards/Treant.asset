@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 4
   description: Half-tree, half-monster. A hulking amalgam of bark and roots.
   target: {fileID: 4448188631129592780, guid: 0a33b50aa0256ae47a655516b2263f0b, type: 3}
-  summon: {fileID: 11400000, guid: b56d0c1762436494a9df92c21c8c09d2, type: 2}
+  summon: {fileID: 11400000, guid: 302bd1c7232f0ae4bab4311db7cdd361, type: 2}
   attack: 3
   health: 7
   purpose: 2

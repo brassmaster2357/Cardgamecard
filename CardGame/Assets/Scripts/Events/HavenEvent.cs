@@ -1,15 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-/*
-okay me, this is how it's going to work.
-you will load in
-then you are able to choose a card
-this card will be buffed by the player's choice of +1 attack or +2 health
-then it will transfer back to the map
-*/
-public class WizardEvent : MonoBehaviour
+
+public class HavenEvent : MonoBehaviour
 {
 
     public int listLength;
@@ -19,9 +12,7 @@ public class WizardEvent : MonoBehaviour
     public PlayerCards pc;
 
     public GameObject cardBase;
-    private GameObject pch;
-    public GameObject button1;
-    public GameObject button2;
+    public GameObject pch;
 
     public CardTemplate selectedCard;
     public int arrayPos;
@@ -40,10 +31,10 @@ public class WizardEvent : MonoBehaviour
     {
         listLength = pc.cardsTotal.Count;
         CardSelected = false;
-        pch = GameObject.Find("PlayerCardHandler");
-        
+
+
     }
-    
+
     void Update()
     {
         if (!CardSelected)
@@ -98,7 +89,7 @@ public class WizardEvent : MonoBehaviour
             }
 
             distance2 = size / length2 + 1;
-           
+
             runningTotal = 0;
 
             for (int i = 0; i < length2; i++)
@@ -116,7 +107,7 @@ public class WizardEvent : MonoBehaviour
         {
             for (int i = 0; i < list1.Count; i++)
             {
-                
+
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 0), Quaternion.identity);
@@ -134,12 +125,13 @@ public class WizardEvent : MonoBehaviour
                 tempScript.restPosition = cardObject.transform.position;
             }
         }
-        else {
+        else
+        {
             for (int i = 0; i < list1.Count; i++)
             {
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
-                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - ((1.17f) * distance1), 2.5f), Quaternion.identity);
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 2.5f), Quaternion.identity);
 
                 (cardObject.GetComponent<CardsScript>()).cardPos = i;
 
@@ -188,43 +180,7 @@ public class WizardEvent : MonoBehaviour
             {
                 Destroy(toBeDestroyed[i]);
             }
-
-            button1.SetActive(true);
-            button2.SetActive(true);
+            
         }
-    }
-    public void AddAttack()
-    {
-        CardTemplate creature = new CardTemplate();
-        creature.cost = selectedCard.cost;
-        creature.attack = selectedCard.attack + 1;
-        creature.health = selectedCard.health;
-        creature.name = selectedCard.name + "+";
-        creature.description = selectedCard.description;
-        creature.purpose = selectedCard.purpose;
-
-        button1.SetActive(false);
-        button2.SetActive(false);
-
-        pc.cardsTotal[arrayPos] = creature;
-
-        SceneManager.LoadScene(1);
-    }
-    public void AddDefense()
-    {
-        CardTemplate creature = selectedCard;
-        creature.cost = selectedCard.cost;
-        creature.attack = selectedCard.attack;
-        creature.health = selectedCard.health + 2;
-        creature.name = selectedCard.name + "+";
-        creature.description = selectedCard.description;
-        creature.purpose = selectedCard.purpose;
-
-        button1.SetActive(false);
-        button2.SetActive(false);
-
-        pc.cardsTotal[arrayPos] = creature;
-
-        SceneManager.LoadScene(1);
     }
 }

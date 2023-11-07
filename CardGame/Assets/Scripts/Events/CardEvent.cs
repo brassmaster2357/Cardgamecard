@@ -12,13 +12,14 @@ public class CardEvent : MonoBehaviour
     public GameObject pch;
     public PlayerCards pc;
 
+
     public GameObject cardBase;
 
     private int cardNum;
 
     void Start()
     {
-        
+        pch = GameObject.Find("PlayerCardHandler");
 
         randomCard = cardArray[Random.Range(1, cardArray.Length)];
         cardNum = -1;
