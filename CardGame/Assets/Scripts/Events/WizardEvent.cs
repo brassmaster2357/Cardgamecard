@@ -179,24 +179,28 @@ public class WizardEvent : MonoBehaviour
     }
     public void AddAttack()
     {
-        //CardTemplate creature = CardTemplate.CreateInstance;
+        CardTemplate creature = Instantiate(selectedCard);
+        Debug.Log(creature);
         creature.cost = selectedCard.cost;
         creature.attack = selectedCard.attack + 1;
         creature.health = selectedCard.health;
         creature.name = selectedCard.name + "+";
         creature.description = selectedCard.description;
         creature.purpose = selectedCard.purpose;
-
+        Debug.Log(creature);
         button1.SetActive(false);
         button2.SetActive(false);
 
+        pc.cardsTotal[arrayPos] = null;
+
         pc.cardsTotal[arrayPos] = creature;
 
-        SceneManager.LoadScene(1);
+        Debug.Log(pc.cardsTotal[arrayPos]);
+        //SceneManager.LoadScene(1);
     }
     public void AddDefense()
     {
-        CardTemplate creature = selectedCard;
+        CardTemplate creature = Instantiate(selectedCard);
         creature.cost = selectedCard.cost;
         creature.attack = selectedCard.attack;
         creature.health = selectedCard.health + 2;
@@ -209,6 +213,6 @@ public class WizardEvent : MonoBehaviour
 
         pc.cardsTotal[arrayPos] = creature;
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 }

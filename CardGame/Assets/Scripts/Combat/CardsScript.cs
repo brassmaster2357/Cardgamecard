@@ -96,17 +96,20 @@ public class CardsScript : MonoBehaviour
             events = el.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
+
             if (events.nextEvent == "Wizard")
             {
-                Debug.Log("the evnt is wizard");
                 we.arrayPos = cardPos;
                 we.SelectedCard(card);
             }
             else if (events.nextEvent == "Cards")
             {
-                Debug.Log("the event is cards");
                 pCards.cardsTotal.Add(card);
                 SceneManager.LoadScene(1);
+            }
+            else if (events.nextEvent == "Haven")
+            {
+                
             }
         }
     }
