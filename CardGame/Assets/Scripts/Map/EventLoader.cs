@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //for emergency skip
 /*
 this is a list of event names, for refrence
 Fight = ambush
@@ -151,4 +152,8 @@ public class EventLoader : MonoBehaviour
         eventDecided = true;
     }
     
+    public void EmergencySkip()
+    {
+        SceneManager.LoadScene(1); //called by skip buttons to skip the event in case stupid bugs happen
+    }
 }
