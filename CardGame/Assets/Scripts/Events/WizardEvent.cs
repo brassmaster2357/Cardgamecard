@@ -158,7 +158,7 @@ public class WizardEvent : MonoBehaviour
             }
         }
     }
-    public void SelectedCard(CardTemplate card)
+    public void SelectedCardW(CardTemplate card)
     {
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
@@ -179,7 +179,7 @@ public class WizardEvent : MonoBehaviour
     }
     public void AddAttack()
     {
-        CardTemplate creature = Instantiate(selectedCard);
+        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
         Debug.Log(creature);
         creature.cost = selectedCard.cost;
         creature.attack = selectedCard.attack + 1;
@@ -191,8 +191,6 @@ public class WizardEvent : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
 
-        pc.cardsTotal[arrayPos] = null;
-
         pc.cardsTotal[arrayPos] = creature;
 
         Debug.Log(pc.cardsTotal[arrayPos]);
@@ -200,7 +198,7 @@ public class WizardEvent : MonoBehaviour
     }
     public void AddDefense()
     {
-        CardTemplate creature = Instantiate(selectedCard);
+        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
         creature.cost = selectedCard.cost;
         creature.attack = selectedCard.attack;
         creature.health = selectedCard.health + 2;

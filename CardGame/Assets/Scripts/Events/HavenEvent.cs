@@ -9,12 +9,10 @@ public class HavenEvent : MonoBehaviour
 
     private bool CardSelected;
 
-    public PlayerCards pc;
+    PlayerCards pc;
 
     public GameObject cardBase;
-    public GameObject pch;
-
-    public CardTemplate selectedCard;
+    GameObject pch;
     public int arrayPos;
 
     public bool middle = false;
@@ -29,31 +27,26 @@ public class HavenEvent : MonoBehaviour
 
     void Start()
     {
+        pch = GameObject.Find("PlayerCardHandler");
+        pc = pch.GetComponent<PlayerCards>();
+
         listLength = pc.cardsTotal.Count;
-        CardSelected = false;
 
-
-    }
-
-    void Update()
-    {
-        if (!CardSelected)
+        if (listLength <= 5)
         {
-            if (listLength <= 5)
-            {
-                middle = true;
-            }
-            else
-            {
-                middle = false;
-            }
-
-            FindPositions();
-            LoadPositions();
-
-            CardSelected = true;
+            middle = true;
         }
+        else
+        {
+            middle = false;
+        }
+
+        FindPositions();
+        LoadPositions();
+
     }
+    
+            
     private void FindPositions()
     {
         int size = 2 * width;
@@ -166,21 +159,21 @@ public class HavenEvent : MonoBehaviour
             }
         }
     }
-    public void SelectedCard(CardTemplate card)
+    public void SelectedCardH(CardTemplate card)
     {
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
-            selectedCard = card;
-
-
-
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
 
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);
             }
-            
+            RemoveCard();
         }
+    }
+    public void RemoveCard()
+    {
+        pc.cardsTotal.RemoveAt(arrayPos);
     }
 }

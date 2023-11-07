@@ -20,6 +20,7 @@ public class CardsScript : MonoBehaviour
     private EventLoader events;
     private WizardEvent we;
     private CardEvent ce;
+    private HavenEvent he;
     public int cardPos;
 
     public BoxCollider2D cardCollider;
@@ -93,14 +94,16 @@ public class CardsScript : MonoBehaviour
         }
         else if (ec != null)
         {
+            
             events = el.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
+            he = ec.GetComponent<HavenEvent>();
 
             if (events.nextEvent == "Wizard")
             {
                 we.arrayPos = cardPos;
-                we.SelectedCard(card);
+                we.SelectedCardW(card);
             }
             else if (events.nextEvent == "Cards")
             {
@@ -109,7 +112,12 @@ public class CardsScript : MonoBehaviour
             }
             else if (events.nextEvent == "Haven")
             {
-                
+                Debug.Log(he);
+                Debug.Log(he.arrayPos);
+                Debug.Log(cardPos);
+                he.arrayPos = cardPos;
+                Debug.Log(he.arrayPos);
+                he.SelectedCardH(card);
             }
         }
     }
