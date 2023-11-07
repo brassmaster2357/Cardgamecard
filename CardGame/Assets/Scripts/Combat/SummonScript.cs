@@ -47,6 +47,8 @@ public class SummonScript: MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!alive)
+            Die();
         if (canAttack && (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap))
         {
             canAttack = false;
@@ -55,12 +57,10 @@ public class SummonScript: MonoBehaviour
         {
             moveTo = (gameObject.transform.position + target.transform.position) / 2;
             sprenderer.enabled = true;
-            if (!alive)
-                Die();
         }
         else
         {
-            if (health <= 0 && !isAlly)
+            if (health >= 0 && !isAlly)
             {
                 moveTo = (gameObject.transform.position + enemy.transform.position) / 2;
                 sprenderer.enabled = false;
@@ -98,10 +98,14 @@ public class SummonScript: MonoBehaviour
     {
         //Move the summon to the target, to at least slightly animate battle
         isFollowing = true;
+        if (!alive)
+            Die();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!alive)
+            Die();
         if (collision.gameObject == target && health > 0 && alive && canAttack)
         {
             isFollowing = false;
