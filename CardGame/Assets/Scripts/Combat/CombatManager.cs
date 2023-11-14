@@ -67,7 +67,12 @@ public class CombatManager : MonoBehaviour
         cards.OrganizeHand();
     }
 
-    public void EnemyTurn()
+    public void YouDecidedToEndYourTurnAndIWantToDoCoroutineStuffButIEnumeratorsAndIEnumerablesAreIncompatibleWithButtons()
+    {
+        StartCoroutine(EnemyTurn());
+    }
+
+    public IEnumerator EnemyTurn()
     {
         mana = 0;
         if (cards == null)
@@ -77,21 +82,27 @@ public class CombatManager : MonoBehaviour
         cards.DiscardHand();
         for (int i = 0; i < 8; i++)
         {
-            SummonScript summon = summons[i].GetComponent<SummonScript>();
-            if (summon.alive)
-            {
-                if (summon.canAttack)
-                {
-                    summon.Attack();
-                }
-                else
-                {
-                    summon.canAttack = true;
-                }
-            }
+            yield return StartCoroutine(DoSummonStuff(i));
         }
         enemy.EnemyTurn();
         PlayerTurn();
+    }
+
+    private IEnumerator DoSummonStuff(int i)
+    {
+        SummonScript summon = summons[i].GetComponent<SummonScript>();
+        if (summon.alive)
+        {
+            if (summon.canAttack)
+            {
+                summon.Attack();
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                summon.canAttack = true;
+            }
+        }
     }
 
     private IEnumerator BaskInYourGlory()
