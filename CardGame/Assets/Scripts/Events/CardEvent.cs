@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CardEvent : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class CardEvent : MonoBehaviour
 
     public GameObject pch;
     public PlayerCards pc;
+    public GameObject eventObject;
+    public EventLoader el;
 
 
     public GameObject cardBase;
@@ -21,6 +24,9 @@ public class CardEvent : MonoBehaviour
     {
         pch = GameObject.Find("PlayerCardHandler");
 
+        eventObject = GameObject.Find("EventLoader");
+        el = eventObject.GetComponent<EventLoader>();
+        
         randomCard = cardArray[Random.Range(1, cardArray.Length)];
         cardNum = -1;
         LoadCard();
@@ -50,5 +56,12 @@ public class CardEvent : MonoBehaviour
         tempScript.LoadCard();
 
         tempScript.restPosition = cardObject.transform.position;
+    }
+
+    public void endCards(CardTemplate card)
+    {
+        pc.cardsTotal.Add(card);
+        SceneManager.LoadScene(1);
+        el.eventDecided = false;
     }
 }

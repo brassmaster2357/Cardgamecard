@@ -33,7 +33,7 @@ public class EventLoader : MonoBehaviour
     public int timesSinceAmbush;
 
     //this bool makes it so it doesn't load new events every frame
-    public bool eventDecided = false;
+    public bool eventDecided;
 
     //this stores the random value
     private int randomness;
@@ -54,19 +54,18 @@ public class EventLoader : MonoBehaviour
     void Start()
     {
         //intitializing vars
+        eventDecided = false;
         //this makes it so there isn't 3 non-fight events in a row at the beginning of a map
         timesSinceAmbush = 1;
-
-        // auto sets the event when loaded
-        ChooseEvent();
-
-
     }
 
 
     void Update()
     {
-
+        if (!eventDecided)
+        {
+            ChooseEvent();
+        }
     }
     //put this in a function to make it easier
     private void ChooseEvent()
@@ -148,8 +147,6 @@ public class EventLoader : MonoBehaviour
                     break;
             }
         }
-        //we decided the event, so make this true in the code
-        eventDecided = true;
     }
     
     public void EmergencySkip()

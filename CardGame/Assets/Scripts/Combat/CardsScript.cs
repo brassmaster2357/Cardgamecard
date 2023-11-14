@@ -107,8 +107,7 @@ public class CardsScript : MonoBehaviour
             }
             else if (events.nextEvent == "Cards")
             {
-                pCards.cardsTotal.Add(card);
-                SceneManager.LoadScene(1);
+                ce.endCards(card);
             }
             else if (events.nextEvent == "Haven")
             {
