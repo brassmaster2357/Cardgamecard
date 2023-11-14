@@ -3301,7 +3301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1410551697}
         m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
-        m_MethodName: EnemyTurn
+        m_MethodName: YouDecidedToEndYourTurnAndIWantToDoCoroutineStuffButIEnumeratorsAndIEnumerablesAreIncompatibleWithButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
