@@ -171,13 +171,16 @@ public class CardsScript : MonoBehaviour
                     }
                     break;
                 case CardTemplate.EPurpose.Buff: //Playing a buff card
+                    
                     switch (card.target.tag)
                     {
                         case "Player":
                             card.target.GetComponent<PlayerManager>().powerMod += card.attack;
+                            if (card.name == "More Cards") { pCards.Draw(3); }
                             break;
                         case "SummonAlly":
                             card.target.GetComponent<SummonScript>().attack += card.attack;
+                            if (card.name == "More Cards") { pCards.Draw(3); }
                             break;
                         default:
                             discard = false;
