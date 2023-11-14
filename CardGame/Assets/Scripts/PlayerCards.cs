@@ -13,6 +13,7 @@ public class PlayerCards : MonoBehaviour
     public GameObject cardPrefab;
     public List<GameObject> objectHand;
     public Vector3 defaultRest = new(0, -4, 0);
+    public bool tutorial;
 
     void Awake()
     {
