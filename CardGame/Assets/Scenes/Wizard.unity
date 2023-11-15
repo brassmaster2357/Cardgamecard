@@ -696,6 +696,11 @@ MonoBehaviour:
   width: 7
   list1: []
   list2: []
+  PowerList:
+  - {fileID: 11400000, guid: e68523210d7c9dd4db9442080d852c39, type: 2}
+  - {fileID: 11400000, guid: a91259f84ab661142b143cab9bfb5b88, type: 2}
+  - {fileID: 11400000, guid: ffcdaad5a89099349907d59f9fe3e383, type: 2}
+  - {fileID: 11400000, guid: e68523210d7c9dd4db9442080d852c39, type: 2}
 --- !u!4 &1105529930
 Transform:
   m_ObjectHideFlags: 0

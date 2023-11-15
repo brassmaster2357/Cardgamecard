@@ -24,6 +24,7 @@ public class WizardEvent : MonoBehaviour
 
     public List<float> list1;
     public List<float> list2;
+    public List<CardTemplate> PowerList;
 
     private float distance1;
     private float distance2;
