@@ -163,11 +163,7 @@ public class WizardEvent : MonoBehaviour
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
             selectedCard = card;
-
-
-
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
-
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);

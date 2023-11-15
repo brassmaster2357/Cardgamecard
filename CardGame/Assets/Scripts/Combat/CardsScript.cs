@@ -82,7 +82,8 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        GameObject ec = GameObject.Find("EventController");
+
+        GameObject ec = GameObject.FindGameObjectWithTag("EC");
         GameObject el = GameObject.Find("EventLoader");
         if (combatManager != null)
         {
@@ -111,11 +112,7 @@ public class CardsScript : MonoBehaviour
             }
             else if (events.nextEvent == "Haven")
             {
-                Debug.Log(he);
-                Debug.Log(he.arrayPos);
-                Debug.Log(cardPos);
                 he.arrayPos = cardPos;
-                Debug.Log(he.arrayPos);
                 he.SelectedCardH(card);
             }
         }
