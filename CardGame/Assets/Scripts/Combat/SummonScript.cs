@@ -60,7 +60,7 @@ public class SummonScript: MonoBehaviour
         }
         else
         {
-            if (health >= 0 && !isAlly)
+            if (health <= 0 && !isAlly)
             {
                 moveTo = (gameObject.transform.position + enemy.transform.position) / 2;
                 sprenderer.enabled = false;
@@ -98,6 +98,9 @@ public class SummonScript: MonoBehaviour
     {
         //Move the summon to the target, to at least slightly animate battle
         isFollowing = true;
+        if (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap) {
+            isFollowing = false;
+         }
         if (!alive)
             Die();
     }
@@ -108,10 +111,12 @@ public class SummonScript: MonoBehaviour
             Die();
         if (collision.gameObject == target && health > 0 && alive && canAttack)
         {
+            Debug.Log(name + " is colliding with target");
             isFollowing = false;
             SummonScript targetScript = target.GetComponent<SummonScript>();
             if (targetScript.alive)
             {
+                Debug.Log(name + " hit target");
                 if (special == SummonSpecial.Instakill)
                 {
                     targetScript.health -= 69420;
@@ -130,6 +135,7 @@ public class SummonScript: MonoBehaviour
             }
             else
             {
+                Debug.Log(name + "'s target is dead");
                 if (isAlly)
                 {
                     enemyScript.enemyHP -= attack;
@@ -142,17 +148,24 @@ public class SummonScript: MonoBehaviour
         }
         else if (stopAttackingTimer < 1)
             stopAttackingTimer += Time.deltaTime;
-        else
+        else if (stopAttackingTimer >= 1)
         {
-            Die();
+            Debug.Log(name + " STOP ATTACKING ALREADY");
+            isFollowing = false;
+            target = null;
         }
+        else
+            Die();
     }
 
     public void Die()
     {
+        if (alive) { Debug.Log(name + " is ded"); }
         sprenderer.sprite = defaultSprite;
         sprenderer.enabled = false;
         alive = false;
+        canAttack = false;
+        isFollowing = false;
         transform.position = restPosition;
     }
 }
