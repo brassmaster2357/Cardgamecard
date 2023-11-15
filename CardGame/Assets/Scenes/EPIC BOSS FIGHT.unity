@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &37719698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3301,7 +3301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1410551697}
         m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
-        m_MethodName: EnemyTurn
+        m_MethodName: YouDecidedToEndYourTurnAndIWantToDoCoroutineStuffButIEnumeratorsAndIEnumerablesAreIncompatibleWithButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4387,7 +4387,11 @@ PrefabInstance:
       objectReference: {fileID: 37901642}
     - target: {fileID: 8263397324208269905, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: enemyHP
-      value: 20
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263397324208269905, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: enemyHPMax
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8263397324208269905, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: combatManager
@@ -4512,7 +4516,7 @@ PrefabInstance:
     - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f479503b49dc32e4a864febc2eb93252, type: 3}
+      objectReference: {fileID: 21300000, guid: 7e5e04e8a48b6c44e90bbd116b1804dd, type: 3}
     - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: m_Color.b
       value: 1
