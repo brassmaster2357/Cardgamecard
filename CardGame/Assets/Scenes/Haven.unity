@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 155476945}
   m_Layer: 0
   m_Name: Event Controller
-  m_TagString: Untagged
+  m_TagString: EC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   cardBase: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
   arrayPos: 0
   middle: 0
-  width: 0
+  width: 7
   list1: []
   list2: []
 --- !u!1 &945133202

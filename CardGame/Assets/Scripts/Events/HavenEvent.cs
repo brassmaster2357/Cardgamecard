@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HavenEvent : MonoBehaviour
 {
@@ -122,25 +123,27 @@ public class HavenEvent : MonoBehaviour
         {
             for (int i = 0; i < list1.Count; i++)
             {
+                arrayPos = i;
+
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i]);
 
-                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - distance1, 2.5f), Quaternion.identity);
+                GameObject cardObject = Instantiate(cardBase, new Vector2(list1[i] - ((1.17f) * distance1), 2.5f), Quaternion.identity);
 
                 (cardObject.GetComponent<CardsScript>()).cardPos = i;
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
+                tempScript.cardPos = arrayPos;
                 tempScript.eventLoader = GameObject.Find("EventController");
-
-                tempScript.card = pc.cardsTotal[i];
-
+                tempScript.card = pc.cardsTotal[arrayPos];
                 tempScript.LoadCard();
-
                 tempScript.restPosition = cardObject.transform.position;
             }
 
             for (int i = 0; i < list2.Count; i++)
             {
+                arrayPos = i + list1.Count;
+
                 CardTemplate card = (pch.GetComponent<PlayerCards>().cardsTotal[i + list1.Count]);
 
                 GameObject cardObject = Instantiate(cardBase, new Vector2(list2[i] - (3.5f * distance2), -2.5f), Quaternion.identity);
@@ -149,28 +152,24 @@ public class HavenEvent : MonoBehaviour
 
                 CardsScript tempScript = cardObject.GetComponent<CardsScript>();
 
+                tempScript.cardPos = arrayPos;
                 tempScript.eventLoader = GameObject.Find("EventController");
-
-                tempScript.card = pc.cardsTotal[i + list1.Count];
-
+                tempScript.card = pc.cardsTotal[arrayPos];
                 tempScript.LoadCard();
-
                 tempScript.restPosition = cardObject.transform.position;
             }
         }
     }
     public void SelectedCardH(CardTemplate card)
     {
-        if (card.purpose == CardTemplate.EPurpose.Summon)
-        {
-            GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
+        GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
 
-            for (int i = 0; i < toBeDestroyed.Length; i++)
-            {
-                Destroy(toBeDestroyed[i]);
-            }
-            RemoveCard();
+        for (int i = 0; i < toBeDestroyed.Length; i++)
+        {
+            Destroy(toBeDestroyed[i]);
         }
+        RemoveCard();
+        SceneManager.LoadScene(1);
     }
     public void RemoveCard()
     {
