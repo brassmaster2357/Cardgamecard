@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: 
   art: {fileID: 21300000, guid: 95fde0fdab9a28246b0ae99aba5b9a6e, type: 3}
-  health: 2
+  health: 3
   attack: 3
   canAttack: 1
   special: 0
