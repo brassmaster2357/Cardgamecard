@@ -55,6 +55,7 @@ public class EventLoader : MonoBehaviour
     {
         //intitializing vars
         eventDecided = false;
+        Debug.Log("The event was decided");
         //this makes it so there isn't 3 non-fight events in a row at the beginning of a map
         timesSinceAmbush = 1;
     }
