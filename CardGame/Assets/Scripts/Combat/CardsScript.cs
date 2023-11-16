@@ -24,6 +24,7 @@ public class CardsScript : MonoBehaviour
     public int cardPos;
 
     public BoxCollider2D cardCollider;
+    public float whyY;
 
     public Image cardUI;
     public TextMeshProUGUI cardUIName;
@@ -40,9 +41,18 @@ public class CardsScript : MonoBehaviour
     {
         cardManager = GameObject.FindGameObjectWithTag("PCH");
         pCards = cardManager.GetComponent<PlayerCards>();
+        TimedThings();
     }
     
-    
+    public IEnumerator TimedThings()
+    {
+        while (true)
+        {
+            if (!isFollowing)
+                cardCollider.enabled = true;
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
     
     public void LoadCard()
     {
@@ -68,7 +78,7 @@ public class CardsScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isFollowing)
             moveTo = (gameObject.transform.position + Camera.main.ScreenToWorldPoint(Input.mousePosition)) / 2;
@@ -119,6 +129,7 @@ public class CardsScript : MonoBehaviour
     }
     void OnMouseUp()
     {
+        whyY = transform.position.y;
         if (combatManager != null)
         {
             isFollowing = false;
@@ -131,8 +142,10 @@ public class CardsScript : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (!Input.GetMouseButton(0))
+            cardCollider.enabled = false;
         card.target = collision.gameObject;
-        if (!isFollowing && card.target == collision.gameObject && combat.mana >= card.cost)
+        if (!isFollowing && card.target == collision.gameObject && combat.mana >= card.cost && (collision.gameObject.transform.position.y - whyY) <= 0.5)
         {
             bool discard = true;
             cardCollider.enabled = false;
@@ -226,6 +239,7 @@ public class CardsScript : MonoBehaviour
             }
             else { cardCollider.enabled = true; card.target = null; }
             Debug.Log(collision.gameObject);
+            cardCollider.enabled = true;
         }
     }
 }

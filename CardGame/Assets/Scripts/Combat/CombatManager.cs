@@ -82,6 +82,12 @@ public class CombatManager : MonoBehaviour
         cards.DiscardHand();
         for (int i = 0; i < 8; i++)
         {
+            summons[i].GetComponent<PolygonCollider2D>().enabled = true; // This has to happen first before the other for loop
+            summons[i].GetComponent<SummonScript>().combative = true;
+            Debug.Log(summons[i]);
+        }
+        for (int i = 0; i < 8; i++)
+        {
             yield return StartCoroutine(DoSummonStuff(i));
         }
         enemy.EnemyTurn();

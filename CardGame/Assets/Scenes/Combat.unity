@@ -195,7 +195,8 @@ PrefabInstance:
       propertyPath: sprenderer
       value: 
       objectReference: {fileID: 307041488}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4509,6 +4510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5aeb173521ecfc04599d451a15d308e2, type: 3}
     - target: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: m_Name
       value: Enemy

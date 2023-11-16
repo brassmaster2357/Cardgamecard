@@ -14,12 +14,14 @@ public class SummonScript: MonoBehaviour
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI attackDisplay;
     public Sprite defaultSprite;
+    public PolygonCollider2D actualCollider;
 
     public GameObject target;
     public GameObject enemy;
     public GameObject player;
     private PlayerManager playerScript;
     private EnemyManager enemyScript;
+    public bool combative;
 
     public bool alive;
     public float health;
@@ -41,12 +43,17 @@ public class SummonScript: MonoBehaviour
         restPosition = transform.position;
         enemyScript = enemy.GetComponent<EnemyManager>();
         playerScript = player.GetComponent<PlayerManager>();
-        sprenderer = gameObject.GetComponent<SpriteRenderer>();
+        sprenderer = GetComponent<SpriteRenderer>();
+        actualCollider = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).y - gameObject.transform.position.y <= 0.5 || combative)
+            actualCollider.enabled = true;
+        else
+            actualCollider.enabled = false;
         if (!alive)
             Die();
         if (canAttack && (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap))
@@ -92,12 +99,14 @@ public class SummonScript: MonoBehaviour
             sprenderer.sprite = defaultSprite;
         }
         alive = true;
+        combative = false;
     }
 
     public void Attack()
     {
         //Move the summon to the target, to at least slightly animate battle
         isFollowing = true;
+        combative = true;
         if (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap) {
             isFollowing = false;
          }
@@ -117,6 +126,7 @@ public class SummonScript: MonoBehaviour
             if (targetScript.alive)
             {
                 Debug.Log(name + " hit target");
+                combative = false;
                 if (special == SummonSpecial.Instakill)
                 {
                     targetScript.health -= 69420;
@@ -136,6 +146,7 @@ public class SummonScript: MonoBehaviour
             else
             {
                 Debug.Log(name + "'s target is dead");
+                combative = false;
                 if (isAlly)
                 {
                     enemyScript.enemyHP -= attack;
@@ -153,6 +164,7 @@ public class SummonScript: MonoBehaviour
             Debug.Log(name + " STOP ATTACKING ALREADY");
             isFollowing = false;
             target = null;
+            combative = false;
         }
         else
             Die();
@@ -166,6 +178,7 @@ public class SummonScript: MonoBehaviour
         alive = false;
         canAttack = false;
         isFollowing = false;
+        combative = false;
         transform.position = restPosition;
     }
 }
