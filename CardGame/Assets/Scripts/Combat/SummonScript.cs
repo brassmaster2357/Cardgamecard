@@ -47,6 +47,17 @@ public class SummonScript: MonoBehaviour
         actualCollider = GetComponent<PolygonCollider2D>();
     }
 
+    public IEnumerator RandomlyCollide()
+    {
+        while (true)
+        {
+            actualCollider.enabled = true;
+            yield return new WaitForSeconds(0.034f);
+            actualCollider.enabled = false;
+            yield return new WaitForSeconds(Random.Range(2f, 2.5f));
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -54,6 +65,8 @@ public class SummonScript: MonoBehaviour
             actualCollider.enabled = true;
         else
             actualCollider.enabled = false;
+        if (!isAlly)
+            actualCollider.enabled = true;
         if (!alive)
             Die();
         if (canAttack && (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap))
@@ -163,7 +176,6 @@ public class SummonScript: MonoBehaviour
         {
             Debug.Log(name + " STOP ATTACKING ALREADY");
             isFollowing = false;
-            target = null;
             combative = false;
         }
         else
