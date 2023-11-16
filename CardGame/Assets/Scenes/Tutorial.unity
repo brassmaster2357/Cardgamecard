@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &37719698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d30efc6ae922f34a82f281874e687f1, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: a0f03223d414c3646bd8f39c8daf3d06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1067,8 +1067,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294934976
-  m_fontColor: {r: 0.75332963, g: 0.504717, b: 1, a: 1}
+    rgba: 4294901888
+  m_fontColor: {r: 0.5019608, g: 0, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d30efc6ae922f34a82f281874e687f1, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: a0f03223d414c3646bd8f39c8daf3d06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3301,7 +3301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1410551697}
         m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
-        m_MethodName: YouDecidedToEndYourTurnAndIWantToDoCoroutineStuffButIEnumeratorsAndIEnumerablesAreIncompatibleWithButtons
+        m_MethodName: EnemyTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4508,6 +4508,22 @@ PrefabInstance:
     - target: {fileID: 8263397324208269907, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f479503b49dc32e4a864febc2eb93252, type: 3}
+    - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263397324208269908, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8263397324208269909, guid: 40c7f58559cb14d46bf34c8c64f25d3c, type: 3}
       propertyPath: m_Name

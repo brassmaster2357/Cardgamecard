@@ -27,7 +27,8 @@ public class MapLayout : MonoBehaviour
 
     void Start()
     {
-        //initialize the position values
+        //initialize the values
+        el = GameObject.Find("EventLoader").GetComponent<EventLoader>();
         playerPos = playerIcon.transform.position;
         eventOffset = playerPos + new Vector2(0, 10);
 
@@ -48,14 +49,14 @@ public class MapLayout : MonoBehaviour
     void Update()
     {
         //if the event has been decided...
-        if (el.eventDecided)
+        if (!el.eventDecided)
         {
 
             //call this function
             DecideNextEvent();
 
             //after everything, tell the code that the event is not decided so the code doesn't loop in Update
-            el.eventDecided = false;
+            el.eventDecided = true;
         }
     }
 

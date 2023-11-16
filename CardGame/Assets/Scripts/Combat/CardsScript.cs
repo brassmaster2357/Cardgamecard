@@ -20,6 +20,7 @@ public class CardsScript : MonoBehaviour
     private EventLoader events;
     private WizardEvent we;
     private CardEvent ce;
+    private HavenEvent he;
     public int cardPos;
 
     public BoxCollider2D cardCollider;
@@ -81,7 +82,9 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        GameObject ec = GameObject.Find("EventController");
+
+        GameObject ec = GameObject.FindGameObjectWithTag("EC");
+        GameObject el = GameObject.Find("EventLoader");
         if (combatManager != null)
         {
             if (combat.mana >= card.cost)
@@ -92,18 +95,25 @@ public class CardsScript : MonoBehaviour
         }
         else if (ec != null)
         {
-            events = ec.GetComponent<EventLoader>();
+            
+            events = el.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
-            if (events.nextEvent == "Wizard" && we != null)
+            he = ec.GetComponent<HavenEvent>();
+
+            if (events.nextEvent == "Wizard")
             {
                 we.arrayPos = cardPos;
-                we.SelectedCard(card);
+                we.SelectedCardW(card);
             }
-            else if (events.nextEvent == "Cards" || we == null)
+            else if (events.nextEvent == "Cards")
             {
-                pCards.cardsTotal.Add(card);
-                SceneManager.LoadScene(1);
+                ce.endCards(card);
+            }
+            else if (events.nextEvent == "Haven")
+            {
+                he.arrayPos = cardPos;
+                he.SelectedCardH(card);
             }
         }
     }
@@ -157,13 +167,16 @@ public class CardsScript : MonoBehaviour
                     }
                     break;
                 case CardTemplate.EPurpose.Buff: //Playing a buff card
+                    
                     switch (card.target.tag)
                     {
                         case "Player":
                             card.target.GetComponent<PlayerManager>().powerMod += card.attack;
+                            if (card.name == "More Cards") { pCards.Draw(3); }
                             break;
                         case "SummonAlly":
                             card.target.GetComponent<SummonScript>().attack += card.attack;
+                            if (card.name == "More Cards") { pCards.Draw(3); }
                             break;
                         default:
                             discard = false;

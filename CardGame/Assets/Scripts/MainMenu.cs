@@ -27,6 +27,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void startGameTutorial()
+    {
+        SceneManager.LoadScene(7);
+    }
+
     public void mainMenu()
     {
         SceneManager.LoadScene(0);

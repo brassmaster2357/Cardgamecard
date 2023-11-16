@@ -47,6 +47,8 @@ public class SummonScript: MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!alive)
+            Die();
         if (canAttack && (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap))
         {
             canAttack = false;
@@ -55,8 +57,6 @@ public class SummonScript: MonoBehaviour
         {
             moveTo = (gameObject.transform.position + target.transform.position) / 2;
             sprenderer.enabled = true;
-            if (!alive)
-                Die();
         }
         else
         {
@@ -98,16 +98,25 @@ public class SummonScript: MonoBehaviour
     {
         //Move the summon to the target, to at least slightly animate battle
         isFollowing = true;
+        if (special == SummonSpecial.NoAttack || special == SummonSpecial.Trap) {
+            isFollowing = false;
+         }
+        if (!alive)
+            Die();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!alive)
+            Die();
         if (collision.gameObject == target && health > 0 && alive && canAttack)
         {
+            Debug.Log(name + " is colliding with target");
             isFollowing = false;
             SummonScript targetScript = target.GetComponent<SummonScript>();
             if (targetScript.alive)
             {
+                Debug.Log(name + " hit target");
                 if (special == SummonSpecial.Instakill)
                 {
                     targetScript.health -= 69420;
@@ -126,6 +135,7 @@ public class SummonScript: MonoBehaviour
             }
             else
             {
+                Debug.Log(name + "'s target is dead");
                 if (isAlly)
                 {
                     enemyScript.enemyHP -= attack;
@@ -138,17 +148,24 @@ public class SummonScript: MonoBehaviour
         }
         else if (stopAttackingTimer < 1)
             stopAttackingTimer += Time.deltaTime;
-        else
+        else if (stopAttackingTimer >= 1)
         {
-            Die();
+            Debug.Log(name + " STOP ATTACKING ALREADY");
+            isFollowing = false;
+            target = null;
         }
+        else
+            Die();
     }
 
     public void Die()
     {
+        if (alive) { Debug.Log(name + " is ded"); }
         sprenderer.sprite = defaultSprite;
         sprenderer.enabled = false;
         alive = false;
+        canAttack = false;
+        isFollowing = false;
         transform.position = restPosition;
     }
 }

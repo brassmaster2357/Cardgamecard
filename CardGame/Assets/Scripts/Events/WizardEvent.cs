@@ -2,19 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-/*
-okay me, this is how it's going to work.
-you will load in
-then you are able to choose a card
-this card will be buffed by the player's choice of +1 attack or +2 health
-then it will transfer back to the map
-*/
+
 public class WizardEvent : MonoBehaviour
 {
 
     public int listLength;
-
-    private bool CardSelected;
 
     public PlayerCards pc;
 
@@ -32,6 +24,7 @@ public class WizardEvent : MonoBehaviour
 
     public List<float> list1;
     public List<float> list2;
+    public List<CardTemplate> PowerList;
 
     private float distance1;
     private float distance2;
@@ -39,30 +32,22 @@ public class WizardEvent : MonoBehaviour
     void Start()
     {
         listLength = pc.cardsTotal.Count;
-        CardSelected = false;
         pch = GameObject.Find("PlayerCardHandler");
+
+        if (listLength <= 5)
+        {
+            middle = true;
+        }
+        else
+        {
+            middle = false;
+        }
+
+        FindPositions();
+        LoadPositions();
         
     }
     
-    void Update()
-    {
-        if (!CardSelected)
-        {
-            if (listLength <= 5)
-            {
-                middle = true;
-            }
-            else
-            {
-                middle = false;
-            }
-
-            FindPositions();
-            LoadPositions();
-
-            CardSelected = true;
-        }
-    }
     private void FindPositions()
     {
         int size = 2 * width;
@@ -174,16 +159,12 @@ public class WizardEvent : MonoBehaviour
             }
         }
     }
-    public void SelectedCard(CardTemplate card)
+    public void SelectedCardW(CardTemplate card)
     {
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
             selectedCard = card;
-
-
-
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
-
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);
@@ -195,24 +176,26 @@ public class WizardEvent : MonoBehaviour
     }
     public void AddAttack()
     {
-        CardTemplate creature = new CardTemplate();
+        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
+        Debug.Log(creature);
         creature.cost = selectedCard.cost;
         creature.attack = selectedCard.attack + 1;
         creature.health = selectedCard.health;
         creature.name = selectedCard.name + "+";
         creature.description = selectedCard.description;
         creature.purpose = selectedCard.purpose;
-
+        Debug.Log(creature);
         button1.SetActive(false);
         button2.SetActive(false);
 
         pc.cardsTotal[arrayPos] = creature;
 
-        SceneManager.LoadScene(1);
+        Debug.Log(pc.cardsTotal[arrayPos]);
+        //SceneManager.LoadScene(1);
     }
     public void AddDefense()
     {
-        CardTemplate creature = selectedCard;
+        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
         creature.cost = selectedCard.cost;
         creature.attack = selectedCard.attack;
         creature.health = selectedCard.health + 2;
@@ -225,6 +208,6 @@ public class WizardEvent : MonoBehaviour
 
         pc.cardsTotal[arrayPos] = creature;
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 }
