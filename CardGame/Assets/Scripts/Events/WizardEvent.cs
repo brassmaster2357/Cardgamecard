@@ -5,26 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class WizardEvent : MonoBehaviour
 {
-
-    public int listLength;
-
     public PlayerCards pc;
+
+    public CardTemplate selectedCard;
 
     public GameObject cardBase;
     private GameObject pch;
     public GameObject button1;
     public GameObject button2;
 
-    public CardTemplate selectedCard;
-    public int arrayPos;
-
-    public bool middle = false;
-
-    public int width;
-
     public List<float> list1;
     public List<float> list2;
-    public List<CardTemplate> PowerList;
+    public List<CardTemplate> powerList;
+
+    public int arrayPos;
+    public int width;
+    public int listLength;
+    public int listPos;
+
+    private string bigCardName;
+    private string smallCardName;
+
+    public bool middle = false;
 
     private float distance1;
     private float distance2;
@@ -163,6 +165,8 @@ public class WizardEvent : MonoBehaviour
     {
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
+
+
             selectedCard = card;
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
             for (int i = 0; i < toBeDestroyed.Length; i++)
@@ -170,44 +174,36 @@ public class WizardEvent : MonoBehaviour
                 Destroy(toBeDestroyed[i]);
             }
 
+            int position = powerList.IndexOf(selectedCard);
+
+            switch (position)
+            {
+                case 0:
+                    bigCardName = powerList[19].name;
+                    smallCardName = powerList[position + 1].name;
+                    break;
+
+                case 19:
+                    bigCardName = powerList[position - 1].name;
+                    smallCardName = powerList[0].name;
+                    break;
+
+                default:
+                    bigCardName = powerList[position - 1].name;
+                    smallCardName = powerList[position + 1].name;
+                    break;
+            }
+
             button1.SetActive(true);
             button2.SetActive(true);
         }
     }
-    public void AddAttack()
+    public void Split()
     {
-        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
-        Debug.Log(creature);
-        creature.cost = selectedCard.cost;
-        creature.attack = selectedCard.attack + 1;
-        creature.health = selectedCard.health;
-        creature.name = selectedCard.name + "+";
-        creature.description = selectedCard.description;
-        creature.purpose = selectedCard.purpose;
-        Debug.Log(creature);
-        button1.SetActive(false);
-        button2.SetActive(false);
 
-        pc.cardsTotal[arrayPos] = creature;
-
-        Debug.Log(pc.cardsTotal[arrayPos]);
-        //SceneManager.LoadScene(1);
     }
-    public void AddDefense()
+    public void Upgrade()
     {
-        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
-        creature.cost = selectedCard.cost;
-        creature.attack = selectedCard.attack;
-        creature.health = selectedCard.health + 2;
-        creature.name = selectedCard.name + "+";
-        creature.description = selectedCard.description;
-        creature.purpose = selectedCard.purpose;
 
-        button1.SetActive(false);
-        button2.SetActive(false);
-
-        pc.cardsTotal[arrayPos] = creature;
-
-        //SceneManager.LoadScene(1);
     }
 }
