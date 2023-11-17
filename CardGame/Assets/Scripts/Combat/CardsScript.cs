@@ -105,11 +105,14 @@ public class CardsScript : MonoBehaviour
                 isFollowing = true;
                 cardCollider.size /= 4;
             }
+        } else
+        {
+            we = ec.GetComponent<WizardEvent>();
+            ce = ec.GetComponent<CardEvent>();
+            he = ec.GetComponent<HavenEvent>();
         }
         
-        we = ec.GetComponent<WizardEvent>();
-        ce = ec.GetComponent<CardEvent>();
-        he = ec.GetComponent<HavenEvent>();
+        
 
         if (SceneManager.GetActiveScene().name == "Wizard")
         {
