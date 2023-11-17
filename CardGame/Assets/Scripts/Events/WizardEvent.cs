@@ -26,6 +26,8 @@ public class WizardEvent : MonoBehaviour
     public int width;
     public int listLength;
     public int listPos;
+    int position;
+    int newPosition;
 
     private string bigCardName;
     private string cardName;
@@ -183,7 +185,7 @@ public class WizardEvent : MonoBehaviour
     }
     void TakeNames()
     {
-        int position = powerList.IndexOf(selectedCard);
+        position = powerList.IndexOf(selectedCard);
 
         switch (position)
         {
@@ -212,10 +214,41 @@ public class WizardEvent : MonoBehaviour
     }
     public void Split()
     {
+        pc.cardsTotal.RemoveAt(arrayPos);
 
+        switch (position)
+        {
+            case 19:
+                newPosition = 0;
+                break;
+
+            default:
+                newPosition = position + 1;
+                break;
+        }
+
+        pc.cardsTotal.Add(powerList[newPosition]);
+        pc.cardsTotal.Add(powerList[newPosition]);
+
+        SceneManager.LoadScene(1);
     }
     public void Upgrade()
     {
+        pc.cardsTotal.RemoveAt(arrayPos);
 
+        switch (position)
+        {
+            case 0:
+                newPosition = 19;
+                break;
+
+            default:
+                newPosition = position - 1;
+                break;
+        }
+
+        pc.cardsTotal.Add(powerList[newPosition]);
+
+        SceneManager.LoadScene(1);
     }
 }
