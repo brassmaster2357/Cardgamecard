@@ -689,7 +689,9 @@ MonoBehaviour:
   selectedCard: {fileID: 0}
   cardBase: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
   button1: {fileID: 902116481}
+  text1: {fileID: 975630362}
   button2: {fileID: 1574496312}
+  text2: {fileID: 1565320345}
   list1: []
   list2: []
   powerList:

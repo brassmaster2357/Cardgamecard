@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class WizardEvent : MonoBehaviour
 {
     public PlayerCards pc;
 
     public CardTemplate selectedCard;
+
+    public TextMeshProUGUI text1;
+    public TextMeshProUGUI text2;
 
     public GameObject cardBase;
     private GameObject pch;
@@ -165,9 +169,8 @@ public class WizardEvent : MonoBehaviour
     {
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
-
-
             selectedCard = card;
+
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
