@@ -2,29 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class WizardEvent : MonoBehaviour
 {
-
-    public int listLength;
-
     public PlayerCards pc;
+
+    public CardTemplate selectedCard;
+
+    public TextMeshProUGUI text1;
+    public TextMeshProUGUI text2;
 
     public GameObject cardBase;
     private GameObject pch;
     public GameObject button1;
     public GameObject button2;
 
-    public CardTemplate selectedCard;
-    public int arrayPos;
-
-    public bool middle = false;
-
-    public int width;
-
     public List<float> list1;
     public List<float> list2;
-    public List<CardTemplate> PowerList;
+    public List<CardTemplate> powerList;
+
+    public int arrayPos;
+    public int width;
+    public int listLength;
+    public int listPos;
+    int position;
+    int newPosition;
+
+    private string bigCardName;
+    private string cardName;
+    private string smallCardName;
+
+    public bool middle = false;
 
     private float distance1;
     private float distance2;
@@ -164,50 +173,82 @@ public class WizardEvent : MonoBehaviour
         if (card.purpose == CardTemplate.EPurpose.Summon)
         {
             selectedCard = card;
+
             GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Card");
             for (int i = 0; i < toBeDestroyed.Length; i++)
             {
                 Destroy(toBeDestroyed[i]);
             }
 
-            button1.SetActive(true);
-            button2.SetActive(true);
+            TakeNames();
         }
     }
-    public void AddAttack()
+    void TakeNames()
     {
-        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
-        Debug.Log(creature);
-        creature.cost = selectedCard.cost;
-        creature.attack = selectedCard.attack + 1;
-        creature.health = selectedCard.health;
-        creature.name = selectedCard.name + "+";
-        creature.description = selectedCard.description;
-        creature.purpose = selectedCard.purpose;
-        Debug.Log(creature);
-        button1.SetActive(false);
-        button2.SetActive(false);
+        position = powerList.IndexOf(selectedCard);
 
-        pc.cardsTotal[arrayPos] = creature;
+        switch (position)
+        {
+            case 0:
+                bigCardName = powerList[19].name;
+                smallCardName = powerList[position + 1].name;
+                break;
 
-        Debug.Log(pc.cardsTotal[arrayPos]);
-        //SceneManager.LoadScene(1);
+            case 19:
+                bigCardName = powerList[position - 1].name;
+                smallCardName = powerList[0].name;
+                break;
+
+            default:
+                bigCardName = powerList[position - 1].name;
+                smallCardName = powerList[position + 1].name;
+                break;
+        }
+        cardName = selectedCard.name;
+
+        text1.text = "Split your " + cardName + " into two " + smallCardName + "s";
+        text2.text = "Upgrade your " + cardName + " to a " + bigCardName;
+
+        button1.SetActive(true);
+        button2.SetActive(true);
     }
-    public void AddDefense()
+    public void Split()
     {
-        CardTemplate creature = ScriptableObject.CreateInstance<CardTemplate>();
-        creature.cost = selectedCard.cost;
-        creature.attack = selectedCard.attack;
-        creature.health = selectedCard.health + 2;
-        creature.name = selectedCard.name + "+";
-        creature.description = selectedCard.description;
-        creature.purpose = selectedCard.purpose;
+        pc.cardsTotal.RemoveAt(arrayPos);
 
-        button1.SetActive(false);
-        button2.SetActive(false);
+        switch (position)
+        {
+            case 19:
+                newPosition = 0;
+                break;
 
-        pc.cardsTotal[arrayPos] = creature;
+            default:
+                newPosition = position + 1;
+                break;
+        }
 
-        //SceneManager.LoadScene(1);
+        pc.cardsTotal.Add(powerList[newPosition]);
+        pc.cardsTotal.Add(powerList[newPosition]);
+
+        SceneManager.LoadScene(1);
+    }
+    public void Upgrade()
+    {
+        pc.cardsTotal.RemoveAt(arrayPos);
+
+        switch (position)
+        {
+            case 0:
+                newPosition = 19;
+                break;
+
+            default:
+                newPosition = position - 1;
+                break;
+        }
+
+        pc.cardsTotal.Add(powerList[newPosition]);
+
+        SceneManager.LoadScene(1);
     }
 }

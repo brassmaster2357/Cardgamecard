@@ -149,9 +149,4 @@ public class EventLoader : MonoBehaviour
             }
         }
     }
-    
-    public void EmergencySkip()
-    {
-        SceneManager.LoadScene(1); //called by skip buttons to skip the event in case stupid bugs happen
-    }
 }

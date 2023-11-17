@@ -61,7 +61,8 @@ MonoBehaviour:
   drawPile: []
   cardsInHand: []
   discardPile: []
-  cardsDrawnPerTurn: 0
-  cardPrefab: {fileID: 0}
+  cardsDrawnPerTurn: 4
+  cardPrefab: {fileID: 7620815926848960872, guid: 3e3816388d6291740ad9c426c28af91c, type: 3}
   objectHand: []
   defaultRest: {x: 0, y: -4, z: 0}
+  tutorial: 0

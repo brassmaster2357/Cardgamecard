@@ -16,15 +16,17 @@ public class CardsScript : MonoBehaviour
     public GameObject combatManager;
     private CombatManager combat;
 
+    // Jake's stuff
     public GameObject eventLoader;
-    private EventLoader events;
     private WizardEvent we;
     private CardEvent ce;
     private HavenEvent he;
     public int cardPos;
 
     public BoxCollider2D cardCollider;
+    public float whyY; // BALDUR'S GATE 3 REFERENCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+    // UI Handling
     public Image cardUI;
     public TextMeshProUGUI cardUIName;
     public TextMeshProUGUI cardUIDescription;
@@ -40,14 +42,25 @@ public class CardsScript : MonoBehaviour
     {
         cardManager = GameObject.FindGameObjectWithTag("PCH");
         pCards = cardManager.GetComponent<PlayerCards>();
+        TimedThings();
     }
     
-    
+    public IEnumerator TimedThings()
+    {
+        while (true)
+        {
+            if (!isFollowing)
+                cardCollider.enabled = true;
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
     
     public void LoadCard()
     {
-        combatManager = GameObject.Find("CombatManager");
-        eventLoader = GameObject.Find("EventLoader");
+        if (combatManager == null)
+            combatManager = GameObject.Find("CombatManager");
+        if (eventLoader == null)
+            eventLoader = GameObject.Find("EventLoader");
         if (combatManager != null)
         {
             combat = combatManager.GetComponent<CombatManager>();
@@ -68,7 +81,7 @@ public class CardsScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isFollowing)
             moveTo = (gameObject.transform.position + Camera.main.ScreenToWorldPoint(Input.mousePosition)) / 2;
@@ -82,7 +95,7 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
-
+        Debug.Log("Click");
         GameObject ec = GameObject.FindGameObjectWithTag("EC");
         GameObject el = GameObject.Find("EventLoader");
         if (combatManager != null)
@@ -92,33 +105,34 @@ public class CardsScript : MonoBehaviour
                 isFollowing = true;
                 cardCollider.size /= 4;
             }
-        }
-        else if (ec != null)
+        } else
         {
-            
-            events = el.GetComponent<EventLoader>();
             we = ec.GetComponent<WizardEvent>();
             ce = ec.GetComponent<CardEvent>();
             he = ec.GetComponent<HavenEvent>();
-
-            if (events.nextEvent == "Wizard")
-            {
-                we.arrayPos = cardPos;
-                we.SelectedCardW(card);
-            }
-            else if (events.nextEvent == "Cards")
-            {
-                ce.endCards(card);
-            }
-            else if (events.nextEvent == "Haven")
-            {
-                he.arrayPos = cardPos;
-                he.SelectedCardH(card);
-            }
         }
+        
+        
+
+        if (SceneManager.GetActiveScene().name == "Wizard")
+        {
+            we.arrayPos = cardPos;
+            we.SelectedCardW(card);
+        }
+        else if (SceneManager.GetActiveScene().name == "Cards")
+        {
+            ce.endCards(card);
+        }
+        else if (SceneManager.GetActiveScene().name == "Haven")
+        {
+            he.arrayPos = cardPos;
+            he.SelectedCardH(card);
+        }
+
     }
     void OnMouseUp()
     {
+        whyY = transform.position.y;
         if (combatManager != null)
         {
             isFollowing = false;
@@ -131,8 +145,10 @@ public class CardsScript : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (!Input.GetMouseButton(0))
+            cardCollider.enabled = false;
         card.target = collision.gameObject;
-        if (!isFollowing && card.target == collision.gameObject && combat.mana >= card.cost)
+        if (!isFollowing && card.target == collision.gameObject && combat.mana >= card.cost && (collision.gameObject.transform.position.y - whyY) <= 0.5)
         {
             bool discard = true;
             cardCollider.enabled = false;
@@ -226,6 +242,7 @@ public class CardsScript : MonoBehaviour
             }
             else { cardCollider.enabled = true; card.target = null; }
             Debug.Log(collision.gameObject);
+            cardCollider.enabled = true;
         }
     }
 }
