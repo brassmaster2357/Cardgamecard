@@ -16,6 +16,11 @@ public class SummonScript: MonoBehaviour
     public Sprite defaultSprite;
     public PolygonCollider2D actualCollider;
 
+    public AudioSource hitSmall;
+    public AudioSource hitBig;
+    public AudioSource hitBigger;
+    public AudioSource dies;
+
     public GameObject target;
     public GameObject enemy;
     public GameObject player;
@@ -148,9 +153,27 @@ public class SummonScript: MonoBehaviour
                 {
                     health -= targetScript.attack;
                     if (health <= 0)
+                        dies.Play();
                         Die();
                 }
                 targetScript.health -= attack;
+                switch (attack)
+                {
+                    case 0:
+                        break; // only the trees would do this to me, they torture my soul /j
+                    case 1:
+                        hitSmall.Play();
+                        break;
+                    case 2:
+                        hitBig.Play();
+                        break;
+                    case 3:
+                        hitBig.Play();
+                        break;
+                    default:
+                        hitBigger.Play();
+                        break;
+                }
                 if (targetScript.health <= 0)
                 {
                     targetScript.alive = false;

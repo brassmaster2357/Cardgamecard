@@ -16,6 +16,10 @@ public class CardsScript : MonoBehaviour
     public GameObject combatManager;
     private CombatManager combat;
 
+    public AudioSource sfxPlace;
+    public AudioSource sfxBuff;
+    public AudioSource sfxHit;
+
     // Jake's stuff
     public GameObject eventLoader;
     private WizardEvent we;
@@ -159,6 +163,7 @@ public class CardsScript : MonoBehaviour
                     {
                         case "Player":
                             card.target.GetComponent<PlayerManager>().playerHP += card.health;
+                            sfxBuff.Play();
                             break;
                         case "SummonAlly":
                             card.target.GetComponent<SummonScript>().health += card.health;
@@ -173,6 +178,7 @@ public class CardsScript : MonoBehaviour
                     {
                         case "Enemy":
                             card.target.GetComponent<EnemyManager>().enemyHP -= card.attack;
+                            sfxHit.Play();
                             break;
                         case "SummonEnemy":
                             card.target.GetComponent<SummonScript>().health -= card.attack;
@@ -188,6 +194,7 @@ public class CardsScript : MonoBehaviour
                     {
                         case "Player":
                             card.target.GetComponent<PlayerManager>().powerMod += card.attack;
+                            sfxBuff.Play();
                             if (card.name == "More Cards") { pCards.Draw(3); }
                             break;
                         case "SummonAlly":
@@ -216,6 +223,7 @@ public class CardsScript : MonoBehaviour
                 case CardTemplate.EPurpose.Summon: //Summoning
                     if (card.target.CompareTag("EmptySummonAlly"))
                     {
+                        sfxPlace.Play();
                         //Set the summon object's stats to the card played
                         SummonScript newSummon = card.target.GetComponent<SummonScript>(); 
                         newSummon.alive = true;
