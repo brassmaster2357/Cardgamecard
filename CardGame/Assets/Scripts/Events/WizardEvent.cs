@@ -190,11 +190,11 @@ public class WizardEvent : MonoBehaviour
         switch (position)
         {
             case 0:
-                bigCardName = powerList[19].name;
+                bigCardName = powerList[20].name;
                 smallCardName = powerList[position + 1].name;
                 break;
 
-            case 19:
+            case 20:
                 bigCardName = powerList[position - 1].name;
                 smallCardName = powerList[0].name;
                 break;
@@ -218,7 +218,7 @@ public class WizardEvent : MonoBehaviour
 
         switch (position)
         {
-            case 19:
+            case 20:
                 newPosition = 0;
                 break;
 
@@ -239,7 +239,7 @@ public class WizardEvent : MonoBehaviour
         switch (position)
         {
             case 0:
-                newPosition = 19;
+                newPosition = 20;
                 break;
 
             default:

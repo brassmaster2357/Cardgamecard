@@ -384,7 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bfa48953869434e86cf280b9e47ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCabin: 0
+  road: {fileID: 0}
+  isCabin: 1
   nextEvent: 
   eventsLeft: 0
   timesSinceAmbush: 0
@@ -587,11 +588,11 @@ GameObject:
   - component: {fileID: 1279450434}
   m_Layer: 0
   m_Name: Road
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1279450434
 Transform:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ TagManager:
   - Card
   - PCH
   - EC
+  - Road
+  - Event
   layers:
   - Default
   - TransparentFX

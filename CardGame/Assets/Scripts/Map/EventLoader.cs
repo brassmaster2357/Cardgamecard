@@ -15,6 +15,8 @@ Wizard = wizard buffs one of the stats of your card
 public class EventLoader : MonoBehaviour
 {
 
+    public GameObject road;
+
     private static EventLoader instance;
 
     //this checks to see of this is the first level
@@ -63,6 +65,14 @@ public class EventLoader : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Map")
+        {
+            GameObject Event = GameObject.FindGameObjectWithTag("Event");
+            if (Event == null)
+            {
+                eventDecided = false;
+            }
+        }
         if (!eventDecided)
         {
             ChooseEvent();

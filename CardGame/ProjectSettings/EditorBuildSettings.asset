@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2a96edc2c5f0e4d4d9fb76fcbb12545b
+  - enabled: 1
+    path: Assets/Scenes/EPIC BOSS FIGHT.unity
+    guid: 71a619ac3a4d8f146a02f2c21eb87cf5
   m_configObjects: {}
