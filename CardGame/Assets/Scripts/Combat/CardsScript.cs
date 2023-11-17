@@ -18,7 +18,6 @@ public class CardsScript : MonoBehaviour
 
     // Jake's stuff
     public GameObject eventLoader;
-    private EventLoader events;
     private WizardEvent we;
     private CardEvent ce;
     private HavenEvent he;
@@ -96,7 +95,7 @@ public class CardsScript : MonoBehaviour
 
     void OnMouseDown()
     {
-
+        Debug.Log("Click");
         GameObject ec = GameObject.FindGameObjectWithTag("EC");
         GameObject el = GameObject.Find("EventLoader");
         if (combatManager != null)
@@ -107,29 +106,26 @@ public class CardsScript : MonoBehaviour
                 cardCollider.size /= 4;
             }
         }
-        else if (ec != null)
-        {
-            
-            events = el.GetComponent<EventLoader>();
-            we = ec.GetComponent<WizardEvent>();
-            ce = ec.GetComponent<CardEvent>();
-            he = ec.GetComponent<HavenEvent>();
+        
+        we = ec.GetComponent<WizardEvent>();
+        ce = ec.GetComponent<CardEvent>();
+        he = ec.GetComponent<HavenEvent>();
 
-            if (SceneManager.GetActiveScene().name == "Wizard")
-            {
-                we.arrayPos = cardPos;
-                we.SelectedCardW(card);
-            }
-            else if (SceneManager.GetActiveScene().name == "Cards")
-            {
-                ce.endCards(card);
-            }
-            else if (SceneManager.GetActiveScene().name == "Haven")
-            {
-                he.arrayPos = cardPos;
-                he.SelectedCardH(card);
-            }
+        if (SceneManager.GetActiveScene().name == "Wizard")
+        {
+            we.arrayPos = cardPos;
+            we.SelectedCardW(card);
         }
+        else if (SceneManager.GetActiveScene().name == "Cards")
+        {
+            ce.endCards(card);
+        }
+        else if (SceneManager.GetActiveScene().name == "Haven")
+        {
+            he.arrayPos = cardPos;
+            he.SelectedCardH(card);
+        }
+
     }
     void OnMouseUp()
     {
