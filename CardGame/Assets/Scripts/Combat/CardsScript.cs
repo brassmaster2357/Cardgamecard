@@ -16,6 +16,7 @@ public class CardsScript : MonoBehaviour
     public GameObject combatManager;
     private CombatManager combat;
 
+    // Jake's stuff
     public GameObject eventLoader;
     private EventLoader events;
     private WizardEvent we;
@@ -24,8 +25,9 @@ public class CardsScript : MonoBehaviour
     public int cardPos;
 
     public BoxCollider2D cardCollider;
-    public float whyY;
+    public float whyY; // BALDUR'S GATE 3 REFERENCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+    // UI Handling
     public Image cardUI;
     public TextMeshProUGUI cardUIName;
     public TextMeshProUGUI cardUIDescription;
@@ -56,8 +58,10 @@ public class CardsScript : MonoBehaviour
     
     public void LoadCard()
     {
-        combatManager = GameObject.Find("CombatManager");
-        eventLoader = GameObject.Find("EventLoader");
+        if (combatManager == null)
+            combatManager = GameObject.Find("CombatManager");
+        if (eventLoader == null)
+            eventLoader = GameObject.Find("EventLoader");
         if (combatManager != null)
         {
             combat = combatManager.GetComponent<CombatManager>();
