@@ -28,6 +28,7 @@ public class WizardEvent : MonoBehaviour
     public int listPos;
 
     private string bigCardName;
+    private string cardName;
     private string smallCardName;
 
     public bool middle = false;
@@ -177,29 +178,37 @@ public class WizardEvent : MonoBehaviour
                 Destroy(toBeDestroyed[i]);
             }
 
-            int position = powerList.IndexOf(selectedCard);
-
-            switch (position)
-            {
-                case 0:
-                    bigCardName = powerList[19].name;
-                    smallCardName = powerList[position + 1].name;
-                    break;
-
-                case 19:
-                    bigCardName = powerList[position - 1].name;
-                    smallCardName = powerList[0].name;
-                    break;
-
-                default:
-                    bigCardName = powerList[position - 1].name;
-                    smallCardName = powerList[position + 1].name;
-                    break;
-            }
-
-            button1.SetActive(true);
-            button2.SetActive(true);
+            TakeNames();
         }
+    }
+    void TakeNames()
+    {
+        int position = powerList.IndexOf(selectedCard);
+
+        switch (position)
+        {
+            case 0:
+                bigCardName = powerList[19].name;
+                smallCardName = powerList[position + 1].name;
+                break;
+
+            case 19:
+                bigCardName = powerList[position - 1].name;
+                smallCardName = powerList[0].name;
+                break;
+
+            default:
+                bigCardName = powerList[position - 1].name;
+                smallCardName = powerList[position + 1].name;
+                break;
+        }
+        cardName = selectedCard.name;
+
+        text1.text = "Split your " + cardName + " into two " + smallCardName + "s";
+        text2.text = "Upgrade your " + cardName + " to a " + bigCardName;
+
+        button1.SetActive(true);
+        button2.SetActive(true);
     }
     public void Split()
     {
