@@ -115,16 +115,16 @@ public class CardsScript : MonoBehaviour
             ce = ec.GetComponent<CardEvent>();
             he = ec.GetComponent<HavenEvent>();
 
-            if (events.nextEvent == "Wizard")
+            if (SceneManager.GetActiveScene().name == "Wizard")
             {
                 we.arrayPos = cardPos;
                 we.SelectedCardW(card);
             }
-            else if (events.nextEvent == "Cards")
+            else if (SceneManager.GetActiveScene().name == "Cards")
             {
                 ce.endCards(card);
             }
-            else if (events.nextEvent == "Haven")
+            else if (SceneManager.GetActiveScene().name == "Haven")
             {
                 he.arrayPos = cardPos;
                 he.SelectedCardH(card);
